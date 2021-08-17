@@ -1,0 +1,161 @@
+﻿@model PagedList.IPagedList<DoNgoaiChinhHang.Areas.Admin.Models.Product>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "GetProductsByCategoryBase";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/assets/css/cart.min.css" rel="stylesheet" />
+<link href="~/assets/css/home.css" rel="stylesheet" />
+<link href="~/assets/css/owl-carousel.css" rel="stylesheet" />
+<link href="~/assets/css/styles4.css" rel="stylesheet" />
+<link href="~/assets/css/menu.css" rel="stylesheet" />
+<link href="~/assets/css/category.css" rel="stylesheet" />
+<div class="breadcrumb">
+    <ul>
+        <li>
+            <a href="/Home" title="Đồ Ngoại Chính Hãng"><span class="iH"></span></a><span>›</span>
+        </li>
+        <li>
+            <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { ViewBag.categoryBase.CategoryBaseID})" title="@ViewBag.categoryBase.CategoryBaseName">
+                <span>
+                    @ViewBag.categoryBase.CategoryBaseName
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>
+@*<script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "item": { "@id": "https://dongoaichinhhang.com/", "name": "Đồ Ngoại Chính Hãng", "image": "https://dongoaichinhhang.com/images/logo-dongoaichinhhang1000x500.png" } },
+                { "@type": "ListItem", "position": 2, "item": { "@id": "https://dongoaichinhhang.com/danh-muc/my-pham-dac-tri.html", "name": "Mỹ phẩm Đặc Trị" } }
+            ]
+        }
+    </script>*@
+<div class="col-left">
+    @if (ViewBag.categoryBase.Images != null)
+    {
+        <h2>
+            @{
+                string ImgPath = "~/assets/img/" + ViewBag.categoryBase.Images;
+
+            }
+            <img src="@Url.Content(ImgPath)" alt="@ViewBag.categoryBase.CategoryBaseName" title="@ViewBag.categoryBase.CategoryBaseName" style="margin-bottom: 6px; max-width: 100%;" />
+        </h2>
+    }
+
+    <div class="barbox">
+        <h1 class="titlecate">
+            <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { @ViewBag.categoryBase.CategoryBaseID})" title="@ViewBag.categoryBase.CategoryBaseName">
+                @ViewBag.categoryBase.CategoryBaseName
+            </a>
+        </h1>
+    </div>
+    <div class="box-shock">
+        <div class="bica">
+            <p>
+                @ViewBag.categoryBase.Description
+            </p>
+        </div>
+        @if (Model != null)
+        {
+            <div class="rowsp">
+
+                <ul class="category-ul homeproduct nonslider">
+
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="https://dongoaichinhhang.com/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien.html" title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên">
+                                    @{
+                                        string ImgPath = "~/assets/img/" + item.Image;
+
+                                    }
+                                    <img src="@Url.Content(ImgPath)" alt="@item.ProductName" />
+                                </a>
+
+                                <div class="prolink">
+                                    <a href="https://dongoaichinhhang.com/danh-muc/my-pham-dac-tri.html#" onclick="return showCart(50929, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                            </div>
+                            <h3>
+                                <a href="https://dongoaichinhhang.com/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien.html" title="@item.ProductName">
+                                    @item.ProductName
+                                </a>
+                            </h3>
+                            <ins>@item.Price đ</ins>
+                            <div class="vote">
+                                <div style="width: 0%;"></div>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+                <div style="clear: both;"></div>
+                <br />
+                <p>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                </p>
+
+                @Html.PagedListPager(Model, page => Url.Action("GetProductsByCategoryBase",
+                    new { categoryBaseId = @ViewBag.categoryBase.CategoryBaseID, page }))
+            </div>
+        }
+    </div>
+</div>
+<div class="col-right">
+    <div class="sidebar sidebar-right">
+        <div class="widget widget-seller">
+            <h4 class="seller_title radius">Danh mục sản phẩm</h4>
+            <div class="widget widget-seller">
+                <div class="widget-content">
+                    <ul class="category-ul-rght">
+                        @foreach (var item in ViewBag.listCategoryBase)
+                        {
+                            <li class="has-sub-cat">
+                                <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { item.CategoryBaseID})" title="@item.CategoryBaseName">
+                                    @item.CategoryBaseName
+                                </a>
+                                <ul style="display: none;">
+                                    @foreach (var categoryItem in item.Categories)
+                                    {
+                                        <li>
+                                            <a href="https://dongoaichinhhang.com/danh-muc/dieu-tri-mun-da-mun.html" title="@categoryItem.CategoryName">@categoryItem.CategoryName</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="clr"></div>
+            <div style="height: 15px;"></div>
+            <div class="widget widget-seller">
+                <h4 class="seller_title radius">Thương hiệu hàng đầu</h4>
+                <div class="widget-content">
+                    <ul class="category-ul-rght">
+                        @foreach (var item in ViewBag.listOrgin)
+                        {
+
+                            <li>
+                                <a href="https://dongoaichinhhang.com/thuong-hieu/chinh-hang-nhat.html" title="@item">@item<span>(298)</span></a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="clr"></div>
+            <div style="height: 15px;"></div>
+        </div>
+    </div>
+</div>
+<div class="col-left"></div>
+

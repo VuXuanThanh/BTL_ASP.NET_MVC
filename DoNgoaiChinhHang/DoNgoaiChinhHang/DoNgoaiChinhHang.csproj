@@ -1,0 +1,1523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{48EF2E68-4638-4923-A7D3-139D751FA3EB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DoNgoaiChinhHang</RootNamespace>
+    <AssemblyName>DoNgoaiChinhHang</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44378</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryBasesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Models\Account.cs" />
+    <Compile Include="Areas\Admin\Models\Category.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryBase.cs" />
+    <Compile Include="Areas\Admin\Models\DBContext.cs" />
+    <Compile Include="Areas\Admin\Models\Order.cs" />
+    <Compile Include="Areas\Admin\Models\OrderDetail.cs" />
+    <Compile Include="Areas\Admin\Models\Product.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoryBasesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\Admin\AJAX\Category.js" />
+    <Content Include="assets\Admin\AJAX\CategoryBases.js" />
+    <Content Include="assets\Admin\AJAX\Product.js" />
+    <Content Include="assets\Admin\css\bootstrap-theme.min.css" />
+    <Content Include="assets\Admin\css\color\color-1.css" />
+    <Content Include="assets\Admin\css\color\color-1.min.css" />
+    <Content Include="assets\Admin\css\color\color-2.css" />
+    <Content Include="assets\Admin\css\color\color-2.min.css" />
+    <Content Include="assets\Admin\css\color\color-3.css" />
+    <Content Include="assets\Admin\css\color\color-3.min.css" />
+    <Content Include="assets\Admin\css\color\color-4.css" />
+    <Content Include="assets\Admin\css\color\color-4.min.css" />
+    <Content Include="assets\Admin\css\color\color-5.css" />
+    <Content Include="assets\Admin\css\color\color-5.min.css" />
+    <Content Include="assets\Admin\css\color\inverse.css" />
+    <Content Include="assets\Admin\css\color\inverse.min.css" />
+    <Content Include="assets\Admin\css\font-awesome.min.css" />
+    <Content Include="assets\Admin\css\generic-class.css" />
+    <Content Include="assets\Admin\css\generic-class.min.css" />
+    <Content Include="assets\Admin\css\main.css" />
+    <Content Include="assets\Admin\css\menu.css" />
+    <Content Include="assets\Admin\css\responsive.css" />
+    <Content Include="assets\Admin\css\svg-weather.css" />
+    <Content Include="assets\Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\Admin\fonts\themify.svg" />
+    <Content Include="assets\Admin\icon\ico-fonts\css\icofont.css" />
+    <Content Include="assets\Admin\icon\ico-fonts\fonts\icofont.svg" />
+    <Content Include="assets\Admin\icon\icofont\css\icofont.css" />
+    <Content Include="assets\Admin\icon\icofont\fonts\icofont.svg" />
+    <Content Include="assets\Admin\icon\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="assets\Admin\icon\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="assets\Admin\icon\themify-icons\fonts\themify.svg" />
+    <Content Include="assets\Admin\icon\themify-icons\themify-icons.css" />
+    <Content Include="assets\Admin\images\authentication-bg.jpg" />
+    <Content Include="assets\Admin\images\avatar-1.png" />
+    <Content Include="assets\Admin\images\avatar-2.png" />
+    <Content Include="assets\Admin\images\avatar-3.png" />
+    <Content Include="assets\Admin\images\avatar-4.png" />
+    <Content Include="assets\Admin\images\avatar-5.png" />
+    <Content Include="assets\Admin\images\favicon.ico" />
+    <Content Include="assets\Admin\images\favicon.png" />
+    <Content Include="assets\Admin\images\light-box\l1.jpg" />
+    <Content Include="assets\Admin\images\light-box\l2.jpg" />
+    <Content Include="assets\Admin\images\light-box\l3.jpg" />
+    <Content Include="assets\Admin\images\light-box\l4.jpg" />
+    <Content Include="assets\Admin\images\light-box\l5.jpg" />
+    <Content Include="assets\Admin\images\light-box\l6.jpg" />
+    <Content Include="assets\Admin\images\light-box\mixin.jpg" />
+    <Content Include="assets\Admin\images\light-box\single-small.jpg" />
+    <Content Include="assets\Admin\images\light-box\single.jpg" />
+    <Content Include="assets\Admin\images\light-box\sl1.jpg" />
+    <Content Include="assets\Admin\images\light-box\sl2.jpg" />
+    <Content Include="assets\Admin\images\light-box\sl3.jpg" />
+    <Content Include="assets\Admin\images\light-box\sl4.jpg" />
+    <Content Include="assets\Admin\images\light-box\sl5.jpg" />
+    <Content Include="assets\Admin\images\light-box\sl6.jpg" />
+    <Content Include="assets\Admin\images\light-box\smixin.jpg" />
+    <Content Include="assets\Admin\images\light-box\v1.jpg" />
+    <Content Include="assets\Admin\images\light-box\v2.jpg" />
+    <Content Include="assets\Admin\images\light-box\v3.jpg" />
+    <Content Include="assets\Admin\images\light-box\v4.jpg" />
+    <Content Include="assets\Admin\images\lockscreen.png" />
+    <Content Include="assets\Admin\images\logo-black.png" />
+    <Content Include="assets\Admin\images\logo.png" />
+    <Content Include="assets\Admin\images\widget\contact-card.jpg" />
+    <Content Include="assets\Admin\images\widget\user-1.png" />
+    <Content Include="assets\Admin\images\widget\user-block-1.png" />
+    <Content Include="assets\Admin\images\widget\user-block-2.jpg" />
+    <Content Include="assets\Admin\images\widget\user-block-3.png" />
+    <Content Include="assets\Admin\images\widget\user-block-4.png" />
+    <Content Include="assets\Admin\images\widget\user-block-5.png" />
+    <Content Include="assets\Admin\js\common-pages.min.js" />
+    <Content Include="assets\Admin\js\main.js" />
+    <Content Include="assets\Admin\js\main.min.js" />
+    <Content Include="assets\Admin\js\menu.js" />
+    <Content Include="assets\Admin\js\menu.min.js" />
+    <Content Include="assets\Admin\js\modernizr-custom.js" />
+    <Content Include="assets\Admin\js\modernizr-custom.min.js" />
+    <Content Include="assets\Admin\js\ThongBaoNoi.js" />
+    <Content Include="assets\Admin\pages\accordion.js" />
+    <Content Include="assets\Admin\pages\advance-form.js" />
+    <Content Include="assets\Admin\pages\animation.js" />
+    <Content Include="assets\Admin\pages\chart-float.js" />
+    <Content Include="assets\Admin\pages\chart-morris.js" />
+    <Content Include="assets\Admin\pages\counter.js" />
+    <Content Include="assets\Admin\pages\dashboard.js" />
+    <Content Include="assets\Admin\pages\elements-materialize.js" />
+    <Content Include="assets\Admin\pages\elements.js" />
+    <Content Include="assets\Admin\pages\font-awesome.js" />
+    <Content Include="assets\Admin\pages\iconfonts.js" />
+    <Content Include="assets\Admin\pages\material-icon.js" />
+    <Content Include="assets\Admin\pages\notification.js" />
+    <Content Include="assets\Admin\pages\preloader.js" />
+    <Content Include="assets\Admin\pages\profile.js" />
+    <Content Include="assets\Admin\pages\range-slider.js" />
+    <Content Include="assets\Admin\pages\simple-line-icons.js" />
+    <Content Include="assets\Admin\pages\typicon.js" />
+    <Content Include="assets\Admin\pages\weather-icons.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.min.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\js\bootstrap-datepicker.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-material-datetimepicker\css\bootstrap-material-datetimepicker.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-material-datetimepicker\font\Material-Design-Icons.svg" />
+    <Content Include="assets\Admin\plugins\bootstrap-material-datetimepicker\js\bootstrap-material-datetimepicker.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-maxlength\src\bootstrap-maxlength.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-multiselect\dist\css\bootstrap-multiselect.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-multiselect\dist\js\bootstrap-multiselect-collapsible-groups.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-multiselect\dist\js\bootstrap-multiselect.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput-typeahead.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\assets\app.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\assets\app.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\assets\app_bs2.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\assets\app_bs3.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\bootstrap-2.3.2.html" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\index.html" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\src\bootstrap-tagsinput-angular.js" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\src\bootstrap-tagsinput-typeahead.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\src\bootstrap-tagsinput.css" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\src\bootstrap-tagsinput.js" />
+    <Content Include="assets\Admin\plugins\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="assets\Admin\plugins\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="assets\Admin\plugins\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="assets\Admin\plugins\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="assets\Admin\plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\Admin\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\Admin\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\Admin\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\Admin\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\Admin\plugins\bower-jquery-easyPieChart\dist\easypiechart.js" />
+    <Content Include="assets\Admin\plugins\bower-jquery-easyPieChart\dist\easypiechart.min.js" />
+    <Content Include="assets\Admin\plugins\bower-jquery-easyPieChart\dist\jquery.easypiechart.js" />
+    <Content Include="assets\Admin\plugins\bower-jquery-easyPieChart\dist\jquery.easypiechart.min.js" />
+    <Content Include="assets\Admin\plugins\bower-jquery-easyPieChart\src\easypiechart.js" />
+    <Content Include="assets\Admin\plugins\chartist\dist\chartist.css" />
+    <Content Include="assets\Admin\plugins\chartist\dist\chartist.js" />
+    <Content Include="assets\Admin\plugins\chartist\dist\chartist.min.css" />
+    <Content Include="assets\Admin\plugins\chartist\dist\chartist.min.js" />
+    <Content Include="assets\Admin\plugins\charts\chartlist\js\chartist-plugin-threshold.js" />
+    <Content Include="assets\Admin\plugins\charts\echarts\js\echarts-all.js" />
+    <Content Include="assets\Admin\plugins\charts\nv-chart\js\stream_layers.js" />
+    <Content Include="assets\Admin\plugins\classie\classie.js" />
+    <Content Include="assets\Admin\plugins\countdown\js\jquery.countdown.js" />
+    <Content Include="assets\Admin\plugins\countdown\js\jquery.counterup.js" />
+    <Content Include="assets\Admin\plugins\d3\d3.js" />
+    <Content Include="assets\Admin\plugins\d3\d3.min.js" />
+    <Content Include="assets\Admin\plugins\datepicker\js\moment-with-locales.min.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.colorhelpers.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.canvas.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.categories.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.crosshair.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.errorbars.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.fillbetween.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.image.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.navigate.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.pie.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.resize.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.selection.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.stack.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.symbol.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.threshold.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.flot.time.js" />
+    <Content Include="assets\Admin\plugins\Flot\jquery.js" />
+    <Content Include="assets\Admin\plugins\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\dist\jquery.sparkline.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\dist\jquery.sparkline.min.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\base.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\chart-bar.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\chart-box.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\chart-bullet.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\chart-discrete.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\chart-line.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\chart-pie.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\chart-tristate.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\defaults.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\footer.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\header.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\interact.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\rangemap.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\simpledraw.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\utils.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\vcanvas-base.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\vcanvas-canvas.js" />
+    <Content Include="assets\Admin\plugins\jquery-sparkline\src\vcanvas-vml.js" />
+    <Content Include="assets\Admin\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="assets\Admin\plugins\jquery.nicescroll\jquery.nicescroll.min.js" />
+    <Content Include="assets\Admin\plugins\Jquery\dist\jquery.js" />
+    <Content Include="assets\Admin\plugins\Jquery\dist\jquery.min.js" />
+    <Content Include="assets\Admin\plugins\jscolor\arrow.gif" />
+    <Content Include="assets\Admin\plugins\jscolor\cross.gif" />
+    <Content Include="assets\Admin\plugins\jscolor\hs.png" />
+    <Content Include="assets\Admin\plugins\jscolor\hv.png" />
+    <Content Include="assets\Admin\plugins\jscolor\jscolor.js" />
+    <Content Include="assets\Admin\plugins\light-box\css\ekko-lightbox.css" />
+    <Content Include="assets\Admin\plugins\light-box\images\close.png" />
+    <Content Include="assets\Admin\plugins\light-box\images\loading.gif" />
+    <Content Include="assets\Admin\plugins\light-box\images\next.png" />
+    <Content Include="assets\Admin\plugins\light-box\images\prev.png" />
+    <Content Include="assets\Admin\plugins\light-box\js\ekko-lightbox.js" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\css\lightbox.css" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\css\lightbox.min.css" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\images\close.png" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\images\loading.gif" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\images\next.png" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\images\prev.png" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\js\lightbox-plus-jquery.js" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\js\lightbox-plus-jquery.min.js" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\js\lightbox.js" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\js\lightbox.min.js" />
+    <Content Include="assets\Admin\plugins\lightbox2\src\css\lightbox.css" />
+    <Content Include="assets\Admin\plugins\lightbox2\src\images\close.png" />
+    <Content Include="assets\Admin\plugins\lightbox2\src\images\loading.gif" />
+    <Content Include="assets\Admin\plugins\lightbox2\src\images\next.png" />
+    <Content Include="assets\Admin\plugins\lightbox2\src\images\prev.png" />
+    <Content Include="assets\Admin\plugins\lightbox2\src\js\lightbox.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\af.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ar-dz.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ar-ly.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ar-ma.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ar-sa.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ar-tn.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ar.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\az.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\be.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\bg.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\bn.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\bo.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\br.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\bs.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ca.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\cs.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\cv.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\cy.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\da.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\de-at.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\de.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\dv.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\el.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\en-au.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\en-ca.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\en-gb.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\en-ie.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\en-nz.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\eo.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\es-do.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\es.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\et.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\eu.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\fa.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\fi.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\fo.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\fr-ca.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\fr-ch.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\fr.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\fy.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\gd.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\gl.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\he.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\hi.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\hr.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\hu.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\hy-am.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\id.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\is.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\it.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ja.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\jv.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ka.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\kk.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\km.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ko.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ky.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\lb.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\lo.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\lt.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\lv.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\me.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\mi.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\mk.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ml.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\mr.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ms-my.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ms.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\my.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\nb.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ne.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\nl-be.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\nl.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\nn.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\pa-in.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\pl.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\pt-br.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\pt.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ro.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ru.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\se.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\si.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\sk.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\sl.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\sq.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\sr-cyrl.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\sr.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ss.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\sv.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\sw.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\ta.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\te.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\tet.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\th.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\tl-ph.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\tlh.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\tr.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\tzl.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\tzm-latn.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\tzm.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\uk.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\uz.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\vi.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\x-pseudo.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\yo.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\zh-cn.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\zh-hk.js" />
+    <Content Include="assets\Admin\plugins\moment\locale\zh-tw.js" />
+    <Content Include="assets\Admin\plugins\moment\min\locales.js" />
+    <Content Include="assets\Admin\plugins\moment\min\locales.min.js" />
+    <Content Include="assets\Admin\plugins\moment\min\moment-with-locales.js" />
+    <Content Include="assets\Admin\plugins\moment\min\moment-with-locales.min.js" />
+    <Content Include="assets\Admin\plugins\moment\min\moment.min.js" />
+    <Content Include="assets\Admin\plugins\moment\min\tests.js" />
+    <Content Include="assets\Admin\plugins\moment\moment.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\check-overflow.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\date-from-array.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\from-anything.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\from-array.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\from-object.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\from-string-and-array.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\from-string-and-format.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\from-string.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\local.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\parsing-flags.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\utc.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\create\valid.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\abs.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\add-subtract.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\as.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\bubble.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\constructor.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\create.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\duration.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\get.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\humanize.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\iso-string.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\duration\prototype.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\format\format.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\base-config.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\calendar.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\constructor.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\en.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\formats.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\invalid.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\lists.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\locale.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\locales.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\ordinal.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\pre-post-format.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\prototype.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\relative.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\locale\set.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\add-subtract.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\calendar.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\clone.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\compare.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\constructor.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\creation-data.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\diff.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\format.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\from.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\get-set.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\locale.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\min-max.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\moment.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\now.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\prototype.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\start-end-of.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\to-type.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\to.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\moment\valid.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\parse\regex.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\parse\token.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\aliases.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\constants.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\day-of-month.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\day-of-week.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\day-of-year.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\hour.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\millisecond.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\minute.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\month.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\offset.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\priorities.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\quarter.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\second.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\timestamp.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\timezone.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\units.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\week-calendar-utils.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\week-year.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\week.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\units\year.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\abs-ceil.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\abs-floor.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\abs-round.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\compare-arrays.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\defaults.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\deprecate.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\extend.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\has-own-prop.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\hooks.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\index-of.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\is-array.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\is-date.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\is-function.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\is-number.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\is-object-empty.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\is-object.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\is-undefined.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\keys.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\map.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\some.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\to-int.js" />
+    <Content Include="assets\Admin\plugins\moment\src\lib\utils\zero-fill.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\af.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ar-dz.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ar-ly.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ar-ma.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ar-sa.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ar-tn.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ar.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\az.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\be.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\bg.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\bn.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\bo.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\br.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\bs.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ca.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\cs.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\cv.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\cy.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\da.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\de-at.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\de.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\dv.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\el.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\en-au.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\en-ca.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\en-gb.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\en-ie.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\en-nz.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\eo.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\es-do.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\es.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\et.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\eu.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\fa.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\fi.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\fo.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\fr-ca.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\fr-ch.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\fr.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\fy.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\gd.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\gl.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\he.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\hi.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\hr.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\hu.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\hy-am.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\id.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\is.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\it.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ja.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\jv.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ka.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\kk.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\km.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ko.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ky.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\lb.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\lo.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\lt.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\lv.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\me.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\mi.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\mk.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ml.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\mr.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ms-my.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ms.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\my.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\nb.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ne.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\nl-be.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\nl.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\nn.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\pa-in.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\pl.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\pt-br.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\pt.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ro.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ru.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\se.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\si.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\sk.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\sl.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\sq.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\sr-cyrl.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\sr.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ss.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\sv.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\sw.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\ta.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\te.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\tet.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\th.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\tl-ph.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\tlh.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\tr.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\tzl.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\tzm-latn.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\tzm.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\uk.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\uz.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\vi.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\x-pseudo.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\yo.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\zh-cn.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\zh-hk.js" />
+    <Content Include="assets\Admin\plugins\moment\src\locale\zh-tw.js" />
+    <Content Include="assets\Admin\plugins\moment\src\moment.js" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\area-as-line.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\area.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\bar-colors.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\bar-no-axes.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\bar.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\days.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\decimal-custom-hover.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\diagonal-xlabels-bar.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\diagonal-xlabels.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\donut-colors.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\donut-formatter.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\donut.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\dst.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\events.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\goals.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\lib\example.css" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\lib\example.js" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\months-no-smooth.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\negative.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\no-grid.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\non-continuous.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\non-date.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\quarters.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\resize.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\stacked_bars.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\timestamps.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\updating.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\weeks.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\years.html" />
+    <Content Include="assets\Admin\plugins\morris.js\examples\_template.html" />
+    <Content Include="assets\Admin\plugins\morris.js\morris.css" />
+    <Content Include="assets\Admin\plugins\morris.js\morris.js" />
+    <Content Include="assets\Admin\plugins\morris.js\morris.min.js" />
+    <Content Include="assets\Admin\plugins\multi-select\js\jquery.quicksearch.js" />
+    <Content Include="assets\Admin\plugins\multiselect\css\multi-select.css" />
+    <Content Include="assets\Admin\plugins\multiselect\img\switch.png" />
+    <Content Include="assets\Admin\plugins\multiselect\js\jquery.multi-select.js" />
+    <Content Include="assets\Admin\plugins\notification\css\animate.min.css" />
+    <Content Include="assets\Admin\plugins\notification\css\notification.css" />
+    <Content Include="assets\Admin\plugins\notification\js\bootstrap-growl.min.js" />
+    <Content Include="assets\Admin\plugins\raphael\raphael.js" />
+    <Content Include="assets\Admin\plugins\raphael\raphael.min.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\rickshaw.css" />
+    <Content Include="assets\Admin\plugins\rickshaw\rickshaw.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\rickshaw.min.css" />
+    <Content Include="assets\Admin\plugins\rickshaw\rickshaw.min.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\css\detail.css" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\css\graph.css" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\css\legend.css" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\helpers\endUMD.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\helpers\startUMD.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Class.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Color.Palette.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Compat.ClassList.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Fixtures.Color.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Fixtures.Number.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Fixtures.RandomData.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Fixtures.Time.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Fixtures.Time.Local.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Ajax.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Annotate.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Axis.Time.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Axis.X.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Axis.Y.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Axis.Y.Scaled.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Behavior.Series.Highlight.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Behavior.Series.Order.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Behavior.Series.Toggle.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.HoverDetail.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.JSONP.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Legend.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.RangeSlider.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.RangeSlider.Preview.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.Area.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.Bar.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.Line.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.LinePlot.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.Multi.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.ScatterPlot.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Renderer.Stack.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Smoother.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Graph.Socketio.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Series.FixedDuration.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\src\js\Rickshaw.Series.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\example_01.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\example_02.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\example_03.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\example_04.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\example_05.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\example_06.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\example_07.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\introduction.html" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\style.css" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\vendor\prettify\prettify.css" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\vendor\prettify\prettify.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\vendor\d3.layout.min.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\vendor\d3.min.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\vendor\d3.v2.js" />
+    <Content Include="assets\Admin\plugins\rickshaw\vendor\d3.v3.js" />
+    <Content Include="assets\Admin\plugins\search\css\component.css" />
+    <Content Include="assets\Admin\plugins\search\img\magnifier.svg" />
+    <Content Include="assets\Admin\plugins\select2\css\s2-docs.css" />
+    <Content Include="assets\Admin\plugins\select2\css\select2.min.css" />
+    <Content Include="assets\Admin\plugins\select2\dist\css\select2.css" />
+    <Content Include="assets\Admin\plugins\select2\dist\css\select2.min.css" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\ar.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\az.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\bg.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\ca.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\cs.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\da.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\de.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\el.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\en.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\es.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\et.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\eu.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\fa.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\fi.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\fr.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\gl.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\he.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\hi.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\hr.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\hu.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\id.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\is.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\it.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\ja.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\km.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\ko.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\lt.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\lv.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\mk.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\ms.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\nb.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\nl.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\pl.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\pt-BR.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\pt.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\ro.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\ru.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\sk.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\sr-Cyrl.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\sr.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\sv.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\th.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\tr.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\uk.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\vi.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\zh-CN.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\i18n\zh-TW.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\select2.full.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\select2.full.min.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\select2.js" />
+    <Content Include="assets\Admin\plugins\select2\dist\js\select2.min.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\banner.end.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\banner.start.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\jquery.mousewheel.shim.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\jquery.select2.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\jquery.shim.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\compat\containerCss.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\compat\dropdownCss.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\compat\initSelection.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\compat\inputData.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\compat\matcher.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\compat\query.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\compat\utils.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\core.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\ajax.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\array.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\base.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\maximumInputLength.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\maximumSelectionLength.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\minimumInputLength.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\select.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\tags.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\data\tokenizer.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\defaults.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\diacritics.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\attachBody.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\attachContainer.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\closeOnSelect.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\hidePlaceholder.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\infiniteScroll.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\minimumResultsForSearch.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\search.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\selectOnClose.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\dropdown\stopPropagation.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\ar.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\az.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\bg.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\ca.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\cs.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\da.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\de.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\el.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\en.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\es.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\et.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\eu.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\fa.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\fi.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\fr.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\gl.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\he.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\hi.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\hr.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\hu.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\id.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\is.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\it.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\ja.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\km.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\ko.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\lt.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\lv.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\mk.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\ms.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\nb.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\nl.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\pl.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\pt-BR.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\pt.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\ro.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\ru.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\sk.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\sr-Cyrl.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\sr.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\sv.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\th.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\tr.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\uk.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\vi.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\zh-CN.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\i18n\zh-TW.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\keys.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\options.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\results.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\allowClear.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\base.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\clickMask.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\eventRelay.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\multiple.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\placeholder.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\search.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\single.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\selection\stopPropagation.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\translation.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\select2\utils.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\wrapper.end.js" />
+    <Content Include="assets\Admin\plugins\select2\src\js\wrapper.start.js" />
+    <Content Include="assets\Admin\plugins\spectrum\spectrum.css" />
+    <Content Include="assets\Admin\plugins\spectrum\spectrum.js" />
+    <Content Include="assets\Admin\plugins\syntaxhighlighter\scripts\shBrushJScript.js" />
+    <Content Include="assets\Admin\plugins\syntaxhighlighter\scripts\shBrushXml.js" />
+    <Content Include="assets\Admin\plugins\syntaxhighlighter\scripts\shCore.js" />
+    <Content Include="assets\Admin\plugins\syntaxhighlighter\styles\shCoreDjango.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether-theme-arrows-dark.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether-theme-arrows-dark.min.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether-theme-arrows.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether-theme-arrows.min.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether-theme-basic.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether-theme-basic.min.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\css\tether.min.css" />
+    <Content Include="assets\Admin\plugins\tether\dist\js\tether.js" />
+    <Content Include="assets\Admin\plugins\tether\dist\js\tether.min.js" />
+    <Content Include="assets\Admin\plugins\tether\src\js\abutment.js" />
+    <Content Include="assets\Admin\plugins\tether\src\js\constraint.js" />
+    <Content Include="assets\Admin\plugins\tether\src\js\markAttachment.js" />
+    <Content Include="assets\Admin\plugins\tether\src\js\shift.js" />
+    <Content Include="assets\Admin\plugins\tether\src\js\tether.js" />
+    <Content Include="assets\Admin\plugins\tether\src\js\utils.js" />
+    <Content Include="assets\Admin\plugins\Waves\waves.min.css" />
+    <Content Include="assets\Admin\plugins\Waves\waves.min.js" />
+    <Content Include="assets\Admin\plugins\waypoints\jquery.waypoints.min.js" />
+    <Content Include="assets\css\cart.min.css" />
+    <Content Include="assets\css\category.css" />
+    <Content Include="assets\css\detail4.css" />
+    <Content Include="assets\css\home.css" />
+    <Content Include="assets\css\jquery.fancybox.css" />
+    <Content Include="assets\css\menu.css" />
+    <Content Include="assets\css\owl-carousel.css" />
+    <Content Include="assets\css\styles4.css" />
+    <Content Include="assets\img\banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg" />
+    <Content Include="assets\img\bo-khop-kirkland-glucosamine-chondroitin-hang-nhap-my-220-vien.jpg" />
+    <Content Include="assets\img\bo-xuong-khop-glucosamine-hcl-1500mg-chondroitin-msm-puritans-pride-240-vien.jpg" />
+    <Content Include="assets\img\cash.png" />
+    <Content Include="assets\img\chai-xit-stud100-chong-xuat-tinh-som-tang-do-cuong-cung-anh-quoc.jpg" />
+    <Content Include="assets\img\cham-soc-co-the-va-toan-than-1.png" />
+    <Content Include="assets\img\cham-soc-da-mat-1.png" />
+    <Content Include="assets\img\cham-soc-duong-da-mat-2.jpg" />
+    <Content Include="assets\img\cham-soc-toc-da-dau-1.png" />
+    <Content Include="assets\img\cham-soc-toc-rau-mi-long-may-2.jpg" />
+    <Content Include="assets\img\chinh-sach-ban-hang-dongoaichinhhang.jpg" />
+    <Content Include="assets\img\collagen-de-happy-10000mg-chong-lao-hoa-nhat-ban-hop-10-chai-x-50ml.jpg" />
+    <Content Include="assets\img\collagen-dhc-beauty-7000-hop-10-lo-x-50ml-nhat-ban.jpg" />
+    <Content Include="assets\img\collagen-refa-16-enriched-480ml-dang-nuoc-uong-cao-cap-cua-nhat.jpg" />
+    <Content Include="assets\img\collagen-shiseido-enriched-dang-nuoc-uong-nhat-ban-10-chai-x-50ml.jpg" />
+    <Content Include="assets\img\dau-ca-blackmores-odourless-fish-oil-mini-caps-400-vien-cua-uc.jpg" />
+    <Content Include="assets\img\dau-ca-healthy-care-fish-oil-omega-3-1000mg-uc-400-vien.jpg" />
+    <Content Include="assets\img\dau-ca-omega-3-orihiro-nhat-ban-tang-cuong-tri-nho-180-vien.jpg" />
+    <Content Include="assets\img\dnch.html" />
+    <Content Include="assets\img\dong-trung-ha-thao-nhat-ban-royal-gold-tohchukasou-vien-uong-cao-cap.jpg" />
+    <Content Include="assets\img\dongoaichinhhang-chinh-sach-ban-hang.jpg" />
+    <Content Include="assets\img\dongoaichinhhang.png" />
+    <Content Include="assets\img\duong-dai-mi-rivadouce-3ml-an-do.jpg" />
+    <Content Include="assets\img\elevit-uc-vitamin-tong-hop-cho-ba-bau.jpg" />
+    <Content Include="assets\img\embed%281%29.html" />
+    <Content Include="assets\img\embed.html" />
+    <Content Include="assets\img\fish-collagen-hanamai-nhat-bo-sung-collagen-ca-30-goi.jpg" />
+    <Content Include="assets\img\gel-boi-tron-cao-cap-durex-play-classic-50ml-anh.jpg" />
+    <Content Include="assets\img\gel-titan-gold-nga-tang-kich-thuoc-duong-vat-keo-dai-thoi-gian-quan-he.jpg" />
+    <Content Include="assets\img\giam-can-giam-mo-bung-3.jpg" />
+    <Content Include="assets\img\giao-hang.png" />
+    <Content Include="assets\img\giohang.png" />
+    <Content Include="assets\img\gioi-thieu-tinh-chat-24k-goldzan-ampoule-999-pure-gold-100ml.jpg" />
+    <Content Include="assets\img\glucosamine-1500mg-msm-puritans-pride-cua-my-180-vien-bo-xuong-khop.jpg" />
+    <Content Include="assets\img\google4_hdpi.png" />
+    <Content Include="assets\img\h0.png" />
+    <Content Include="assets\img\hammer-of-thor-cua-nga-chinh-hang-25ml-tang-cuong-sinh-ly-nam.jpg" />
+    <Content Include="assets\img\hat-chia-my-seed-nutiva-organic-907g.jpg" />
+    <Content Include="assets\img\hat-chia-uc-absolute-organic-huu-co-1kg-giam-can-tang-suc-khoe.jpg" />
+    <Content Include="assets\img\ho-tro-247.png" />
+    <Content Include="assets\img\ho-tro-xuong-khop-sun-ca-map-costar-shark-cartilage-750mg-uc-365-vien.jpg" />
+    <Content Include="assets\img\hoan-tra-tien.png" />
+    <Content Include="assets\img\hotline.png" />
+    <Content Include="assets\img\huyet-thanh-duong-da-trang-sang-7day-whitening-glutathione-700-v-ample.jpg" />
+    <Content Include="assets\img\icon-gift.png" />
+    <Content Include="assets\img\icon-giohang.png" />
+    <Content Include="assets\img\icon-ship.jpg" />
+    <Content Include="assets\img\iconShoppingCartFinnish.png" />
+    <Content Include="assets\img\ifship.png" />
+    <Content Include="assets\img\internet-banking.png" />
+    <Content Include="assets\img\iSearch.png" />
+    <Content Include="assets\img\kem-chong-nang-transino-whitening-day-protector-40ml-duong-trang-da-nhat-ban.jpg" />
+    <Content Include="assets\img\kem-duong-trang-da-3w-clinic-collagen-whitening-cream.jpg" />
+    <Content Include="assets\img\kem-duong-trang-da-cao-cap-7-day-whitening-program-glutathione-700-v-cream.jpg" />
+    <Content Include="assets\img\kem-lam-hong-nhu-hoa-tri-tham-nach-b3-black-off-esssence-100-nhat-ban.jpg" />
+    <Content Include="assets\img\kem-no-nguc-upsize-chinh-hang-tu-nga.jpg" />
+    <Content Include="assets\img\kem-tri-nam-tan-nhang-transino-whitening-essence-ex-30g-nhat-ban.jpg" />
+    <Content Include="assets\img\kem-tri-nam-trang-da-ban-dem-sakura-whitening-night-cream-30g-nhat-ban.jpg" />
+    <Content Include="assets\img\kem-tri-nam-transino-whitening-essence-ex-50g-nhat-ban.jpg" />
+    <Content Include="assets\img\kem-tri-seo-gentacin-nhat-ban-10gr.jpg" />
+    <Content Include="assets\img\kem-tri-tham-nach-ben-mong-nhu-hoa-vung-kin-ol-cell-50g-han-quoc.jpg" />
+    <Content Include="assets\img\keo-deo-ho-tro-ngu-ngon-vitafusion-beauty-sleep-gummies-vi-mam-xoi-90-vien.jpg" />
+    <Content Include="assets\img\keo-gau-moc-toc-hair-vitamins-sugarbearhair-60-vien-cua-my.jpg" />
+    <Content Include="assets\img\keo-tho-moc-toc-hair-vitamin-sweet-bunny-hare-60-vien.jpg" />
+    <Content Include="assets\img\liquid-collagen-dang-nuoc-easy-to-take-drink-mix-applied-nutrition-cua-my-20-ong-x-10ml.jpg" />
+    <Content Include="assets\img\mam-dau-nanh-super-lecithin-1200mg-healthy-care-100-vien-uc.jpg" />
+    <Content Include="assets\img\mat-na-bun-hello-kitty-nhat-ban-hop-10-goi-15ggoi.jpg" />
+    <Content Include="assets\img\mat-na-duong-am-cho-da-tu-thien-nhien-innisfree-my-real-squeeze-mask-1-mieng.jpg" />
+    <Content Include="assets\img\mat-na-miung-lab-lany-beau-duong-am-chong-lao-hoa-sang-da-han-quoc-hop-7-mieng.jpg" />
+    <Content Include="assets\img\move-free-joint-health-advanced-200-schiff-vien-uong-bo-khop-cua-my.jpg" />
+    <Content Include="assets\img\muoi-massage-tan-mo-dui-loai-bo-sam-den-vung-mong-body-salt-cleanser-ex-nhat-ban.jpg" />
+    <Content Include="assets\img\my-pham-dac-tri-2.jpg" />
+    <Content Include="assets\img\my-pham-dac-tri-3.jpg" />
+    <Content Include="assets\img\my-pham-dac-tri-4.jpg" />
+    <Content Include="assets\img\my-pham-dac-tri-chinh-hang-1.png" />
+    <Content Include="assets\img\my-pham-trang-diem-moi-ngay-1.png" />
+    <Content Include="assets\img\nam-thai-duong-dx-nui-yuuki-360-vien-nhat-ban.jpg" />
+    <Content Include="assets\img\nuoc-hoa-giotti-blooming-chatler-50ml-phap.jpg" />
+    <Content Include="assets\img\nuoc-hoa-hong-some-by-mi-aha-bha-pha-miracle-toner-30-days-150ml.jpg" />
+    <Content Include="assets\img\nuoc-hoa-hong-transino-whitening-clear-lotion-175ml-tri-nam-nhat-ban.jpg" />
+    <Content Include="assets\img\nuoc-hong-sam-han-quoc-co-cu-kgs-cao-cap-120ml-x-10-chai.jpg" />
+    <Content Include="assets\img\nuoc-uong-collagen-shiseido-ex-dep-da-hop-10-lo-moi-lo-50ml.jpg" />
+    <Content Include="assets\img\nuoc-uong-dep-da-va-giam-can-dr-select-finozyme-310-nhat-ban.jpg" />
+    <Content Include="assets\img\nuoc-uong-giam-can-thai-doc-to-coconut-detox.jpg" />
+    <Content Include="assets\img\nuoc-uong-neocell-collagen-c-c-pomegranate-4000mg-16oz-473ml-cua-my.jpg" />
+    <Content Include="assets\img\one-a-day-womens-formula-vitamins-cua-my-300-vien-vitamin-tong-hop-cho-phu-nu.jpg" />
+    <Content Include="assets\img\pixel%281%29.html" />
+    <Content Include="assets\img\pixel.html" />
+    <Content Include="assets\img\san-pham-khuyen-mai-hot-1.png" />
+    <Content Include="assets\img\saved_resource%281%29.html" />
+    <Content Include="assets\img\saved_resource%282%29.html" />
+    <Content Include="assets\img\saved_resource%283%29.html" />
+    <Content Include="assets\img\saved_resource.html" />
+    <Content Include="assets\img\serum-duong-may-feg-eyebrow-enhancer-my-3ml-100-tu-nhien-giup-long-may-dai-va-day-hon.jpg" />
+    <Content Include="assets\img\serum-duong-mi-feg-eyelash-enhancer-mi-dai-cong-tu-nhien.jpg" />
+    <Content Include="assets\img\serum-duong-mi-feg-eyelash-pro-advanced-3ml-my.jpg" />
+    <Content Include="assets\img\serum-kich-thich-moc-long-may-revitabrow-advanced-cua-my.jpg" />
+    <Content Include="assets\img\serum-tri-mun-tai-tao-da-ba-lao.jpg" />
+    <Content Include="assets\img\serum-vitamin-c-melano-cc-rohto-nhat-tri-tham-nam-tan-nhang.jpg" />
+    <Content Include="assets\img\siloflamm-50mg-thuoc-cuong-duong-cua-an-do-4-vien-tri-roi-loan-cuong-duong.jpg" />
+    <Content Include="assets\img\sua-non-alpha-lipid-lifeline-450g-new-zealand-cham-soc-suc-khoe-toan-dien.jpg" />
+    <Content Include="assets\img\sua-rua-mat-neutrogena-visibly-clear-gel-150ml-tai-tao-da-cua-my.jpg" />
+    <Content Include="assets\img\suc-khoe-dinh-duong-2.jpg" />
+    <Content Include="assets\img\tao-luc-chlorella-royal-dx-nhat-ban-1550-vien-bo-sung-duong-chat-toan-dien.jpg" />
+    <Content Include="assets\img\tao-mat-troi-spirulina-gold-plus-500mg-my-180-vien-giai-phap-tang-can.jpg" />
+    <Content Include="assets\img\tao-mat-troi-spirulina-gold-plus-500mg-my-360-vien-giai-phap-tang-can.jpg" />
+    <Content Include="assets\img\tao-xoan-spirulina-algae-2400-vien-nhat-ban-cung-cap-vitamin.jpg" />
+    <Content Include="assets\img\thanh-toan.png" />
+    <Content Include="assets\img\the-collagen-shiseido-dang-vien-uong-dep-da-nhat-ban-126-vien.jpg" />
+    <Content Include="assets\img\thong-tin.png" />
+    <Content Include="assets\img\thuc-pham-chuc-nang-1.png" />
+    <Content Include="assets\img\thuoc-blackmores-glucosamine-1500mg-one-a-day-uc-180vien-bo-xuong-khop.jpg" />
+    <Content Include="assets\img\thuoc-giam-dau-advil-ibuprofen-200mg-cua-my-300-vien.jpg" />
+    <Content Include="assets\img\thuoc-kich-thich-moc-rau-nakashima-nhat-ban.jpg" />
+    <Content Include="assets\img\thuoc-moc-long-mu-nakashima-nam-nu-10ml-nhat-ban-moc-long-vung-kin.jpg" />
+    <Content Include="assets\img\thuoc-moc-rau-kaminomoto-nhat-ban.jpg" />
+    <Content Include="assets\img\thuoc-moc-rau-nakashima-nhat-ban.jpg" />
+    <Content Include="assets\img\thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg" />
+    <Content Include="assets\img\thuoc-moc-toc-qik-hair.jpg" />
+    <Content Include="assets\img\thuoc-nho-mat-rohto-vita-40-nhat.jpg" />
+    <Content Include="assets\img\thuoc-rocket-1h-thuoc-cuong-duong-tang-cuong-sinh-luc-phai-manh-rocket-1-gio.jpg" />
+    <Content Include="assets\img\thuoc-youtheory-turmeric-1000mg-60-vien-my-tinh-chat-nghe-tang-cuong-suc-khoe.jpg" />
+    <Content Include="assets\img\thuong-hieu-bifina-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-blackmores-uc-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-dhc-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-goodhealth-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-hang-dau-1.png" />
+    <Content Include="assets\img\thuong-hieu-hang-dau-2.jpg" />
+    <Content Include="assets\img\thuong-hieu-healthy-care-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-innisfree-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-kaminomoto-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-kirkland-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-natrol-biotin-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-nature-made-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-neocell-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-orihiro-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-scar-heal-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-shiseido-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-transino-3.jpg" />
+    <Content Include="assets\img\thuong-hieu-youtheory-3.jpg" />
+    <Content Include="assets\img\tinh-chat-duong-mi-dhc-eyelash-tonic-nhat-ban-doi-mi-se-dai-va-day-hon.jpg" />
+    <Content Include="assets\img\tinh-chat-hau-tuoi-toi-nghe-orihiro-nhat-ban-bo-gan-than-trang-duong.jpg" />
+    <Content Include="assets\img\tinh-chat-mam-dau-nanh-puritans-pride-soy-lecithin-1325mg-100-vien-cua-my.jpg" />
+    <Content Include="assets\img\tinh-chat-mam-dau-nanh-puritans-pride-soy-lecithin-1325mg-250-vien-cua-my.jpg" />
+    <Content Include="assets\img\tinh-chat-nuoc-viet-quat-neocell-hyaluronic-acid-blueberry-liquid-473ml-cua-my.jpg" />
+    <Content Include="assets\img\tinh-dau-thong-do-han-quoc-red-pine-gold-450mg-hop-100-vien.jpg" />
+    <Content Include="assets\img\tra-giam-can-green-tea-fat-burner-cua-my-200-vien.jpg" />
+    <Content Include="assets\img\tra-giam-can-orihiro-night-diet-tea-nhat-ban.jpg" />
+    <Content Include="assets\img\tre-hoa-lan-da-voi-nhau-thai-cuu-costar-35000mg-x-100-vien.jpg" />
+    <Content Include="assets\img\vien-bo-khop-schiff-glucosamine-2000mg-plus-vitamin-d3-my-150-vien.jpg" />
+    <Content Include="assets\img\vien-bo-nao-ginkgo-biloba-2000-mg-healthy-care-cua-uc-100-vien.jpg" />
+    <Content Include="assets\img\vien-giai-doc-phoi-healthy-care-original-lung-detox.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-0001.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-001.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-01.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-1.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-2.jpg" />
+    <Content Include="assets\img\vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien.jpg" />
+    <Content Include="assets\img\vien-sui-trang-da-neuglow-l-glutathione-premium-white-my-28-vien.jpg" />
+    <Content Include="assets\img\vien-tinh-chat-nghe-ho-tro-dieu-tri-viem-loet-da-day-turmeric-curcumin-1000mg-puritans-pride-my-hop-60-vien.jpg" />
+    <Content Include="assets\img\vien-tri-nam-transinowhitening-nhat-ban.jpg" />
+    <Content Include="assets\img\vien-uong-biotin-moc-toc-5000-mcg-fast-dissolve-250v.jpg" />
+    <Content Include="assets\img\vien-uong-blackmores-celery-3000-phong-va-dieu-tri-gut-cua-uc-50-vien.jpg" />
+    <Content Include="assets\img\vien-uong-blackmores-reme-d-cua-uc-giam-dau-nua-dau-tien-dinh-60-vien.jpg" />
+    <Content Include="assets\img\vien-uong-bo-mat-lutein-20-mg-puritans-pride-my.jpg" />
+    <Content Include="assets\img\vien-uong-bo-nao-dpadhaepavitamin-e-orihiro-120-vien.jpg" />
+    <Content Include="assets\img\vien-uong-bo-sung-collagen-tuoi-dhc-nhat-ban-chiet-xuat-tu-ca-bien.jpg" />
+    <Content Include="assets\img\vien-uong-bo-sung-nuoc-va-collagen-innerb-aqua-rich-56-vien-cua-han-quoc.jpg" />
+    <Content Include="assets\img\vien-uong-bo-sung-ostelin-vitamin-d-calcium-cua-uc.jpg" />
+    <Content Include="assets\img\vien-uong-bo-sung-sat-iron-nature-made-65mg-365-vien-cua-my.jpg" />
+    <Content Include="assets\img\vien-uong-bo-sung-sat-nature-made-iron-65-mg-180-vien-cua-my.jpg" />
+    <Content Include="assets\img\vien-uong-bo-sung-vitamin-c-dhc-60-ngay-cua-nhat-ban-120-vien.jpg" />
+    <Content Include="assets\img\vien-uong-bo-sung-vitamin-tong-hop-dhc-nhat-ban-60-vien-60-ngay.jpg" />
+    <Content Include="assets\img\vien-uong-bo-tim-mach-coq10-300mg-kirkland-chinh-hang-cua-my.jpg" />
+    <Content Include="assets\img\vien-uong-cap-nuoc-aqua-rich-innerb-cheiljedang-han-quoc-70-vien.jpg" />
+    <Content Include="assets\img\vien-uong-chondroitin-sulfate-zs-bo-xuong-khop-cao-cap-270-vien.jpg" />
+    <Content Include="assets\img\vien-uong-chong-nang-nhat-fine-uv-japan-loai-tot-nhat-goi-30-vien.jpg" />
+    <Content Include="assets\img\vien-uong-collagen-type-1-2-3-cho-nam-youtheory-mens-my-390-vien.jpg" />
+    <Content Include="assets\img\vien-uong-collagen-youtheory-type-1-2-3-my-290-vien-chong-lao-hoa-da.jpg" />
+    <Content Include="assets\img\vien-uong-davinci-disc-discovery-ho-tro-thoat-vi-dia-dem-my-180-vien.jpg" />
+    <Content Include="assets\img\vien-uong-dieu-tri-tai-bien-orihiro-nattokinase-2000fu-60vien-nhat-ban.jpg" />
+    <Content Include="assets\img\vien-uong-focus-factor-cua-my-giup-tang-cuong-tri-nho-giam-stress-150-vien.jpg" />
+    <Content Include="assets\img\vien-uong-giam-can-dhc-giam-can-hieu-qua-nhanh-chong.jpg" />
+    <Content Include="assets\img\vien-uong-giam-can-fuji-diet-nhat-ban-60-goi.jpg" />
+    <Content Include="assets\img\vien-uong-giam-can-oz-slim-natural-pure-safe-cua-my-40-vien.jpg" />
+    <Content Include="assets\img\vien-uong-giam-dau-advil-liqui-gels-cua-my-120-vien.jpg" />
+    <Content Include="assets\img\vien-uong-giam-mo-bung-rohto-3750mg-nhat-ban-dep-da-gon-dang-252-vien.jpg" />
+    <Content Include="assets\img\vien-uong-giam-stress-blackmores-executive-b-stress-formula-28-vien-uc.jpg" />
+    <Content Include="assets\img\vien-uong-ho-tro-giac-ngu-blackmores-valerian-forte-2000mg-uc.jpg" />
+    <Content Include="assets\img\vien-uong-mam-dau-nanh-natrol-soy-isoflavones-cho-nu-cua-my-120-vien.jpg" />
+    <Content Include="assets\img\vien-uong-moc-toc-dhc-cua-nhat-ban-90-vien.jpg" />
+    <Content Include="assets\img\vien-uong-natrol-5-htp-mood-relaxation-ho-tro-giam-cang-thang.jpg" />
+    <Content Include="assets\img\vien-uong-natures-bounty-hair-skin-nails-cai-thien-rung-toc-da-khoe-mong-chac-250-vien-my.jpg" />
+    <Content Include="assets\img\vien-uong-nhau-thai-cuu-ex-placenta-nhat-120vien-dep-da-ngua-lao-hoa.jpg" />
+    <Content Include="assets\img\vien-uong-nhau-thai-cuu-uc-costar-placentra-gold-plus-loai-50000mg-100-vien.jpg" />
+    <Content Include="assets\img\vien-uong-nhuy-hoa-nghe-tay-giam-can-beauty-saff-slimfit-han-quoc.jpg" />
+    <Content Include="assets\img\vien-uong-night-diet-orihiro-hop-60-goi-giam-can-nhat-ban.jpg" />
+    <Content Include="assets\img\vien-uong-no-nguc-bbb-best-beauty-body-orihiro-nhat-ban-300-vien.jpg" />
+    <Content Include="assets\img\vien-uong-sun-vi-ca-map-orihiro-nhat-ban-360-vien.jpg" />
+    <Content Include="assets\img\vien-uong-sun-vi-ca-map-uc-healthy-care-shark-cartilage-750mg-365-vien.jpg" />
+    <Content Include="assets\img\vien-uong-tang-mien-dich-swisse-vitamin-c-manuka-honey-uc.jpg" />
+    <Content Include="assets\img\vien-uong-tao-mui-thom-co-the-cua-nhat-ban-dhc-40-vien.jpg" />
+    <Content Include="assets\img\vien-uong-thom-mieng-breath-pearls-50-vien-cua-uc.jpg" />
+    <Content Include="assets\img\vien-uong-tieu-mo-giam-can-dhc-nhat-ban-da-xinh-dang-dep-voi.jpg" />
+    <Content Include="assets\img\vien-uong-trang-da-angels-liquid-glutathione-ever-collagen-han-quoc-72-vien.jpg" />
+    <Content Include="assets\img\vien-uong-trang-da-collagen-placenta-5-in-1-cua-nhat-270-vien.jpg" />
+    <Content Include="assets\img\vien-uong-trang-da-relumins-advance-white-glutathione-1650mg-my-90vien.jpg" />
+    <Content Include="assets\img\vien-uong-trang-da-relumins-vitamin-c-complex-180-vien-cua-my.jpg" />
+    <Content Include="assets\img\vien-uong-trang-da-tri-nam-shiseido-pure-white-240-vien-cua-nhat-ban.jpg" />
+    <Content Include="assets\img\vien-uong-trang-da-vitamin-c-l-cystine-natura-white-c-premium-nhat-ban-180-vien.jpg" />
+    <Content Include="assets\img\vien-uong-transamin-500mg-trang-da-tri-nam-nhat-ban-100-vien.jpg" />
+    <Content Include="assets\img\vien-uong-tri-nam-sakura-hcl-white-blossom-120-vien-cua-nhat-ban.jpg" />
+    <Content Include="assets\img\vitamin-c-1000mg-puritans-pride-hop-100-vien-vitamin-c-cua-my.jpg" />
+    <Content Include="assets\img\vitamin-childlife-tong-hop-237ml-my.jpg" />
+    <Content Include="assets\img\vitamin-e-zentiva-200mg-do-hop-30-vien-nga.jpg" />
+    <Content Include="assets\img\vitamin-tong-hop-centrum-silver-adults-50-325-vien-cua-my.jpg" />
+    <Content Include="assets\img\zalo-barcode.png" />
+    <Content Include="assets\js\analytics.js" />
+    <Content Include="assets\js\category.js" />
+    <Content Include="assets\js\common.js" />
+    <Content Include="assets\js\common1.js" />
+    <Content Include="assets\js\controls.js" />
+    <Content Include="assets\js\details4.js" />
+    <Content Include="assets\js\f%281%29.txt" />
+    <Content Include="assets\js\f%282%29.txt" />
+    <Content Include="assets\js\f%283%29.txt" />
+    <Content Include="assets\js\f%284%29.txt" />
+    <Content Include="assets\js\f%285%29.txt" />
+    <Content Include="assets\js\f.js" />
+    <Content Include="assets\js\fbevents.js" />
+    <Content Include="assets\js\init_embed.js" />
+    <Content Include="assets\js\jquery.elevatezoom.js" />
+    <Content Include="assets\js\jquery.fancybox.js" />
+    <Content Include="assets\js\jquery.jcarousellite.js" />
+    <Content Include="assets\js\jquery.sticky.js" />
+    <Content Include="assets\js\map.js" />
+    <Content Include="assets\js\onion.js" />
+    <Content Include="assets\js\order.js" />
+    <Content Include="assets\js\overlay.js" />
+    <Content Include="assets\js\response.min.js" />
+    <Content Include="assets\js\script.js" />
+    <Content Include="assets\js\search_impl.js" />
+    <Content Include="assets\js\util.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SideBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryBases\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryBases\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryBases\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="assets\Admin\css\main.css.map" />
+    <Content Include="assets\Admin\css\menu.css.map" />
+    <Content Include="assets\Admin\css\responsive.css.map" />
+    <Content Include="assets\Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\Admin\fonts\FontAwesome.otf" />
+    <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\Admin\fonts\themify.eot" />
+    <Content Include="assets\Admin\fonts\themify.ttf" />
+    <Content Include="assets\Admin\fonts\themify.woff" />
+    <Content Include="assets\Admin\icon\ico-fonts\fonts\icofont.eot" />
+    <Content Include="assets\Admin\icon\ico-fonts\fonts\icofont.ttf" />
+    <Content Include="assets\Admin\icon\ico-fonts\fonts\icofont.woff" />
+    <Content Include="assets\Admin\icon\icofont\fonts\icofont.eot" />
+    <Content Include="assets\Admin\icon\icofont\fonts\icofont.ttf" />
+    <Content Include="assets\Admin\icon\icofont\fonts\icofont.woff" />
+    <Content Include="assets\Admin\icon\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="assets\Admin\icon\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="assets\Admin\icon\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="assets\Admin\icon\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="assets\Admin\icon\themify-icons\fonts\themify.eot" />
+    <Content Include="assets\Admin\icon\themify-icons\fonts\themify.ttf" />
+    <Content Include="assets\Admin\icon\themify-icons\fonts\themify.woff" />
+    <Content Include="assets\Admin\images\light-box\Thumbs.db" />
+    <Content Include="assets\Admin\images\Thumbs.db" />
+    <Content Include="assets\Admin\images\widget\Thumbs.db" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.min.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.min.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.min.css.map" />
+    <Content Include="assets\Admin\plugins\bootstrap-material-datetimepicker\font\Material-Design-Icons.eot" />
+    <Content Include="assets\Admin\plugins\bootstrap-material-datetimepicker\font\Material-Design-Icons.ttf" />
+    <Content Include="assets\Admin\plugins\bootstrap-material-datetimepicker\font\Material-Design-Icons.woff" />
+    <Content Include="assets\Admin\plugins\bootstrap-material-datetimepicker\font\Material-Design-Icons.woff2" />
+    <Content Include="assets\Admin\plugins\bootstrap-multiselect\dist\less\bootstrap-multiselect.less" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\assets\cities.json" />
+    <Content Include="assets\Admin\plugins\bootstrap-tagsinput\examples\assets\citynames.json" />
+    <Content Include="assets\Admin\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\Admin\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\Admin\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\Admin\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\Admin\plugins\d3\.bower.json" />
+    <Content Include="assets\Admin\plugins\d3\bower.json" />
+    <Content Include="assets\Admin\plugins\d3\LICENSE" />
+    <Content Include="assets\Admin\plugins\d3\README.md" />
+    <Content Include="assets\Admin\plugins\Jquery\dist\jquery.min.map" />
+    <Content Include="assets\Admin\plugins\jscolor\.bower.json" />
+    <Content Include="assets\Admin\plugins\jscolor\bower.json" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\js\lightbox-plus-jquery.min.map" />
+    <Content Include="assets\Admin\plugins\lightbox2\dist\js\lightbox.min.map" />
+    <Content Include="assets\Admin\plugins\rickshaw\.bower.json" />
+    <Content Include="assets\Admin\plugins\rickshaw\bower.json" />
+    <Content Include="assets\Admin\plugins\rickshaw\CONTRIBUTING.md" />
+    <Content Include="assets\Admin\plugins\rickshaw\LICENSE" />
+    <Content Include="assets\Admin\plugins\rickshaw\Makefile" />
+    <Content Include="assets\Admin\plugins\rickshaw\package.json" />
+    <Content Include="assets\Admin\plugins\rickshaw\README.md" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\transform.pl" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\transform_epoch.pl" />
+    <Content Include="assets\Admin\plugins\rickshaw\tutorial\transform_region.pl" />
+    <Content Include="assets\Admin\plugins\tether\src\css\helpers\_tether-theme-arrows.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\helpers\_tether-theme-basic.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\helpers\_tether.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\mixins\_inline-block.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\mixins\_pie-clearfix.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\tether-theme-arrows-dark.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\tether-theme-arrows.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\tether-theme-basic.sass" />
+    <Content Include="assets\Admin\plugins\tether\src\css\tether.sass" />
+    <Content Include="assets\Admin\scss\generic-class.scss" />
+    <Content Include="assets\Admin\scss\main.scss" />
+    <Content Include="assets\Admin\scss\menu.scss" />
+    <Content Include="assets\Admin\scss\responsive.scss" />
+    <Content Include="assets\Admin\scss\_genral.scss" />
+    <Content Include="assets\js\299092611415381" />
+    <Content Include="assets\js\css" />
+    <Content Include="assets\js\css%281%29" />
+    <Content Include="assets\js\js" />
+    <Content Include="assets\js\js%281%29" />
+    <Content Include="assets\js\js%282%29" />
+    <Content Include="assets\js\js%283%29" />
+    <Content Include="assets\js\vt" />
+    <Content Include="assets\js\vt%281%29" />
+    <Content Include="assets\js\vt%282%29" />
+    <Content Include="assets\js\vt%283%29" />
+    <Content Include="assets\js\vt%284%29" />
+    <Content Include="assets\js\vt%285%29" />
+    <Content Include="assets\js\vt%286%29" />
+    <Content Include="assets\js\vt%287%29" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Categories\GetProductByCategory.cshtml" />
+    <Content Include="Views\CategoryBases\GetProductsByCategoryBase.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51755</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44378/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

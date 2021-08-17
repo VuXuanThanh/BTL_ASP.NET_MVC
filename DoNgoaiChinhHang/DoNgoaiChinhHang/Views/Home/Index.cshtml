@@ -1,0 +1,484 @@
+﻿@using DoNgoaiChinhHang.Areas.Admin.Models
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/assets/css/cart.min.css" rel="stylesheet" />
+<link href="~/assets/css/home.css" rel="stylesheet" />
+<link href="~/assets/css/owl-carousel.css" rel="stylesheet" />
+<link href="~/assets/css/styles4.css" rel="stylesheet" />
+<link href="~/assets/css/menu.css" rel="stylesheet" />
+<h1 class="hdn">dongoaichinhhang.com Hệ thống phân phối hàng chính hãng số 1 Việt Nam</h1>
+<nav class="menu">
+    <ul class="list-cat-icon">
+        @foreach (var item in ViewBag.categoryBases)
+        {
+
+            <li class="has-cat-mega" data-submenu-id="submenu-164">
+                <h4>
+                    <img src="~/assets/img/thuc-pham-chuc-nang-1.png" alt="@item.CategoryBaseName">
+
+                    <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { item.CategoryBaseID})">
+                        @item.CategoryBaseName
+                    </a>
+                </h4>
+                <div id="submenu-164" class="cat-mega-menu cat-mega-style1">
+                    <div class="banner-img">
+                        <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { item.CategoryBaseID})" title="@item.CategoryBaseName">
+                            @{
+                                string ImgPath = "~/assets/img/" + item.Images;
+
+                            }
+                            <img data-src="/imgs/suc-khoe-dinh-duong-2.jpg"
+                                 alt="@item.CategoryBaseName" class="lazy"
+                                 src="@Url.Content(ImgPath)"
+                                 style="display: inline; opacity: 1;">
+                        </a>
+                    </div>
+
+                    <aside>
+                        <strong class="hmb">
+                            <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { item.CategoryBaseID})">
+                                @item.CategoryBaseName
+                            </a>
+                        </strong>
+                        @foreach (var itemCategory in item.Categories)
+                        {
+                            <a href="@Url.Action("GetProductByCategory","Categories",new { itemCategory.CategoryID})">
+                                @itemCategory.CategoryName
+                            </a>
+                        }
+
+                    </aside>
+                </div>
+            </li>
+        }
+
+    </ul>
+</nav>
+
+<aside class="hm-bn">
+    <div id="sync1" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+        <div class="owl-wrapper-outer">
+            <div class="owl-wrapper"
+                 style="width: 8544px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(-2136px, 0px, 0px);">
+                <div class="owl-item" style="width: 712px;">
+                    <a href="https://dongoaichinhhang.com/vien-uong-transino-whitening-240-vien-dac-tri-nam-tan-nhang-nhat-ban.html"
+                       title="Viên trị Nám Transino.Whitening Nhật Bản">
+                        <img src="./assets/img/vien-tri-nam-transinowhitening-nhat-ban.jpg"
+                             alt="Viên trị Nám Transino.Whitening Nhật Bản">
+                    </a>
+                </div>
+                <div class="owl-item" style="width: 712px;">
+                    <a href="https://dongoaichinhhang.com/kem-tri-seo-nhat-gentacin-10gr-chuyen-tri-seo-loi-seo-lom-seo-tham-lau-nam.html"
+                       title="Kem Trị Sẹo Gentacin .Nhật Bản 10gr">
+                        <img class="lazy"
+                             data-src="/imgs/kem-tri-seo-gentacin-nhat-ban-10gr.jpg"
+                             alt="Kem Trị Sẹo Gentacin .Nhật Bản 10gr"
+                             src="./assets/img/kem-tri-seo-gentacin-nhat-ban-10gr.jpg"
+                             style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+                <div class="owl-item" style="width: 712px;">
+                    <a href="https://dongoaichinhhang.com/kem-upsize-no-nguc-cach-tang-vong-1-an-toan-chinh-hang-tu-nga.html"
+                       title="Kem nở ngực Upsize .chính hãng từ Nga">
+                        <img class="lazy"
+                             data-src="/imgs/kem-no-nguc-upsize-chinh-hang-tu-nga.jpg"
+                             alt="Kem nở ngực Upsize .chính hãng từ Nga"
+                             src="./assets/img/kem-no-nguc-upsize-chinh-hang-tu-nga.jpg"
+                             style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+                <div class="owl-item" style="width: 712px;">
+                    <a href="https://dongoaichinhhang.com/dau-ca-healthy-care-fish-oil-omega-3-1000mg-400-vien-cua-uc.html"
+                       title="Dầu cá Healthy Care .Omega 3 1000mg Úc ">
+                        <img class="lazy"
+                             data-src="/imgs/dau-ca-healthy-care-fish-oil-omega-3-1000mg-uc-400-vien.jpg"
+                             alt="Dầu cá Healthy Care .Omega 3 1000mg Úc "
+                             src="./assets/img/dau-ca-healthy-care-fish-oil-omega-3-1000mg-uc-400-vien.jpg"
+                             style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+                <div class="owl-item" style="width: 712px;">
+                    <a href="http://dongoaichinhhang.com/"
+                       title="Serum trị mụn tái .tạo da Bà Lão">
+                        <img class="lazy"
+                             data-src="/imgs/serum-tri-mun-tai-tao-da-ba-lao.jpg"
+                             alt="Serum trị mụn tái .tạo da Bà Lão"
+                             src="./assets/img/serum-tri-mun-tai-tao-da-ba-lao.jpg"
+                             style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+                <div class="owl-item" style="width: 712px;">
+                    <a href="https://dongoaichinhhang.com/thuoc-moc-rau-nakashima-nhat-ban.html"
+                       title="Thuốc mọc râu Nakashima Nhật Bản">
+                        <img class="lazy"
+                             data-src="/imgs/thuoc-moc-rau-nakashima-nhat-ban.jpg"
+                             alt="Thuốc mọc râu Nakashima Nhật Bản"
+                             src="./assets/img/thuoc-moc-rau-nakashima-nhat-ban.jpg"
+                             style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="owl-controls clickable">
+            <div class="owl-buttons">
+                <div class="owl-prev">‹</div>
+                <div class="owl-next">›</div>
+            </div>
+        </div>
+    </div>
+    <div id="sync2" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+        <div class="owl-wrapper-outer">
+            <div class="owl-wrapper"
+                 style="width: 1704px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 200ms ease 0s;">
+
+                // banner item
+                <div class="owl-item" style="width: 142px;">
+                    <div class="item">
+                        <h3>Viên trị Nám Transino<br>Whitening Nhật Bản</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</aside>
+<aside class="homenews hmb">
+    <figure>
+        <h2><a href="https://dongoaichinhhang.com/"></a> Giải pháp đề xuất</h2>
+    </figure>
+    <ul>
+        // related item
+        <li>
+            <h3>
+                <a href="https://dongoaichinhhang.com/thuoc-moc-long-may-kaminomoto-nhat-ban.html">
+                    Thuốc mộc
+                    long mày Chính Hãng Kaminomoto Nhật Bản
+                </a>
+            </h3>
+        </li>
+
+    </ul>
+    <div class="twobanner">
+        <a href="http://dongoaichinhhang.com/lk/chinh-sach-hang-chinh-hang.html">
+            <img src="./assets/img/banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg"
+                 alt="Banner dongoaichinhhang.com cam kết chính hãng 100%">
+        </a>
+    </div>
+</aside>
+<div class="clr"></div>
+<div class="mhtemp">
+    <div class="barbox">
+        <h3 class="titlecate"><a href="https://dongoaichinhhang.com/">Sản phẩm mua nhiều</a></h3>
+    </div>
+    <div class="box-shock">
+        <div class="rowsp">
+            <ul class="shockbox homeproduct owl-carousel owl-theme" style="opacity: 1; display: block;">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="width: 3960px; left: 0px; display: block;">
+
+                        <div class="owl-item" style="width: 198px;">
+                <li>
+                    <div class="absoluteimg">
+                        <a href="https://dongoaichinhhang.com/vien-uong-cap-nuoc-aqua-rich-innerb-cheiljedang-han-quoc-70-vien.html"
+                           title="Viên uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên">
+                            <img src="./assets/img/vien-uong-cap-nuoc-aqua-rich-innerb-cheiljedang-han-quoc-70-vien.jpg"
+                                 alt="Viên uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên">
+                        </a>
+                        <div class="prolink">
+                            <a href="https://dongoaichinhhang.com/#"
+                               onclick="return showCart(50957, 1);">
+                                <i></i>&nbsp;Thêm giỏ
+                                hàng
+                            </a>
+                        </div><label class="fship">
+                            <img src="./assets/img/ifship.png" alt="Miễn phí giao hàng">
+                        </label>
+                    </div>
+                    <h3>
+                        <a href="https://dongoaichinhhang.com/vien-uong-cap-nuoc-aqua-rich-innerb-cheiljedang-han-quoc-70-vien.html"
+                           title="Viên uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên">
+                            Viên
+                            uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên
+                        </a>
+                    </h3>
+                    <ins>695.000₫</ins>
+                    <div class="vote">
+                        <div style="width:0%"></div>
+                    </div>
+                </li>
+        </div>
+
+    </div>
+</div>
+<div class="owl-controls clickable">
+    <div class="owl-pagination">
+        <div class="owl-page active"><span class=""></span></div>
+        <div class="owl-page"><span class=""></span></div>
+    </div>
+    <div class="owl-buttons">
+        <div class="owl-prev">‹</div>
+        <div class="owl-next">›</div>
+    </div>
+</div>
+            </ul>
+    </div>
+    </div>
+    </div>
+
+
+@*Categorybase product*@
+@foreach (var itemCategory in ViewBag.categoryBases)
+{
+    <div class="col-2 clearfix">
+        <div class="barbox">
+            <h2 class="titlecate">
+                <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { itemCategory.CategoryBaseID})"
+                   title="@itemCategory.CategoryBaseName">@itemCategory.CategoryBaseName</a>
+            </h2>
+        </div>
+        <div class="box-shock col-big">
+            <div class="rowbn">
+                <ul class="homeproduct nonslider boxfull">
+                    @foreach (var item in Model.Where(x => x.Category.CategoryBase.CategoryBaseID == itemCategory.CategoryBaseID).Take(12))
+                    {
+                       @* <li>
+                            <div class="absoluteimg">
+                                <a href="/"
+                                   title="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ">
+                                    <img class="lazy"
+                                         data-src="/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
+                                         alt="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ"
+                                         src="./assets/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
+                                         style="display: block; opacity: 1;">
+                                </a>
+                                <div class="prolink">
+                                    <a href="https://dongoaichinhhang.com/#"
+                                       onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                                <label class="fship">
+                                    <img class="lazy" data-src="/images/ifship.png"
+                                         alt="Miễn phí giao hàng" src="./assets/img/ifship.png"
+                                         style="display: block; opacity: 1;">
+                                </label>
+                            </div>
+                            <div class="promo-alert">Giảm 50k/sp khi mua từ 2sp</div>
+                            <h3>
+                                <a href="https://dongoaichinhhang.com/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.html"
+                                   title="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ">
+                                    Thuốc
+                                    mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ
+                                </a>
+                            </h3>
+                            <ins>650.000₫</ins>
+                            <div class="vote">
+                                <div style="width:0%"></div>
+                            </div>
+                        </li>*@
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="/"
+                                   title="@item.ProductName">
+                                    @{ 
+                                        string ImgPath = "~/assets/img/" + item.Image;
+                                    }
+                                    <img class="lazy"
+                                         data-src="/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
+                                         alt="@item.ProductName"
+                                         src="@Url.Content(ImgPath)"
+                                         style="display: block; opacity: 1;">
+                                </a>
+                                <div class="prolink">
+                                    <a href="/"
+                                       onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                                <label class="fship">
+                                    <img class="lazy" data-src="/images/ifship.png"
+                                         alt="Miễn phí giao hàng" src="./assets/img/ifship.png"
+                                         style="display: block; opacity: 1;">
+                                </label>
+                            </div>
+                            <div class="promo-alert">Giảm 50k/sp khi mua từ 2sp</div>
+                            <h3>
+                                <a href="https://dongoaichinhhang.com/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.html"
+                                   title="@item.ProductName">
+                                   @item.ProductName
+                                </a>
+                            </h3>
+                            <ins>@item.Price</ins>
+                            <div class="vote">
+                                <div style="width:0%"></div>
+                            </div>
+                        </li>
+
+                                        }
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div class="mhtemp box-shock clearfix" style="margin:0 0 40px 0">
+    <div class="rowsp">
+        <ul id="brand" class="homebrand owl-carousel owl-theme" style="opacity: 1; display: block;">
+            <div class="owl-wrapper-outer">
+                <div class="owl-wrapper"
+                     style="width: 6336px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 1000ms ease 0s;">
+                    <div class="owl-item" style="width: 198px;">
+            <li>
+                <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-orihiro.html">
+                    <img data-src="/imgs/thuong-hieu-orihiro-3.jpg" class="lazy"
+                         alt="Thương hiệu Orihiro" src="./assets/img/thuong-hieu-orihiro-3.jpg"
+                         style="display: inline; opacity: 1;">
+                </a>
+            </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-dhc.html">
+                <img data-src="/imgs/thuong-hieu-dhc-3.jpg" class="lazy"
+                     alt="Thương hiệu DHC" src="./assets/img/thuong-hieu-dhc-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-transino.html">
+                <img data-src="/imgs/thuong-hieu-transino-3.jpg" class="lazy"
+                     alt="Thương hiệu Transino" src="./assets/img/thuong-hieu-transino-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-shiseido.html">
+                <img data-src="/imgs/thuong-hieu-shiseido-3.jpg" class="lazy"
+                     alt="Thương hiệu Shiseido" src="./assets/img/thuong-hieu-shiseido-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-kirkland.html">
+                <img data-src="/imgs/thuong-hieu-kirkland-3.jpg" class="lazy"
+                     alt="Thương hiệu KirkLand" src="./assets/img/thuong-hieu-kirkland-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-kaminomoto.html">
+                <img data-src="/imgs/thuong-hieu-kaminomoto-3.jpg" class="lazy"
+                     alt="Thương hiệu Kaminomoto"
+                     src="./assets/img/thuong-hieu-kaminomoto-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-bifina.html">
+                <img data-src="/imgs/thuong-hieu-bifina-3.jpg" class="lazy"
+                     alt="Thương hiệu Bifina" src="./assets/img/thuong-hieu-bifina-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-goodhealth.html">
+                <img data-src="/imgs/thuong-hieu-goodhealth-3.jpg" class="lazy"
+                     alt="Thương hiệu Goodhealth"
+                     src="./assets/img/thuong-hieu-goodhealth-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-scar-heal.html">
+                <img data-src="/imgs/thuong-hieu-scar-heal-3.jpg" class="lazy"
+                     alt="Thương hiệu Scar Heal"
+                     src="./assets/img/thuong-hieu-scar-heal-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-nature-made.html">
+                <img data-src="/imgs/thuong-hieu-nature-made-3.jpg" class="lazy"
+                     alt="Thương hiệu Nature Made"
+                     src="./assets/img/thuong-hieu-nature-made-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-healthy-care.html">
+                <img data-src="/imgs/thuong-hieu-healthy-care-3.jpg" class="lazy"
+                     alt="Thương hiệu Healthy Care"
+                     src="./assets/img/thuong-hieu-healthy-care-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-neocell.html">
+                <img data-src="/imgs/thuong-hieu-neocell-3.jpg" class="lazy"
+                     alt="Thương hiệu Neocell" src="./assets/img/thuong-hieu-neocell-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-youtheory.html">
+                <img data-src="/imgs/thuong-hieu-youtheory-3.jpg" class="lazy"
+                     alt="Thương hiệu Youtheory"
+                     src="./assets/img/thuong-hieu-youtheory-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-innisfree.html">
+                <img data-src="/imgs/thuong-hieu-innisfree-3.jpg" class="lazy"
+                     alt="Thương hiệu Innisfree"
+                     src="./assets/img/thuong-hieu-innisfree-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-blackmores-uc.html">
+                <img data-src="/imgs/thuong-hieu-blackmores-uc-3.jpg" class="lazy"
+                     alt="Thương hiệu Blackmores Úc"
+                     src="./assets/img/thuong-hieu-blackmores-uc-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+    <div class="owl-item" style="width: 198px;">
+        <li>
+            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-natrol-biotin.html">
+                <img data-src="/imgs/thuong-hieu-natrol-biotin-3.jpg" class="lazy"
+                     alt="Thương hiệu Natrol Biotin"
+                     src="./assets/img/thuong-hieu-natrol-biotin-3.jpg"
+                     style="display: inline; opacity: 1;">
+            </a>
+        </li>
+    </div>
+</div>

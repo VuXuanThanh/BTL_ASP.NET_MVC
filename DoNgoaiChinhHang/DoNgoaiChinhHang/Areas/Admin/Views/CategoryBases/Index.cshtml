@@ -1,0 +1,127 @@
+﻿@model PagedList.IPagedList<DoNgoaiChinhHang.Areas.Admin.Models.CategoryBase>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .btn-primary {
+        float: right
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-12 p-0">
+        <div class="main-header" style="margin-top: 0px;">
+            <h4>Danh mục cha</h4>
+            <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+                <li class="breadcrumb-item">
+                    <a href="index.html">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#"> Quản lý danh mục</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Danh mục cha</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 p0">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-header-text">Danh sách danh mục</h5>
+                @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary waves-effect waves-light" })
+
+            </div>
+            <hr style="margin: 0" />
+            <div class="card-block">
+
+                <div class="form-group row">
+                    <div class="col-md-8">
+                        <div class="input-group" id="dropdown1">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-info waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sắp xếp
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "CategoryBases", new { sort = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Khác</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        @using (Html.BeginForm())
+                        {<div class="input-group">
+                                <input id="btnaddon2" name="searchString" type="text" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Nhập tên danh mục" aria-describedby="btn-addon2">
+                                <span class="input-group-btn" id="btn-addon2">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light">
+                                        Tìm kiếm
+                                    </button>
+                                </span>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <hr />
+                <table class="table">
+                    <tr>
+                        <th style="min-width: 120px;">
+                            Ảnh
+                        </th>
+                        <th style="min-width: 120px;">
+                            Tên danh mục
+                        </th>
+                        <th>
+                            Mô tả
+                        </th>
+                        <th>Thao tác</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @{ string imgPath = "~/assets/img/" + item.Images;}
+                                <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
+                                <br />
+                                @*@Html.DisplayFor(modelItem => item.Images)*@
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryBaseName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryBaseID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
+
+                                <button id="@item.CategoryBaseID.Trim()" class="btn btn-inverse-danger waves-effect waves-light delBaseCate">Xóa</button>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <br />
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

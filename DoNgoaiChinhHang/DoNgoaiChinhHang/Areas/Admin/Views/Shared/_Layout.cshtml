@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>@ViewBag.Title</title>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="~/assets/Admin/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="~/assets/Admin/images/favicon.ico" type="image/x-icon">
+
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+
+    <!-- themify -->
+    <link rel="stylesheet" type="text/css" href="~/assets/Admin/icon/themify-icons/themify-icons.css">
+
+    <!-- iconfont -->
+    <link rel="stylesheet" type="text/css" href="~/assets/Admin/icon/icofont/css/icofont.css">
+
+    <!-- simple line icon -->
+    <link rel="stylesheet" type="text/css" href="~/assets/Admin/icon/simple-line-icons/css/simple-line-icons.css">
+
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="~/assets/Admin/plugins/bootstrap/css/bootstrap.min.css">
+
+    <!-- Chartlist chart css -->
+    <link rel="stylesheet" href="~/assets/Admin/plugins/chartist/dist/chartist.css" type="text/css" media="all">
+
+    <!-- Weather css -->
+    <link href="~/assets/Admin/css/svg-weather.css" rel="stylesheet">
+
+
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/assets/Admin/css/main.css">
+
+    <!-- Responsive.css-->
+    <link rel="stylesheet" type="text/css" href="~/assets/Admin/css/responsive.css">
+
+</head>
+
+<body class="sidebar-mini fixed">
+    <div class="loader-bg">
+        <div class="loader-bar">
+        </div>
+    </div>
+    <div class="wrapper">
+        <!-- Navbar-->
+        @{ Html.RenderPartial("_Header");}
+        <!-- Side-Nav-->
+        <aside class="main-sidebar hidden-print ">
+            <section class="sidebar" id="sidebar-scroll">
+                <!-- Sidebar Menu-->
+                @{ Html.RenderPartial("_SideBar");}
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            <!-- Container-fluid starts -->
+            <!-- Main content starts -->
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+
+
+            <!-- Main content ends -->
+            <!-- Container-fluid ends -->
+
+        </div>
+    </div>
+
+
+
+    <!-- Warning Section Ends -->
+    <!-- Required Jqurey -->
+    <script src="~/assets/Admin/plugins/Jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/assets/Admin/plugins/tether/dist/js/tether.min.js"></script>
+
+    <!-- Required Fremwork -->
+    <script src="~/assets/Admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Scrollbar JS-->
+    <script src="~/assets/Admin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/assets/Admin/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+
+    <!--classic JS-->
+    <script src="~/assets/Admin/plugins/classie/classie.js"></script>
+
+    <!-- notification -->
+    <script src="~/assets/Admin/plugins/notification/js/bootstrap-growl.min.js"></script>
+
+    <!-- Sparkline charts -->
+    <script src="~/assets/Admin/plugins/jquery-sparkline/dist/jquery.sparkline.js"></script>
+
+    <!-- Counter js  -->
+    <script src="~/assets/Admin/plugins/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/assets/Admin/plugins/countdown/js/jquery.counterup.js"></script>
+
+    <!-- Echart js -->
+    <script src="~/assets/Admin/plugins/charts/echarts/js/echarts-all.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+    <!-- custom js -->
+    <script type="text/javascript" src="~/assets/Admin/js/main.min.js"></script>
+    <script type="text/javascript" src="~/assets/Admin/pages/dashboard.js"></script>
+    <script type="text/javascript" src="~/assets/Admin/pages/elements.js"></script>
+    <script src="~/assets/Admin/js/menu.min.js"></script>
+
+    <script src="~/assets/Admin/js/ThongBaoNoi.js"></script>
+
+    <script src="~/assets/Admin/AJAX/CategoryBases.js"></script>
+    <script src="~/assets/Admin/AJAX/Category.js"></script>
+    <script src="~/assets/Admin/AJAX/Product.js"></script>
+
+    <script>
+        function loadFile(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+
+</body>
+
+</html>

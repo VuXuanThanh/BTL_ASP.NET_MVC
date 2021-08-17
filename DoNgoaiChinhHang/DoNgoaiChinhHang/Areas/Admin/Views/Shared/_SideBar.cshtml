@@ -1,0 +1,37 @@
+﻿<ul class="sidebar-menu">
+    <li class="nav-level">--- Trang chủ</li>
+    <li class="@(ViewContext.RouteData.Values["Controller"].ToString().Contains("Home") ? "active" : "" ) treeview">
+        <a class="waves-effect waves-dark" href="@Url.Action("Index", "Home")">
+            <i class="icon-speedometer"></i><span> Trang chủ</span>
+        </a>
+    </li>
+
+    <li class="nav-level">--- Quản lý</li>
+    <li class="@(ViewContext.RouteData.Values["Controller"].ToString().Contains("Catego") ? "active" : "") treeview">
+        <a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Quản lý danh mục</span><i class="icon-arrow-down"></i></a>
+        <ul class="treeview-menu">
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "CategoryBases" ? "active" : "")"><a class="waves-effect waves-dark" href="@Url.Action("Index", "CategoryBases")"><i class="icon-arrow-right"></i> Danh mục cha</a></li>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Categories" ? "active" : "")"><a class="waves-effect waves-dark" href="@Url.Action("Index", "Categories")"><i class="icon-arrow-right"></i> Danh mục con</a></li>
+
+
+        </ul>
+    </li>
+    <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Products"  ? "active" : "") treeview">
+        <a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Quản lý hàng hóa</span><i class="icon-arrow-down"></i></a>
+        <ul class="treeview-menu">
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Products" ? "active" : "")"><a class="waves-effect waves-dark" href="@Url.Action("Index", "Products")"><i class="icon-arrow-right"></i> Sản phẩm</a></li>
+            <li><a class="waves-effect waves-dark" href="@Url.Action("Index", "Categories")"><i class="icon-arrow-right"></i> Đơn hàng</a></li>
+
+
+        </ul>
+    </li>
+    <li class="@Url.RequestContext treeview">
+        <a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Quản lý người dùng</span><i class="icon-arrow-down"></i></a>
+        <ul class="treeview-menu">
+            <li><a class="waves-effect waves-dark" href="@Url.Action("Index", "CategoryBases")"><i class="icon-arrow-right"></i> Tài khoản người dùng</a></li>
+
+
+        </ul>
+    </li>
+
+</ul>

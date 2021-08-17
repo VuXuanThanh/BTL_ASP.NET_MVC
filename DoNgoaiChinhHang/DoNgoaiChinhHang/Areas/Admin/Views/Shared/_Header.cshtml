@@ -1,0 +1,100 @@
+﻿<header class="main-header-top hidden-print">
+    <a href="@Url.Action("Index", "Home")" class="logo"><img class="img-fluid able-logo" src="~/assets/Admin/images/logo.png" alt="Theme-logo"></a>
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
+        <ul class="top-nav lft-nav">
+
+            <li class="dropdown">
+                <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
+                    <span>Quản lý nhanh</span><i class=" icofont icofont-simple-down"></i>
+                </a>
+                <ul class="dropdown-menu settings-menu">
+                    <li><a href="@Url.Action("Index", "CategoryBases")">Danh mục cha</a></li>
+                    <li><a href="@Url.Action("Index", "Categories")">Danh mục con</a></li>
+                    <li><a href="@Url.Action("Index", "Products")">Sản phẩm</a></li>
+                    <li><a href="@Url.Action("Index", "CategoryBases")">Đơn hàng</a></li>
+                    <li><a href="@Url.Action("Index", "CategoryBases")">Tài khoản</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown pc-rheader-submenu message-notification search-toggle">
+                <a href="#!" id="morphsearch-search" class="drop icon-circle txt-white">
+                    <i class="ti-search"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- Navbar Right Menu-->
+        <div class="navbar-custom-menu f-right">
+
+
+            <ul class="top-nav">
+                <!--Notification Menu-->
+
+                <li class="dropdown notification-menu">
+                    <a href="#!" data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
+                        <i class="icon-bell"></i>
+                        <span class="badge badge-danger header-badge">9</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="not-head">Bạn có <b class="text-primary">4</b> thông báo mới.</li>
+                        <li class="bell-notification">
+                            <a href="javascript:;" class="media">
+                                <span class="media-left media-icon">
+                                    <img class="img-circle" src="~/assets/Admin/images/avatar-1.png" alt="User Image">
+                                </span>
+                                <div class="media-body"><span class="block">Lisa sent you a mail</span><span class="text-muted block-time">2min ago</span></div>
+                            </a>
+                        </li>
+
+                        <li class="not-footer">
+                            <a href="#!">Xem thêm.</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- chat dropdown -->
+                <!-- window screen -->
+                <li class="pc-rheader-submenu">
+                    <a href="#!" class="drop icon-circle" onclick="javascript:toggleFullScreen()">
+                        <i class="icon-size-fullscreen"></i>
+                    </a>
+
+                </li>
+                <!-- User Menu-->
+                <li class="dropdown">
+                    <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
+                        <span><img class="img-circle " src="~/assets/Admin/images/avatar-1.png" style="width:40px;" alt="User Image"></span>
+                        <span>Long Duong <i class=" icofont icofont-simple-down"></i></span>
+
+                    </a>
+                    <ul class="dropdown-menu settings-menu">
+                        <li><a href="#!"><i class="icon-settings"></i> Cài đặt</a></li>
+                        <li><a href="#"><i class="icon-user"></i> Thông tin cá nhân</a></li>
+                        <li><a href="#"><i class="icon-envelope-open"></i> Tin nhắn</a></li>
+                        <li class="p-0">
+                            <div class="dropdown-divider m-0"></div>
+                        </li>
+                        <li><a href="#"><i class="icon-lock"></i> Khóa màn hình</a></li>
+                        <li><a href="#"><i class="icon-logout"></i> Đăng xuất</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- search -->
+            <div id="morphsearch" class="morphsearch">
+                <form class="morphsearch-form">
+
+                    <input class="morphsearch-input" type="search" placeholder="Nhập từ khóa..." />
+
+                    <button class="morphsearch-submit" type="submit"></button>
+
+                </form>
+
+                <!-- /morphsearch-content -->
+                <span class="morphsearch-close"><i class="icofont icofont-search-alt-1"></i></span>
+            </div>
+            <!-- search end -->
+        </div>
+    </nav>
+</header>

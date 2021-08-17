@@ -1,0 +1,100 @@
+﻿@model PagedList.IPagedList<DoNgoaiChinhHang.Areas.Admin.Models.Category>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .btn-primary {
+        float: right
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-12 p-0">
+        <div class="main-header" style="margin-top: 0px;">
+            <h4>Danh mục con</h4>
+            <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+                <li class="breadcrumb-item">
+                    <a href="index.html">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#"> Quản lý danh mục</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Danh mục con</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 p0">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-header-text">Danh sách danh mục</h5>
+                @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary waves-effect waves-light" })
+
+            </div>
+            <hr style="margin: 0" />
+            <div class="card-block">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th>
+                            Tên danh mục cha
+                        </th>
+                        <th>
+                            Tên danh mục
+                        </th>
+                        <th>
+                            Mô tả
+                        </th>
+                        <th>Thao tác</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @{ string imgPath = "~/assets/img/" + item.Images;}
+                                <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
+                                <br />
+                                @*@Html.DisplayFor(modelItem => item.Images)*@
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryBase.CategoryBaseName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
+
+                                <button id="@item.CategoryID.Trim()" class="btn btn-inverse-info waves-effect waves-light delCate">Xóa</button>
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <br />
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+
+    </div>
+</div>
+
