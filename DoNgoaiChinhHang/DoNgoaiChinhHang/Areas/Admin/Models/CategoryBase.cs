@@ -13,7 +13,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         public CategoryBase()
         {
             Categories = new HashSet<Category>();
-            Categories1 = new HashSet<Category>();
         }
 
         [StringLength(10)]
@@ -29,8 +28,5 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Categories { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category> Categories1 { get; set; }
     }
 }

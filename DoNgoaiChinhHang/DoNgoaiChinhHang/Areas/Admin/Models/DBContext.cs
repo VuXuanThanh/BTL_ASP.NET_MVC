@@ -18,6 +18,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -41,13 +42,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.Account)
-                .HasForeignKey(e => e.AccountID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Account>()
-                .HasMany(e => e.Orders1)
-                .WithRequired(e => e.Account1)
-                .HasForeignKey(e => e.AccountID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Category>()
@@ -67,13 +61,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Products)
                 .WithRequired(e => e.Category)
-                .HasForeignKey(e => e.CategoryID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Category>()
-                .HasMany(e => e.Products1)
-                .WithRequired(e => e.Category1)
-                .HasForeignKey(e => e.CategoryID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CategoryBase>()
@@ -88,13 +75,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
             modelBuilder.Entity<CategoryBase>()
                 .HasMany(e => e.Categories)
                 .WithRequired(e => e.CategoryBase)
-                .HasForeignKey(e => e.CategoryBaseID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<CategoryBase>()
-                .HasMany(e => e.Categories1)
-                .WithRequired(e => e.CategoryBase1)
-                .HasForeignKey(e => e.CategoryBaseID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Order>()
@@ -110,13 +90,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
             modelBuilder.Entity<Order>()
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.Order)
-                .HasForeignKey(e => e.OrderID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Order>()
-                .HasMany(e => e.OrderDetails1)
-                .WithRequired(e => e.Order1)
-                .HasForeignKey(e => e.OrderID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<OrderDetail>()
@@ -150,13 +123,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.Product)
-                .HasForeignKey(e => e.ProductID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.OrderDetails1)
-                .WithRequired(e => e.Product1)
-                .HasForeignKey(e => e.ProductID)
                 .WillCascadeOnDelete(false);
         }
     }

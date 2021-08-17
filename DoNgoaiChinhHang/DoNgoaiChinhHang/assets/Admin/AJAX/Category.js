@@ -5,7 +5,7 @@
     if (MSG) {
         $.ajax({
             type: 'POST',
-            url: '/Categories/Delete',
+            url: '/Admin/Categories/Delete',
             data: { id: id },
             success: function (result) {
                 if (result == true) {
@@ -51,7 +51,7 @@ $(".addCate").click(function (e) {
     
         $.ajax({
             type: 'POST',
-            url: '/Categories/Create2',
+            url: '/Admin/Categories/Create2',
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -101,7 +101,7 @@ $(".editCate").click(function (e) {
 
     $.ajax({
         type: 'POST',
-        url: '/Categories/Edit2',
+        url: '/Admin/Categories/Edit2',
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -109,7 +109,7 @@ $(".editCate").click(function (e) {
             if (result) {
                 thongbao("Thành công !", "Sửa danh mục thành công .", "animated fadeInDown", "success");
                 setTimeout(() => {
-                    window.location.href = "https://localhost:44316/Admin/Categories";
+                    window.location.href = "/Admin/Categories";
                 }, 1000)
 
 

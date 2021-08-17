@@ -13,7 +13,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         public Account()
         {
             Orders = new HashSet<Order>();
-            Orders1 = new HashSet<Order>();
         }
 
         [StringLength(10)]
@@ -36,8 +35,5 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders1 { get; set; }
     }
 }
