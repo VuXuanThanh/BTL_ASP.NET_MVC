@@ -49,25 +49,27 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 
         }
 
-        public JsonResult Delete(string id)
+        public JsonResult Delete(List<string> ids)
         {
-            bool result = false;
-            var u = db.Products.Where(x => x.ProductID == id).FirstOrDefault();
-
-            if (u != null)
+            List<string> result = new List<string>();
+            foreach(string id in ids)
             {
-                var productChilds = db.OrderDetails.Where(p => p.ProductID == id).ToList();
-                if (productChilds.Count > 0)
+                var u = db.Products.Where(x => x.ProductID == id).FirstOrDefault();
+                if (u != null)
                 {
-                    result = false;
-                }
-                else
-                {
-                    db.Products.Remove(u);
-                    db.SaveChanges();
-                    result = true;
+                    var productChilds = db.OrderDetails.Where(p => p.ProductID == id).ToList();
+                    if (productChilds.Count > 0)
+                    {
+                        result.Add(id);
+                    }
+                    else
+                    {
+                        db.Products.Remove(u);
+                    }
                 }
             }
+            db.SaveChanges();
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

@@ -48,25 +48,27 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             ViewBag.CategoryBaseID = new SelectList(db.CategoryBases, "CategoryBaseID", "CategoryBaseName");
             return View();
         }
-        public JsonResult Delete(string id)
+        public JsonResult Delete(List<string> ids)
         {
-            bool result = false;
-            var u = db.Categories.Where(x => x.CategoryID == id).FirstOrDefault();
-
-            if (u != null)
+            List<string> result = new List<string>();
+            foreach(string id in ids)
             {
-                var productChilds = db.Products.Where(p => p.CategoryID == id).ToList();
-                if (productChilds.Count > 0)
+                var u = db.Categories.Where(x => x.CategoryID == id).FirstOrDefault();
+                if (u != null)
                 {
-                    result = false;
-                }
-                else
-                {
-                    db.Categories.Remove(u);
-                    db.SaveChanges();
-                    result = true;
+                    var productChilds = db.Products.Where(p => p.CategoryID == id).ToList();
+                    if (productChilds.Count > 0)
+                    {
+                        result.Add(id);
+                    }
+                    else
+                    {
+                        db.Categories.Remove(u);
+                    }
                 }
             }
+            db.SaveChanges();
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

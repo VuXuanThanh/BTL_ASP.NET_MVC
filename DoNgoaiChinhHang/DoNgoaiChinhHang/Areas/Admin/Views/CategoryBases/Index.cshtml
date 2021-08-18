@@ -7,7 +7,7 @@
 }
 
 <style>
-    .btn-primary {
+    .btn-primary, .btn-danger {
         float: right
     }
 </style>
@@ -38,6 +38,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-header-text">Danh sách danh mục</h5>
+                <button disabled class="btn btn-danger waves-effect waves-light delBaseCate">Xóa đã chọn</button>
                 @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary waves-effect waves-light" })
 
             </div>
@@ -78,6 +79,9 @@
                 <hr />
                 <table class="table">
                     <tr>
+                        <th>
+                            <input type="checkbox" id="checkAll" />
+                        </th>
                         <th style="min-width: 120px;">
                             Ảnh
                         </th>
@@ -89,30 +93,32 @@
                         </th>
                         <th>Thao tác</th>
                     </tr>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" value="@item.CategoryBaseID" />
+                                </td>
+                                <td>
+                                    @{ string imgPath = "~/assets/img/" + item.Images;}
+                                    <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
+                                    <br />
+                                    @*@Html.DisplayFor(modelItem => item.Images)*@
 
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @{ string imgPath = "~/assets/img/" + item.Images;}
-                                <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
-                                <br />
-                                @*@Html.DisplayFor(modelItem => item.Images)*@
-
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CategoryBaseName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryBaseID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
-
-                                <button id="@item.CategoryBaseID.Trim()" class="btn btn-inverse-danger waves-effect waves-light delBaseCate">Xóa</button>
-                            </td>
-                        </tr>
-                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoryBaseName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryBaseID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
 
                 </table>
                 <br />

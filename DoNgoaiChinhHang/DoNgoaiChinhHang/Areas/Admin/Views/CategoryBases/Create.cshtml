@@ -5,22 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    .addBaseCate {
-        margin-right: 20px
-    }
-
-    .text-danger {
-        color: #d9534f !important;
-        font-size: 10pt;
-        margin-left: 12px;
-        background-color: cornsilk;
-    }
-
-    .form-group {
-        margin-bottom: 5px;
-    }
-</style>
 
 
 <div class="row">
@@ -102,7 +86,8 @@
                         <div class="form-group row">
                             <div class="col-md-2"></div>
                             <div class="col-sm-10">
-                                <input type="submit" value="Thêm mới" class="btn btn-info addBaseCate" />
+                                <button type="submit" class="btn btn-info addBaseCate" >Thêm mới</button>
+                                <button type="reset" class="btn btn-inverse-info">Reset</button>
                                 @Html.ActionLink("Quay lại", "Index")
                             </div>
 

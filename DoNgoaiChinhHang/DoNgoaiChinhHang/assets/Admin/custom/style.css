@@ -1,0 +1,16 @@
+﻿
+
+.text-danger {
+    color: #d9534f !important;
+    font-size: 10pt;
+    margin-left: 12px;
+    background-color: cornsilk;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+    .form-group row row {
+        margin-bottom: 20px
+    }

@@ -179,6 +179,7 @@
     <Content Include="assets\Admin\css\menu.css" />
     <Content Include="assets\Admin\css\responsive.css" />
     <Content Include="assets\Admin\css\svg-weather.css" />
+    <Content Include="assets\Admin\custom\style.css" />
     <Content Include="assets\Admin\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\Admin\fonts\themify.svg" />
