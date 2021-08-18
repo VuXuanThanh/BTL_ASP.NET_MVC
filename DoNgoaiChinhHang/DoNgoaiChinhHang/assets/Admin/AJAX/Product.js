@@ -5,7 +5,7 @@
     if (MSG) {
         $.ajax({
             type: 'POST',
-            url: '/Products/Delete',
+            url: '/Admin/Products/Delete',
             data: { id: id },
             success: function (result) {
                 if (result == true) {
@@ -45,7 +45,7 @@ $(".addPro").click(function (e) {
     
         $.ajax({
             type: 'POST',
-            url: '/Products/Create2',
+            url: '/Admin/Products/Create2',
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -88,7 +88,7 @@ $(".editPro").click(function (e) {
 
     $.ajax({
         type: 'POST',
-        url: '/Products/Edit2',
+        url: '/Admin/Products/Edit2',
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",

@@ -5,7 +5,7 @@
     if (MSG) {
         $.ajax({
             type: 'POST',
-            url: '/CategoryBases/Delete',
+            url: '/Admin/CategoryBases/Delete',
             data: { id: id },
             success: function (result) {
                 if (result == true) {
