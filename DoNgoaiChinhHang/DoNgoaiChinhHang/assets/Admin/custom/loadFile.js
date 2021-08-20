@@ -10,16 +10,13 @@ $(document).ready(function () {
                 var f = files[i]
                 var fileReader = new FileReader();
                 fileReader.onload = (function (e) {
-                    $('.rowCon').append("<div class='col-xl-2 col-lg-3 col-sm-3 col-xs-12 pip'>"+
-                        "<a href =" + e.target.result+" >"+
-                        "<img class='ima' src='"+e.target.result+"' class='img-fluid' alt=''>"+
-                                        "</a>"+
-                        "<button class='btn-inverse-warning remove'>x</button>" +
-                        "<span id='" + i + "' ></span > "+
-                        "</div >"
-                        
+                    
+                    var file = e.target;
+                    $("<span class=\"pip\">" +
+                        "<span class=\"remove\">x</span>" +
+                        "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
 
-                    )
+                        "</span>").insertAfter("#files");
                     
                     $(".remove").click(function () {
                         $(this).parent(".pip").remove();
