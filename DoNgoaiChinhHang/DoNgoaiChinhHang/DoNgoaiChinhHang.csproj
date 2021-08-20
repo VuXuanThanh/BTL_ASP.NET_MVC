@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -143,6 +143,7 @@
     <Compile Include="Areas\Admin\Models\Category.cs" />
     <Compile Include="Areas\Admin\Models\CategoryBase.cs" />
     <Compile Include="Areas\Admin\Models\DBContext.cs" />
+    <Compile Include="Areas\Admin\Models\FileUp.cs" />
     <Compile Include="Areas\Admin\Models\Order.cs" />
     <Compile Include="Areas\Admin\Models\OrderDetail.cs" />
     <Compile Include="Areas\Admin\Models\Product.cs" />
@@ -158,6 +159,7 @@
   <ItemGroup>
     <Content Include="assets\Admin\AJAX\Category.js" />
     <Content Include="assets\Admin\AJAX\CategoryBases.js" />
+    <Content Include="assets\Admin\AJAX\Common.js" />
     <Content Include="assets\Admin\AJAX\Product.js" />
     <Content Include="assets\Admin\css\bootstrap-theme.min.css" />
     <Content Include="assets\Admin\css\color\color-1.css" />
@@ -179,6 +181,7 @@
     <Content Include="assets\Admin\css\menu.css" />
     <Content Include="assets\Admin\css\responsive.css" />
     <Content Include="assets\Admin\css\svg-weather.css" />
+    <Content Include="assets\Admin\custom\loadFile.js" />
     <Content Include="assets\Admin\custom\style.css" />
     <Content Include="assets\Admin\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.svg" />

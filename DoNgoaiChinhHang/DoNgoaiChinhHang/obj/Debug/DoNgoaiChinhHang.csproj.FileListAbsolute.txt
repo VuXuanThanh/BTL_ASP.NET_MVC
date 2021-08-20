@@ -167,8 +167,8 @@ D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChi
 D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\bin\Newtonsoft.Json.xml
 D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\bin\Antlr3.Runtime.pdb
 D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\obj\Debug\DoNgoaiChinhHang.csproj.AssemblyReference.cache
 D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\obj\Debug\DoNgoaiChinhHang.csproj.CoreCompileInputs.cache
 D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\obj\Debug\DoNgoaiChinhHang.csproj.CopyComplete
 D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\obj\Debug\DoNgoaiChinhHang.dll
 D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\obj\Debug\DoNgoaiChinhHang.pdb
+D:\CNTT\Hoc Ky He 3\MVC\BTL_Version2\BTL_ASP.NET_MVC\DoNgoaiChinhHang\DoNgoaiChinhHang\obj\Debug\DoNgoaiChinhHang.csproj.AssemblyReference.cache

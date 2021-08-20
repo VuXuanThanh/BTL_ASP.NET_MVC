@@ -44,11 +44,49 @@
             </div>
             <hr style="margin: 0" />
             <div class="card-block">
+                <div class="form-group row">
+                    <div class="col-md-8">
+                        <div class="input-group" id="dropdown1">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-info waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sắp xếp
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Categories", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        @using (Html.BeginForm())
+                        {<div class="input-group">
+                                <input id="btnaddon2" name="searchString" type="text" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Nhập tên danh mục" aria-describedby="btn-addon2">
+                                <span class="input-group-btn" id="btn-addon2">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light">
+                                        Tìm kiếm
+                                    </button>
+                                </span>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <hr />
                 <table class="table">
                     <tr>
-                        <td>
-                            <input type="checkbox" id="checkAll" />
-                        </td>
+                        <th>
+                            <div class="checkbox-fade fade-in-danger">
+                                <label>
+                                    <input type="checkbox" id="checkAll">
+                                    <span class="cr">
+                                        <i class="cr-icon fa fa-check txt-danger"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </th>
                         <th>
                             Ảnh
                         </th>
@@ -63,12 +101,19 @@
                         </th>
                         <th>Thao tác</th>
                     </tr>
-                    <tbody>
+                    <tbody id="tbody">
                         @foreach (var item in Model)
                         {
                             <tr>
                                 <td>
-                                    <input type="checkbox" value="@item.CategoryID" />
+                                    <div class="checkbox-fade fade-in-danger">
+                                        <label>
+                                            <input type="checkbox" value="@item.CategoryID">
+                                            <span class="cr">
+                                                <i class="cr-icon fa fa-check txt-danger"></i>
+                                            </span>
+                                        </label>
+                                    </div>
                                 </td>
                                 <td>
                                     @{ string imgPath = "~/assets/img/" + item.Images;}

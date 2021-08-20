@@ -1,5 +1,9 @@
-﻿$('input:checkbox').on('click', () => {
-    if ($("tbody input:checked").length == 0) {
+﻿$("#checkAll").click(function () {
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
+
+$('input:checkbox').on('click', () => {
+    if ($("#tbody input:checked").length == 0) {
         $(".delPro").attr('disabled', 'disabled');
     }
     else {
@@ -10,11 +14,11 @@
 
 $(".delPro").click(function (e) {
     e.preventDefault();
-    var ids = $('tbody input[type=checkbox]:checked')
+    var ids = $('#tbody input[type=checkbox]:checked')
         .map(function () {
             return $(this).val();
         }).get();
-    var MSG = confirm("Bạn có chắc muốn xóa những sản phẩm này?");
+    var MSG = confirm("Bạn có chắc muốn xóa " + ids.length+" sản phẩm này ? ");
     if (MSG) {
         $.ajax({
             type: 'POST',
@@ -58,7 +62,8 @@ $(".addPro").click(function (e) {
     if (!test) {
         return;
     }
-    
+    /*data.Image= "~/wwwroot/ProductsImages/" + data.ProductID*/
+
         $.ajax({
             type: 'POST',
             url: '/Admin/Products/Create2',

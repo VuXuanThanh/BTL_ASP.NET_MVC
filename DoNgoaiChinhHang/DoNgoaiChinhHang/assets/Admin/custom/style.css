@@ -14,3 +14,7 @@
     .form-group row row {
         margin-bottom: 20px
     }
+
+.btn{
+    text-transform:none;
+}

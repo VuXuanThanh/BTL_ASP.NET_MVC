@@ -53,9 +53,8 @@
                                     Sắp xếp
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="@Url.Action("Index", "CategoryBases", new { sort = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Khác</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "CategoryBases", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -80,7 +79,14 @@
                 <table class="table">
                     <tr>
                         <th>
-                            <input type="checkbox" id="checkAll" />
+                            <div class="checkbox-fade fade-in-danger">
+                                <label>
+                                    <input type="checkbox" id="checkAll">
+                                    <span class="cr">
+                                        <i class="cr-icon fa fa-check txt-danger"></i>
+                                    </span>
+                                </label>
+                            </div>
                         </th>
                         <th style="min-width: 120px;">
                             Ảnh
@@ -93,12 +99,19 @@
                         </th>
                         <th>Thao tác</th>
                     </tr>
-                    <tbody>
+                    <tbody id="tbody">
                         @foreach (var item in Model)
                         {
                             <tr>
                                 <td>
-                                    <input type="checkbox" value="@item.CategoryBaseID" />
+                                    <div class="checkbox-fade fade-in-danger">
+                                        <label>
+                                            <input type="checkbox" value="@item.CategoryBaseID">
+                                            <span class="cr">
+                                                <i class="cr-icon fa fa-check txt-danger"></i>
+                                            </span>
+                                        </label>
+                                    </div>
                                 </td>
                                 <td>
                                     @{ string imgPath = "~/assets/img/" + item.Images;}

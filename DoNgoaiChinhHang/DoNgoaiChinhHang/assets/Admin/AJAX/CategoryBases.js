@@ -1,7 +1,9 @@
-﻿
+﻿$("#checkAll").click(function () {
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
 
 $('input:checkbox').on('click', () => {
-    if ($("tbody input:checked").length == 0) {
+    if ($("#tbody input[type=checkbox]:checked").length == 0) {
         $(".delBaseCate").attr('disabled', 'disabled');
     }
     else {
@@ -13,11 +15,11 @@ $('input:checkbox').on('click', () => {
 
 $(".delBaseCate").click(function (e) {
     e.preventDefault();
-    var ids = $('tbody input[type=checkbox]:checked')
+    var ids = $('#tbody input[type=checkbox]:checked')
         .map(function () {
             return $(this).val();
         }).get();
-    var MSG = confirm("Bạn có chắc muốn xóa những danh mục này?");
+    var MSG = confirm("Bạn có chắc muốn xóa " + ids.length+" danh mục này ? ");
     if (MSG) {
         $.ajax({
             type: 'POST',

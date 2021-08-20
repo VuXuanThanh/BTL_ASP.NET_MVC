@@ -5,6 +5,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Product")]
     public partial class Product
@@ -55,6 +56,8 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
 
         [StringLength(1000)]
         public string Description { get; set; }
+
+        
 
         public virtual Category Category { get; set; }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -25,64 +26,51 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         }
 
 
+
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
             return View();
         }
 
-        public JsonResult Create2(Product abc)
-        {
-            bool result = false;
-            var u = db.Products.Where(x => x.ProductID == abc.ProductID).FirstOrDefault();
-            if (u != null)
-            {
-                result = false;
-            }
-            else
-            {
-                db.Products.Add(abc);
-                db.SaveChanges();
-                result = true;
-            }
-            return Json(result, JsonRequestBehavior.AllowGet);
 
-        }
-
-        public JsonResult Delete(List<string> ids)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description")] Product product)
         {
-            List<string> result = new List<string>();
-            foreach(string id in ids)
+
+            try
             {
-                var u = db.Products.Where(x => x.ProductID == id).FirstOrDefault();
-                if (u != null)
+                var files = Request.Files;
+                if (!Directory.Exists(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID)))
                 {
-                    var productChilds = db.OrderDetails.Where(p => p.ProductID == id).ToList();
-                    if (productChilds.Count > 0)
+                    Directory.CreateDirectory(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID));
+                }
+                for(int i = 0; i< files.Count; i++)
+                {
+                    if (files[i] != null)
                     {
-                        result.Add(id);
+                        var InputFilename = Path.GetFileName(files[i].FileName);
+                        var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
+                        files[i].SaveAs(ServerSavePath);
+
                     }
                     else
                     {
-                        db.Products.Remove(u);
+                        ViewBag.Err = "k vào để lưu ảnh";
                     }
                 }
+                product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
+                db.Products.Add(product);
+                db.SaveChanges();
             }
-            db.SaveChanges();
-
-            return Json(result, JsonRequestBehavior.AllowGet);
+            catch
+            {
+                ViewBag.Err = "Thêm mới thất bại";
+            }
+                
+            return RedirectToAction("Create");
         }
-
-        public JsonResult Edit2(Product abc)
-        {
-            bool result = false;
-            db.Entry(abc).State = EntityState.Modified;
-            db.SaveChanges();
-            result = true;
-            return Json(result, JsonRequestBehavior.AllowGet);
-
-        }
-
 
         public ActionResult Edit(string id)
         {
@@ -99,8 +87,44 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             return View(product);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            return View(product);
+        }
 
+        public JsonResult Delete(List<string> ids)
+        {
+            List<string> result = new List<string>();
 
+            foreach (string id in ids)
+            {
+                var u = db.Products.Where(x => x.ProductID == id).FirstOrDefault();
+                if (u != null)
+                {
+                    var categoryChilds = db.OrderDetails.Where(p => p.ProductID == id).ToList();
+                    if (categoryChilds.Count > 0)
+                    {
+                        result.Add(id);
+                    }
+                    else
+                    {
+                        db.Products.Remove(u);
+
+                    }
+                }
+            }
+            db.SaveChanges();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
 
         protected override void Dispose(bool disposing)
