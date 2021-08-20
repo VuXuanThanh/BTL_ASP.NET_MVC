@@ -1,7 +1,7 @@
 ﻿
 $(document).ready(function () {
     var kk = $("#files");
-    console.log(kk[0].files)
+    
     if (window.File && window.FileList && window.FileReader) {
         $("#files").on("change", function (e) {
             var files = e.target.files,
@@ -32,4 +32,16 @@ $(document).ready(function () {
     } else {
         alert("Your browser doesn't support to File API")
     }
+});
+$(document).ready(function () {
+    //$(".remove").click(function (e) {
+    //    e.preventDefault();
+    //    alert("hi");
+    //    $(this).closest(".pip").remove();
+    //});
+    $(".remove").click(function () {
+        alert("hi");
+        $(this).closest(".pip").remove();
+
+    });
 });

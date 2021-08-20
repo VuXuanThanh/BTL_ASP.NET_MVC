@@ -72,6 +72,12 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             return RedirectToAction("Create");
         }
 
+
+
+
+
+
+        //GET :port/Admin/Product/Edit/1
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -83,6 +89,11 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            var DirectoryImage_id = Server.MapPath("~/wwwroot/ProductsImages/"+id);
+            var files = Directory.EnumerateFiles(DirectoryImage_id)
+                              .Select(fn => "~/wwwroot/ProductsImages/"+id+"/" + Path.GetFileName(fn));
+            ViewBag.images = files;
+
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
