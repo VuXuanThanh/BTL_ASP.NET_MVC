@@ -42,7 +42,7 @@
             <hr style="margin: 0" />
             <div class="card-block">
 
-                @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { @id = "formSubmit" }))
+                @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { @id = "formSubmit", enctype = "multipart/form-data" }))
 
                 {
                     @Html.AntiForgeryToken()
@@ -85,12 +85,17 @@
                             </div>*@
 
                             <div class="field" align="left">
-                                    @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file", @multiple = "multiple", @name = "files", @id = "files" } })
-                                    @foreach (var i in ViewBag.images) { 
+                                    @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file", @multiple = "multiple", @name = "files", @id = "files", @accept = "image/jpeg" } })
+                                    @foreach (var i in ViewBag.images) {
+                                        String[] breakApart = i.Split('.');
+
                                         <span class="pip">
-                                            <span class="remove" >x</span>
+                                            <span class="remove" >
+                                                <a href="/Admin/Products/Delete_productImage/@breakApart[0]" class="photo-delete-link" style="display:block">x</a>
+                                                
+                                            </span>
                                             
-                                            <img class="imageThumb" src="@Url.Content(i)"/>
+                                            <img class="imageThumb" src="@Url.Content("~/wwwroot/ProductsImages/"+i)"/>
                                         </span>
                                     }
                                     <label for="files" id="label_">

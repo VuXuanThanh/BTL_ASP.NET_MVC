@@ -1,4 +1,5 @@
-﻿
+﻿//const { default: da } = require("../plugins/moment/src/locale/da");
+
 $(document).ready(function () {
     var kk = $("#files");
     
@@ -33,15 +34,18 @@ $(document).ready(function () {
         alert("Your browser doesn't support to File API")
     }
 });
-$(document).ready(function () {
-    //$(".remove").click(function (e) {
-    //    e.preventDefault();
-    //    alert("hi");
-    //    $(this).closest(".pip").remove();
-    //});
-    $(".remove").click(function () {
-        alert("hi");
-        $(this).closest(".pip").remove();
-
+$('.photo-delete-link').click(function (e) {
+    alert("ok")
+    $.ajax({
+        url: "/Admin/Products/Delete_productImage",
+        dataType: "text json",
+        type: "POST",
+        data: {filePath:this.href },
+        success: function (data, textStatus) {
+            alert("xoas thanh cong");
+        }
+        
     });
+    location.reload();
+    e.preventDefault();
 });

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
+using System.IO;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 {
@@ -41,28 +42,31 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 
             try
             {
-                var files = Request.Files;
-                if (!Directory.Exists(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID)))
+                if (ModelState.IsValid)
                 {
-                    Directory.CreateDirectory(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID));
-                }
-                for(int i = 0; i< files.Count; i++)
-                {
-                    if (files[i] != null)
+                    var files = Request.Files;
+                    if (!Directory.Exists(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID)))
                     {
-                        var InputFilename = Path.GetFileName(files[i].FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
-                        files[i].SaveAs(ServerSavePath);
+                        Directory.CreateDirectory(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID));
+                    }
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        if (files[i] != null)
+                        {
+                            var InputFilename = Path.GetFileName(files[i].FileName);
+                            var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
+                            files[i].SaveAs(ServerSavePath);
 
+                        }
+                        else
+                        {
+                            ViewBag.Err = "k vào để lưu ảnh";
+                        }
                     }
-                    else
-                    {
-                        ViewBag.Err = "k vào để lưu ảnh";
-                    }
+                    product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
+                    db.Products.Add(product);
+                    db.SaveChanges();
                 }
-                product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
-                db.Products.Add(product);
-                db.SaveChanges();
             }
             catch
             {
@@ -91,12 +95,29 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             }
             var DirectoryImage_id = Server.MapPath("~/wwwroot/ProductsImages/"+id);
             var files = Directory.EnumerateFiles(DirectoryImage_id)
-                              .Select(fn => "~/wwwroot/ProductsImages/"+id+"/" + Path.GetFileName(fn));
+                              .Select(fn => id+"/"+ Path.GetFileName(fn));
+            //var files = Directory.GetFiles(DirectoryImage_id);
+            //files.
             ViewBag.images = files;
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
+      
+
+
+        [HttpPost]
+        public void Delete_productImage(string filePath)
+        {
+            string[] nameimage = filePath.Split('/');
+            string filename = nameimage[nameimage.Length-1] + ".jpg";
+            var folder = Server.MapPath("~/wwwroot/ProductsImages/"+nameimage[nameimage.Length-2]+"/"+filename);
+            System.IO.File.Delete(folder);
+           
+        }
+
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -104,6 +125,30 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var files = Request.Files;
+                if (!Directory.Exists(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID)))
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID));
+                }
+                for (int i = 0; i < files.Count; i++)
+                {
+                    if (files[i] != null)
+                    {
+                        var InputFilename = Path.GetFileName(files[i].FileName);
+                        var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID.Trim() + "/") + InputFilename);
+                        files[i].SaveAs(ServerSavePath);
+
+                    }
+                    else
+                    {
+                        ViewBag.Err = "k vào để lưu ảnh";
+                    }
+                }
+
+
+
+
+                product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -131,8 +176,14 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                         db.Products.Remove(u);
 
                     }
+                    foreach(String file in Directory.GetFiles(Server.MapPath("~/wwwroot/ProductsImages/" + id)))
+                    {
+                        System.IO.File.Delete(file);
+                    }
+                    Directory.Delete(Server.MapPath("~/wwwroot/ProductsImages/" + id));
                 }
             }
+            
             db.SaveChanges();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
