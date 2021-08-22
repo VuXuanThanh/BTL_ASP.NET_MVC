@@ -37,7 +37,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         [StringLength(50)]
         public string Orgin { get; set; }
 
-        public float? Price { get; set; }
+        public float Price { get; set; }
 
         public string Benefit { get; set; }
 

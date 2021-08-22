@@ -290,8 +290,8 @@
                                          src="@Url.Content(ImgPath)"
                                          style="display: block; opacity: 1;">
                                 </a>
-                                <div class="prolink">
-                                    <a href="/"
+                                <div class="prolink"  data-productID="@item.ProductID">
+                                    <a href="@Url.Action("AddItem","Cart",new {productID= item.ProductID,quanlity= 1})"
                                        onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
                                 </div>
                                 <label class="fship">
