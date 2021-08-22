@@ -79,8 +79,8 @@
                                     <img src="@Url.Content(ImgPath)" alt="@item.ProductName" />
                                 </a>
 
-                                <div class="prolink">
-                                    <a href="https://dongoaichinhhang.com/danh-muc/my-pham-dac-tri.html#" onclick="return showCart(50929, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                <div class="prolink" data-productID="@item.ProductID">
+                                    <a href="@Url.Action("AddItem","Cart",new {productID= item.ProductID,quanlity= 1})" onclick="return showCart(50929, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
                                 </div>
                             </div>
                             <h3>
