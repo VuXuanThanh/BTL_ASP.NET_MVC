@@ -87,8 +87,8 @@
                                     <img src="@Url.Content(ImgPath)" alt="@item.ProductName" />
                                 </a>
 
-                                <div class="prolink" data-productID="@item.ProductID">
-                                    <a href="" onclick="return showCart(50929, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                <div class="prolink">
+                                    <a href="https://dongoaichinhhang.com/danh-muc/my-pham-dac-tri.html#" onclick="return showCart(50929, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
                                 </div>
                             </div>
                             <h3>
@@ -166,22 +166,4 @@
     </div>
 </div>
 <div class="col-left"></div>
-
-@*@{
-    Html.RenderAction("Index", "CartItem");
-}*@
-<script>
-      
-       @* document.querySelector("body").classList.add('cart-opened');*@
-       @* function showCart(a,b) {
-
-        }*@
-        //<!--$(document).ready(function () {
-        //    $(".prolink").click(function (e) {
-        //        event.preventDefault();-->
-        //        $("body").addClass("cart-opened");
-        //        <!--$("cart-sidebar").addClass("none");
-        //    })
-        //})-->
-</script>
 
