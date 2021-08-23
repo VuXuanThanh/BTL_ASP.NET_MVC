@@ -35,7 +35,7 @@ $(document).ready(function () {
     }
 });
 $('.photo-delete-link').click(function (e) {
-    alert("ok")
+    
     $.ajax({
         url: "/Admin/Products/Delete_productImage",
         dataType: "text json",

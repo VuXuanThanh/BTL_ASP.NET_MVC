@@ -8,25 +8,19 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
     public partial class DBContext : DbContext
     {
         public DBContext()
-            : base("name=DBContext")
+            : base("name=DBContext1")
         {
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CategoryBase> CategoryBases { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>()
-                .Property(e => e.AccountID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
             modelBuilder.Entity<Account>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
@@ -77,21 +71,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
                 .WithRequired(e => e.CategoryBase)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Order>()
-                .Property(e => e.OrderID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Order>()
-                .Property(e => e.AccountID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Order>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.Order)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<OrderDetail>()
                 .Property(e => e.OrderID)
                 .IsFixedLength()
@@ -101,6 +80,16 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
                 .Property(e => e.ProductID)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.OrderID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .HasMany(e => e.OrderDetails)
+                .WithRequired(e => e.Order)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.ProductID)
