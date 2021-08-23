@@ -6,11 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DoNgoaiChinhHang.Areas.Admin.Helper;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 {
+    [FilterAdmin]
     public class CategoriesController : Controller
     {
         private DBContext db = new DBContext();

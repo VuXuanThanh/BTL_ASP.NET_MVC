@@ -10,9 +10,11 @@ using System.Web.Mvc;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
 using System.IO;
+using DoNgoaiChinhHang.Areas.Admin.Helper;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 {
+    [FilterAdmin]
     public class ProductsController : Controller
     {
         private DBContext db = new DBContext();

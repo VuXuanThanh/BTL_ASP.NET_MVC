@@ -4,9 +4,11 @@
 $('input:checkbox').on('click', () => {
     if ($("#tbody input:checked").length == 0) {
         $(".delCate").attr('disabled', 'disabled');
+        $(".delCate").text("Xóa đã chọn")
     }
     else {
         $(".delCate").removeAttr('disabled');
+        $(".delCate").text("Xóa (" + $("#tbody input:checked").length+")")
     }
 })
 
