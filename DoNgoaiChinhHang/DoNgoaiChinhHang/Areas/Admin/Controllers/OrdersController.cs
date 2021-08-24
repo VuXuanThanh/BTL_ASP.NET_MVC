@@ -63,7 +63,22 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             return View(order);
         }
 
-        
+        [HttpPost]
+        public ActionResult Edit(string id)
+        {
+            bool result = false;
+            var u = db.Orders.Where(x => x.OrderID == id).FirstOrDefault();
+            if (u != null)
+            {
+                u.Status = true;
+                db.Entry(u).State = EntityState.Modified;
+                db.SaveChanges();
+                result = true;
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

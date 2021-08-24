@@ -98,39 +98,63 @@
                             Status
                         </th>
                         <th>
-                           Discount
+                            Discount
                         </th>
-                        <th></th>
+                        <th>Khác</th>
+                        <th>Đã nhận hàng</th>
                     </tr>
                     <tbody id="tbody">
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Account.Phone)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Note)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DateOrder)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PaymentType)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Sum)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Discount)
-                                </td>
-                                <td>
-                                    <a class="" href="/Admin/Orders/Details/@item.OrderID.Trim()"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi tiết</a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Note)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateOrder)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PaymentType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Sum)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Discount)
+                            </td>
+                            <td>
+                                <a class="" href="/Admin/Orders/Details/@item.OrderID.Trim()"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi tiết</a>
+                                @*@if (item.Status != true)
+            {
+                <a class="btn btn-default" href="/Admin/Orders/Update/@item.OrderID.Trim()"><i class="fa fa-check" aria-hidden="true"></i> Đã thanh toán</a>
+            }*@
+                            </td>
+                            <td>
+                                <div class="checkbox-fade fade-in-danger">
+                                    <label>
+                                        @if (item.Status == true)
+                                        {
+                                            <input  type="checkbox" checked disabled value="">
+
+                                        }
+                                        else
+                                        {
+                                            <input class="editOd" type="checkbox" value="@item.OrderID">
+
+                                        }
+                                        <span class="cr">
+                                            <i class="cr-icon fa fa-check txt-danger"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
                         }
                     </tbody>
 

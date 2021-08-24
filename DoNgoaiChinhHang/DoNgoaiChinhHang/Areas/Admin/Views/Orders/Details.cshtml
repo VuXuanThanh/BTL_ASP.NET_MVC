@@ -5,6 +5,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .card-header-text{
+        text-align: center;
+        margin-top: 20px;
+        font-weight: 500;
+    }
+
+</style>
 
 <div class="row">
     <div class="col-sm-12 p-0">
@@ -28,86 +36,44 @@
 </div>
 <div class="row">
     <div class="col-sm-12 p0">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-header-text">Chi tiết đơn hàng</h5>
+        <div class="card" id="printf">
+            <div align="center">
+                <h3 class="card-header-text">Chi tiết đơn hàng</h3>
+
             </div>
             <div class="card-block">
+                <table class="cus-tb">
+                    <tr>
+                        <td>Số hóa đơn: <span>@Html.DisplayFor(model => model.OrderID)</span></td>
+                        <td>Họ tên: <span>@Html.DisplayFor(model => model.Account.CustomerName)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Điện thoại: <span>@Html.DisplayFor(model => model.Account.Phone)</span></td>
+                        <td>Ghi chú: <span>@Html.DisplayFor(model => model.Note)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày đặt: <span>@Html.DisplayFor(model => model.DateOrder)</span></td>
+                        <td>Phương thức: <span>@Html.DisplayFor(model => model.PaymentType)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Trạng thái: <span>@Html.DisplayFor(model => model.Status)</span></td>
+                        <td>Mã giảm giá: <span>@Html.DisplayFor(model => model.Discount)</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h6 style="font-weight:600; color:gray">Tổng tiền: @Html.DisplayFor(model => model.Sum) $</h6>
 
-                <div class="col-sm-12 p-20 z-depth-top-0 waves-effect">
-                    <div class="col-sm-6 ">
-                        <div>
-                            @Html.DisplayNameFor(model => model.OrderID)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.OrderID)
-                        </div>
-                        <div>
-                            @Html.DisplayNameFor(model => model.Account.Phone)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Account.Phone)
-                        </div>
-
-
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.Note)
-                        </div>
-                        <div>
-                            @Html.DisplayFor(model => model.Note)
-                        </div>
-                        <div>
-                            @Html.DisplayNameFor(model => model.DateOrder)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.DateOrder)
-                        </div>
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.PaymentType)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.PaymentType)
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div>
-                            @Html.DisplayNameFor(model => model.Sum)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Sum)
-                        </div>
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.Status)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Status)
-                        </div>
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.Discount)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Discount)
-                        </div>
-
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                </table>
+                
 
                 <div class="col-sm-12">
-                    <hr />
-                    <h5 class="card-header-text">Danh sách sản phẩm</h5>
-                    <table class="table">
+                    <div align="center">
+                        <h4 class="dssp">Danh sách sản phẩm</h4>
+                    </div>
+                    
+                    <table class="table" style="box-shadow: -8px 8px 49px -10px burlywood;">
                         <tr>
                             <th>
                                 ProductID
@@ -131,7 +97,16 @@
                                         @Html.DisplayFor(modelItem => item.ProductID)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                        @if (Model.Note == true)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                        }
+                                        else
+                                        {
+                                            var a = "Tên sản phẩm được giữ bí mật";
+                                            @a
+                                        }
+
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Quantity)
@@ -146,13 +121,23 @@
 
                     </table>
                 </div>
-                <div>
-                    @Html.ActionLink("Back to List", "Index")
-                </div>
+                
 
 
             </div>
-        </div>
+        </div><div>
+    <button class="btn btn-block" type="button" onclick="printJS({
+    printable: 'printf', type: 'html', css: ['https://localhost:44378/assets/Admin/plugins/bootstrap/css/bootstrap.min.css',
+            'https://localhost:44378/assets/Admin/custom/cus.css']
+    })">
+        In hóa đơn
+    </button>
+    <button class="btn btn-block" type="button" onclick="{
+        location.href = '/Admin/Orders/Index'}">
+        Quay lại
+    </button>
+
+</div>
 
     </div>
 </div>
