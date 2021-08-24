@@ -8,11 +8,28 @@
 }
 
 
-
 <style>
-    .btn-primary {
+    .btn-primary, .btn-danger {
         float: right
     }
+
+    .value {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 200px;
+    }
+    .tooltip-inner {
+        max-width: 800px;
+        padding: 3px 8px;
+        color: #fff;
+        text-align: center;
+        background-color: #000000;
+        border-radius: .25rem;
+        opacity: 1;
+        box-shadow: 5px 21px 18px -8px #666;
+        font-size: 11.5pt;
+    }
+
 </style>
 
 
@@ -41,13 +58,55 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-header-text">Danh sách sản phẩm</h5>
+                <button disabled class="btn btn-danger waves-effect waves-light delPro">Xóa đã chọn</button>
                 @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary waves-effect waves-light" })
 
             </div>
             <hr style="margin: 0" />
             <div class="card-block">
+                <div class="form-group row">
+                    <div class="col-md-8">
+                        <div class="input-group" id="dropdown1">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-info waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sắp xếp
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Products", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        @using (Html.BeginForm())
+                        {<div class="input-group">
+                                <input id="btnaddon2" name="searchString" type="text" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Nhập tên sản phẩm" aria-describedby="btn-addon2">
+                                <span class="input-group-btn" id="btn-addon2">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light">
+                                        Tìm kiếm
+                                    </button>
+                                </span>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <hr />
                 <table class="table">
                     <tr>
+                        <th>
+                            <div class="checkbox-fade fade-in-danger">
+                                <label>
+                                    <input type="checkbox" id="checkAll">
+                                    <span class="cr">
+                                        <i class="cr-icon fa fa-check txt-danger"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </th>
                         <th>
                             CategoryName
                         </th>
@@ -81,12 +140,32 @@
                         <th>
                             Tutorial
                         </th>
-                        <th></th>
-                    </tr>
 
-                    @foreach (var item in Model)
-                    {
+                        <th>
+                            Discount
+                        </th>
+                        <th>
+                            Freeship
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>Thao tác</th>
+                    </tr>
+                    <tbody id="tbody">
+                        @foreach (var item in Model)
+                        {
                         <tr>
+                            <td>
+                                <div class="checkbox-fade fade-in-danger">
+                                    <label>
+                                        <input type="checkbox" value="@item.ProductID">
+                                        <span class="cr">
+                                            <i class="cr-icon fa fa-check txt-danger"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
                             </td>
@@ -94,7 +173,7 @@
                                 @Html.DisplayFor(modelItem => item.ProductName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Image)
+                                Xem ảnh
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Evaluation)
@@ -109,24 +188,40 @@
                                 @Html.DisplayFor(modelItem => item.Price)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Benefit)
+                                <div class="value" data-toggle="tooltip" data-placement="left" title="@item.Benefit">@item.Benefit</div>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Introduction)
+                                <div class="value" data-toggle="tooltip" data-placement="left" title="@item.Introduction">@item.Introduction</div>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Element)
+                                <div class="value" data-toggle="tooltip" data-placement="left" title="@item.Element">@item.Element</div>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Tutorial)
+                                <div class="value" data-toggle="tooltip" data-placement="left" title="@item.Tutorial">@item.Tutorial</div>
                             </td>
                             <td>
-                                @Html.ActionLink("Sửa", "Edit", new { id = item.ProductID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
-
-                                <button id="@item.ProductID.Trim()" class="btn btn-inverse-info waves-effect waves-light delPro">Xóa</button>
+                                @Html.DisplayFor(modelItem => item.Discount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Freeship)
+                            </td>
+                            <td>
+                                <div class="value" data-toggle="tooltip" data-placement="left" title="@item.Description">@item.Description</div>
+                            </td>
+                            <td>
+                                <a href="/Admin/Products/Edit/@item.ProductID.Trim()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>
                         </tr>
-                    }
+                            <tr>
+                                <td class="col-xl-2 col-lg-3 col-sm-3 col-xs-12">
+                                    <a href="~/assets/Admin/images/light-box/sl1.jpg" data-lightbox="example-set">
+                                        <img src="~/assets/Admin/images/light-box/sl1.jpg" class="img-fluid" alt="">
+                                    </a>
+                                </td>
+                            </tr>    
+                            
+                        }
+                    </tbody>
 
                 </table>
                 <br />

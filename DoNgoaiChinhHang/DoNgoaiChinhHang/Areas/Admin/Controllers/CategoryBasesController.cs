@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DoNgoaiChinhHang.Areas.Admin.Helper;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
 using PagedList.Mvc;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 {
+    [FilterAdmin]
     public class CategoryBasesController : Controller
     {
         private DBContext db = new DBContext();
@@ -85,25 +87,28 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 
 
 
-        public JsonResult Delete(string id)
+        public JsonResult Delete(List<string> ids)
         {
-            bool result = false;
-            var u = db.CategoryBases.Where(x => x.CategoryBaseID == id).FirstOrDefault();
+            List<string> result = new List<string>();
 
-            if (u != null)
-            {
-                var categoryChilds = db.Categories.Where(p => p.CategoryBaseID == id).ToList();
-                if (categoryChilds.Count > 0)
+            foreach(string id in ids){
+                var u = db.CategoryBases.Where(x => x.CategoryBaseID == id).FirstOrDefault();
+                if (u != null)
                 {
-                    result = false;
-                }
-                else
-                {
-                    db.CategoryBases.Remove(u);
-                    db.SaveChanges();
-                    result = true;
+                    var categoryChilds = db.Categories.Where(p => p.CategoryBaseID == id).ToList();
+                    if (categoryChilds.Count > 0)
+                    {
+                        result.Add(id);
+                    }
+                    else
+                    {
+                        db.CategoryBases.Remove(u);
+                        
+                    }
                 }
             }
+            db.SaveChanges();
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

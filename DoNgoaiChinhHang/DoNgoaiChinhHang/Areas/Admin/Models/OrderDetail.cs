@@ -11,7 +11,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(10)]
+        [StringLength(12)]
         public string OrderID { get; set; }
 
         [Key]
@@ -25,10 +25,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
 
         public virtual Order Order { get; set; }
 
-        public virtual Order Order1 { get; set; }
-
         public virtual Product Product { get; set; }
-
-        public virtual Product Product1 { get; set; }
     }
 }

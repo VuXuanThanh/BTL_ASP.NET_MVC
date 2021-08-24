@@ -7,7 +7,7 @@
 }
 
 <style>
-    .btn-primary {
+    .btn-primary, .btn-danger {
         float: right
     }
 </style>
@@ -38,6 +38,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-header-text">Danh sách danh mục</h5>
+                <button disabled class="btn btn-danger waves-effect waves-light delBaseCate">Xóa đã chọn</button>
                 @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary waves-effect waves-light" })
 
             </div>
@@ -52,9 +53,8 @@
                                     Sắp xếp
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="@Url.Action("Index", "CategoryBases", new { sort = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Khác</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "CategoryBases", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -78,6 +78,16 @@
                 <hr />
                 <table class="table">
                     <tr>
+                        <th>
+                            <div class="checkbox-fade fade-in-danger">
+                                <label>
+                                    <input type="checkbox" id="checkAll">
+                                    <span class="cr">
+                                        <i class="cr-icon fa fa-check txt-danger"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </th>
                         <th style="min-width: 120px;">
                             Ảnh
                         </th>
@@ -89,30 +99,39 @@
                         </th>
                         <th>Thao tác</th>
                     </tr>
+                    <tbody id="tbody">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="checkbox-fade fade-in-danger">
+                                        <label>
+                                            <input type="checkbox" value="@item.CategoryBaseID">
+                                            <span class="cr">
+                                                <i class="cr-icon fa fa-check txt-danger"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    @{ string imgPath = "~/assets/img/" + item.Images;}
+                                    <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
+                                    <br />
+                                    @*@Html.DisplayFor(modelItem => item.Images)*@
 
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @{ string imgPath = "~/assets/img/" + item.Images;}
-                                <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
-                                <br />
-                                @*@Html.DisplayFor(modelItem => item.Images)*@
-
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CategoryBaseName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryBaseID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
-
-                                <button id="@item.CategoryBaseID.Trim()" class="btn btn-inverse-danger waves-effect waves-light delBaseCate">Xóa</button>
-                            </td>
-                        </tr>
-                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoryBaseName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    <a class="" href="/Admin/CategoryBases/Edit/@item.CategoryBaseID.Trim()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
 
                 </table>
                 <br />

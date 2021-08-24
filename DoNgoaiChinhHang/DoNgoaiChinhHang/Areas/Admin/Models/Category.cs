@@ -13,7 +13,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         public Category()
         {
             Products = new HashSet<Product>();
-            Products1 = new HashSet<Product>();
         }
 
         [StringLength(10)]
@@ -33,12 +32,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
 
         public virtual CategoryBase CategoryBase { get; set; }
 
-        public virtual CategoryBase CategoryBase1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products1 { get; set; }
     }
 }

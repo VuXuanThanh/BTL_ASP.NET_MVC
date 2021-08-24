@@ -6,23 +6,48 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DoNgoaiChinhHang.Areas.Admin.Helper;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 {
+    [FilterAdmin]
     public class CategoriesController : Controller
     {
         private DBContext db = new DBContext();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string searchString, string currentFilter)
 
         {
-            var categories = db.Categories.Include(c => c.CategoryBase);
-            categories = categories.OrderBy(s => s.CategoryID);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            var list = db.Categories.Include(c => c.CategoryBase);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                list = list.Where(s => s.CategoryName.Contains(searchString) || s.CategoryBase.CategoryBaseName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "ten_desc":
+                    list = list.OrderByDescending(s => s.CategoryName);
+                    break;
+                default:
+                    list = list.OrderBy(s => s.CategoryName);
+                    break;
+            }
             int pageSize = 2;
             int pageNumber = (page ?? 1);
-            return View(categories.ToPagedList(pageNumber, pageSize));
+            return View(list.ToPagedList(pageNumber, pageSize));
         }
 
         public JsonResult Create2(Category abc)
@@ -48,25 +73,27 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             ViewBag.CategoryBaseID = new SelectList(db.CategoryBases, "CategoryBaseID", "CategoryBaseName");
             return View();
         }
-        public JsonResult Delete(string id)
+        public JsonResult Delete(List<string> ids)
         {
-            bool result = false;
-            var u = db.Categories.Where(x => x.CategoryID == id).FirstOrDefault();
-
-            if (u != null)
+            List<string> result = new List<string>();
+            foreach(string id in ids)
             {
-                var productChilds = db.Products.Where(p => p.CategoryID == id).ToList();
-                if (productChilds.Count > 0)
+                var u = db.Categories.Where(x => x.CategoryID == id).FirstOrDefault();
+                if (u != null)
                 {
-                    result = false;
-                }
-                else
-                {
-                    db.Categories.Remove(u);
-                    db.SaveChanges();
-                    result = true;
+                    var productChilds = db.Products.Where(p => p.CategoryID == id).ToList();
+                    if (productChilds.Count > 0)
+                    {
+                        result.Add(id);
+                    }
+                    else
+                    {
+                        db.Categories.Remove(u);
+                    }
                 }
             }
+            db.SaveChanges();
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

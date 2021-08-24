@@ -64,7 +64,10 @@
                 <li class="dropdown">
                     <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
                         <span><img class="img-circle " src="~/assets/Admin/images/avatar-1.png" style="width:40px;" alt="User Image"></span>
-                        <span>Long Duong <i class=" icofont icofont-simple-down"></i></span>
+                        <span>@{
+                            var name = Session["CustomerName"] as String;
+                            @name
+                        }<i class=" icofont icofont-simple-down"></i></span>
 
                     </a>
                     <ul class="dropdown-menu settings-menu">
@@ -75,7 +78,7 @@
                             <div class="dropdown-divider m-0"></div>
                         </li>
                         <li><a href="#"><i class="icon-lock"></i> Khóa màn hình</a></li>
-                        <li><a href="#"><i class="icon-logout"></i> Đăng xuất</a></li>
+                        <li><a href="/Admin/Home/Logout"><i class="icon-logout"></i> Đăng xuất</a></li>
 
                     </ul>
                 </li>

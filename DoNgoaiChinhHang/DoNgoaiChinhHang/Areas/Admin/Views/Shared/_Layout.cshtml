@@ -16,7 +16,7 @@
     <link rel="icon" href="~/assets/Admin/images/favicon.ico" type="image/x-icon">
 
     <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Consolas:400,500,700" rel="stylesheet">
 
     <!-- themify -->
     <link rel="stylesheet" type="text/css" href="~/assets/Admin/icon/themify-icons/themify-icons.css">
@@ -42,14 +42,20 @@
 
     <!-- Responsive.css-->
     <link rel="stylesheet" type="text/css" href="~/assets/Admin/css/responsive.css">
+    <!--icons awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    @*Custom CSS*@
+
+    <link rel="stylesheet" type="text/css" href="~/assets/Admin/custom/style.css">
+    <link rel="stylesheet" href="~/assets/Admin/css/font-awesome.min.css">
 
 </head>
 
-<body class="sidebar-mini fixed">
-    <div class="loader-bg">
-        <div class="loader-bar">
-        </div>
-    </div>
+<body class="fixed">
+
     <div class="wrapper">
         <!-- Navbar-->
         @{ Html.RenderPartial("_Header");}
@@ -121,13 +127,10 @@
     <script src="~/assets/Admin/AJAX/CategoryBases.js"></script>
     <script src="~/assets/Admin/AJAX/Category.js"></script>
     <script src="~/assets/Admin/AJAX/Product.js"></script>
+    <script src="~/assets/Admin/AJAX/Common.js"></script>
+    <script src="~/assets/Admin/AJAX/Account.js"></script>
+    <script src="~/assets/Admin/custom/loadFile.js"></script>
 
-    <script>
-        function loadFile(event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-        }
-    </script>
 
 </body>
 

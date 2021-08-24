@@ -7,7 +7,7 @@
 }
 
 <style>
-    .btn-primary {
+    .btn-primary, .btn-danger {
         float: right
     }
 </style>
@@ -38,13 +38,55 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-header-text">Danh sách danh mục</h5>
+                <button disabled class="btn btn-danger waves-effect waves-light delCate">Xóa đã chọn</button>
                 @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary waves-effect waves-light" })
 
             </div>
             <hr style="margin: 0" />
             <div class="card-block">
+                <div class="form-group row">
+                    <div class="col-md-8">
+                        <div class="input-group" id="dropdown1">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-info waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sắp xếp
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Categories", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        @using (Html.BeginForm())
+                        {<div class="input-group">
+                                <input id="btnaddon2" name="searchString" type="text" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Nhập tên danh mục" aria-describedby="btn-addon2">
+                                <span class="input-group-btn" id="btn-addon2">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light">
+                                        Tìm kiếm
+                                    </button>
+                                </span>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <hr />
                 <table class="table">
                     <tr>
+                        <th>
+                            <div class="checkbox-fade fade-in-danger">
+                                <label>
+                                    <input type="checkbox" id="checkAll">
+                                    <span class="cr">
+                                        <i class="cr-icon fa fa-check txt-danger"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </th>
                         <th>
                             Ảnh
                         </th>
@@ -59,34 +101,42 @@
                         </th>
                         <th>Thao tác</th>
                     </tr>
+                    <tbody id="tbody">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="checkbox-fade fade-in-danger">
+                                        <label>
+                                            <input type="checkbox" value="@item.CategoryID">
+                                            <span class="cr">
+                                                <i class="cr-icon fa fa-check txt-danger"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    @{ string imgPath = "~/assets/img/" + item.Images;}
+                                    <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
+                                    <br />
+                                    @*@Html.DisplayFor(modelItem => item.Images)*@
 
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @{ string imgPath = "~/assets/img/" + item.Images;}
-                                <img src="@Url.Content(imgPath)" style="object-fit: cover;width: 100px; height: 100px" class="img-thumbnail" alt="" />
-                                <br />
-                                @*@Html.DisplayFor(modelItem => item.Images)*@
-
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CategoryBase.CategoryBaseName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CategoryName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
-
-                                <button id="@item.CategoryID.Trim()" class="btn btn-inverse-info waves-effect waves-light delCate">Xóa</button>
-
-                            </td>
-                        </tr>
-                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoryBase.CategoryBaseName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    <a class="" href="/Admin/Categories/Edit/@item.CategoryID.Trim()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
 
                 </table>
                 <br />

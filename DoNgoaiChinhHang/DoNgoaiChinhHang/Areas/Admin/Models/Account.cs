@@ -13,31 +13,34 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         public Account()
         {
             Orders = new HashSet<Order>();
-            Orders1 = new HashSet<Order>();
         }
 
-        [StringLength(10)]
-        public string AccountID { get; set; }
+        public int AccountID { get; set; }
 
+        [Required]
         [StringLength(15)]
         public string Phone { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Email { get; set; }
 
+        [Required]
         [StringLength(16)]
         public string Password { get; set; }
 
         [StringLength(50)]
         public string CustomerName { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Address { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public bool? IsAdmin { get; set; }
+
+        public bool? Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders1 { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

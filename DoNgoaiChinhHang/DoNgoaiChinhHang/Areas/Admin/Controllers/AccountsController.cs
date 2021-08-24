@@ -1,0 +1,138 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using DoNgoaiChinhHang.Areas.Admin.Helper;
+using DoNgoaiChinhHang.Areas.Admin.Models;
+using PagedList;
+
+namespace DoNgoaiChinhHang.Areas.Admin.Controllers
+{
+    [FilterAdmin]
+    public class AccountsController : Controller
+    {
+        private DBContext db = new DBContext();
+
+        public ActionResult Index(int? page, string sortOrder, string searchString, string currentFilter)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            var list = db.Accounts.Include(c => c.Orders);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                list = list.Where(s => s.CustomerName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "ten_desc":
+                    list = list.OrderByDescending(s => s.CustomerName);
+                    break;
+                default:
+                    list = list.OrderBy(s => s.CustomerName);
+                    break;
+            }
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(list.ToPagedList(pageNumber, pageSize));
+        }
+
+
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public JsonResult Create2(Account abc)
+        {
+            bool result = false;
+            var u = db.Accounts.Where(x => x.AccountID == abc.AccountID || x.Email == abc.Email ).FirstOrDefault();
+            if (u != null)
+            {
+                result = false;
+            }
+            else
+            {
+                db.Accounts.Add(abc);
+                db.SaveChanges();
+                result = true;
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult Delete(List<int> ids)
+        {
+            List<string> result = new List<string>();
+            foreach (int id in ids)
+            {
+                var u = db.Accounts.Where(x => x.AccountID == id).FirstOrDefault();
+                if (u != null)
+                {
+                    var Childs = db.Orders.Where(p => p.AccountID == id).ToList();
+                    if (Childs.Count > 0)
+                    {
+                        result.Add(id+"");
+                    }
+                    else
+                    {
+                        db.Accounts.Remove(u);
+                    }
+                }
+            }
+            db.SaveChanges();
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult Edit(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account account = db.Accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
+
+        public JsonResult Edit2(Account abc)
+        {
+            bool result = false;
+            db.Entry(abc).State = EntityState.Modified;
+            db.SaveChanges();
+            result = true;
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

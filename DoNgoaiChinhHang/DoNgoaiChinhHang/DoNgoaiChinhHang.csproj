@@ -159,14 +159,22 @@
     <Compile Include="Areas\Admin\Models\Category.cs" />
     <Compile Include="Areas\Admin\Models\CategoryBase.cs" />
     <Compile Include="Areas\Admin\Models\DBContext.cs" />
+    <Compile Include="Areas\Admin\Models\FileUp.cs" />
     <Compile Include="Areas\Admin\Models\Order.cs" />
     <Compile Include="Areas\Admin\Models\OrderDetail.cs" />
     <Compile Include="Areas\Admin\Models\Product.cs" />
+
     <Compile Include="Controllers\AccountController.cs" />
+
+
+
+    
     <Compile Include="Controllers\CartController.cs" />
+
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoryBasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +184,7 @@
   <ItemGroup>
     <Content Include="assets\Admin\AJAX\Category.js" />
     <Content Include="assets\Admin\AJAX\CategoryBases.js" />
+    <Content Include="assets\Admin\AJAX\Common.js" />
     <Content Include="assets\Admin\AJAX\Product.js" />
     <Content Include="assets\Admin\css\bootstrap-theme.min.css" />
     <Content Include="assets\Admin\css\color\color-1.css" />
@@ -197,6 +206,8 @@
     <Content Include="assets\Admin\css\menu.css" />
     <Content Include="assets\Admin\css\responsive.css" />
     <Content Include="assets\Admin\css\svg-weather.css" />
+    <Content Include="assets\Admin\custom\loadFile.js" />
+    <Content Include="assets\Admin\custom\style.css" />
     <Content Include="assets\Admin\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\Admin\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\Admin\fonts\themify.svg" />
@@ -1309,6 +1320,7 @@
     <Content Include="assets\js\common.js" />
     <Content Include="assets\js\common1.js" />
     <Content Include="assets\js\controls.js" />
+    <Content Include="assets\js\detailProduct.js" />
     <Content Include="assets\js\details4.js" />
     <Content Include="assets\js\f%281%29.txt" />
     <Content Include="assets\js\f%282%29.txt" />
@@ -1481,12 +1493,20 @@
     <Content Include="Views\Categories\GetProductByCategory.cshtml" />
     <Content Include="Views\CategoryBases\GetProductsByCategoryBase.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\LoginUser.cshtml" />
+
+    
+    
+    
+    <Content Include="Views\Products\Detail.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="wwwroot\ProductsImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
