@@ -127,7 +127,7 @@
                                     @Html.DisplayFor(modelItem => item.Description)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryBaseID.Trim() }, new { @class = "btn btn-inverse-warning waves-effect waves-light", })
+                                    <a class="" href="/Admin/CategoryBases/Edit/@item.CategoryBaseID.Trim()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                         }

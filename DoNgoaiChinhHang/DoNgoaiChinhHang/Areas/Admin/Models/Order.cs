@@ -6,7 +6,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Order")]
     public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -15,12 +14,10 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        [StringLength(10)]
+        [StringLength(12)]
         public string OrderID { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string AccountID { get; set; }
+        public int AccountID { get; set; }
 
         public bool? Note { get; set; }
 

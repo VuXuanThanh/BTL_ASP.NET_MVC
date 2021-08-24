@@ -11,7 +11,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(10)]
+        [StringLength(12)]
         public string OrderID { get; set; }
 
         [Key]

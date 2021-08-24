@@ -5,9 +5,11 @@
 $('input:checkbox').on('click', () => {
     if ($("#tbody input[type=checkbox]:checked").length == 0) {
         $(".delBaseCate").attr('disabled', 'disabled');
+        $(".delBaseCate").text("Xóa đã chọn")
     }
     else {
         $(".delBaseCate").removeAttr('disabled');
+        $(".delBaseCate").text("Xóa (" + $("#tbody input:checked").length + ")")
     }
 })
 

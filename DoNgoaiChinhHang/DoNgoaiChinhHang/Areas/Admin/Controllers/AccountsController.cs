@@ -9,12 +9,11 @@ using System.Web.Mvc;
 using DoNgoaiChinhHang.Areas.Admin.Helper;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
-using PagedList.Mvc;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 {
     [FilterAdmin]
-    public class CategoryBasesController : Controller
+    public class AccountsController : Controller
     {
         private DBContext db = new DBContext();
 
@@ -31,39 +30,43 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                 searchString = currentFilter;
             }
             ViewBag.CurrentFilter = searchString;
-            var list = db.CategoryBases.Select(s => s);
-
+            var list = db.Accounts.Include(c => c.Orders);
             if (!String.IsNullOrEmpty(searchString))
             {
-                list = list.Where(s => s.CategoryBaseName.Contains(searchString));
+                list = list.Where(s => s.CustomerName.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "ten_desc":
-                    list = list.OrderByDescending(s => s.CategoryBaseName);
+                    list = list.OrderByDescending(s => s.CustomerName);
                     break;
                 default:
-                    list = list.OrderBy(s => s.CategoryBaseName);
+                    list = list.OrderBy(s => s.CustomerName);
                     break;
             }
-            int pageSize = 3;
+            int pageSize = 2;
             int pageNumber = (page ?? 1);
-
             return View(list.ToPagedList(pageNumber, pageSize));
         }
 
 
-        public JsonResult Create2(CategoryBase abc)
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public JsonResult Create2(Account abc)
         {
             bool result = false;
-            var u = db.CategoryBases.Where(x => x.CategoryBaseID == abc.CategoryBaseID).FirstOrDefault();
+            var u = db.Accounts.Where(x => x.AccountID == abc.AccountID || x.Email == abc.Email ).FirstOrDefault();
             if (u != null)
             {
                 result = false;
             }
             else
             {
-                db.CategoryBases.Add(abc);
+                db.Accounts.Add(abc);
                 db.SaveChanges();
                 result = true;
             }
@@ -71,39 +74,22 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 
         }
 
-        public JsonResult Edit2(CategoryBase abc)
-        {
-            bool result = false;
-            db.Entry(abc).State = EntityState.Modified;
-            db.SaveChanges();
-            result = true;
-            return Json(result, JsonRequestBehavior.AllowGet);
-
-        }
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-
-
-        public JsonResult Delete(List<string> ids)
+        public JsonResult Delete(List<int> ids)
         {
             List<string> result = new List<string>();
-
-            foreach(string id in ids){
-                var u = db.CategoryBases.Where(x => x.CategoryBaseID == id).FirstOrDefault();
+            foreach (int id in ids)
+            {
+                var u = db.Accounts.Where(x => x.AccountID == id).FirstOrDefault();
                 if (u != null)
                 {
-                    var categoryChilds = db.Categories.Where(p => p.CategoryBaseID == id).ToList();
-                    if (categoryChilds.Count > 0)
+                    var Childs = db.Orders.Where(p => p.AccountID == id).ToList();
+                    if (Childs.Count > 0)
                     {
-                        result.Add(id);
+                        result.Add(id+"");
                     }
                     else
                     {
-                        db.CategoryBases.Remove(u);
-                        
+                        db.Accounts.Remove(u);
                     }
                 }
             }
@@ -112,19 +98,32 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Edit(string id)
+
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CategoryBase categoryBase = db.CategoryBases.Find(id);
-            if (categoryBase == null)
+            Account account = db.Accounts.Find(id);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            return View(categoryBase);
+            return View(account);
         }
+
+        public JsonResult Edit2(Account abc)
+        {
+            bool result = false;
+            db.Entry(abc).State = EntityState.Modified;
+            db.SaveChanges();
+            result = true;
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
+
 
 
         protected override void Dispose(bool disposing)
