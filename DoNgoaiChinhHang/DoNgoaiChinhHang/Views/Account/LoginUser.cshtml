@@ -1,0 +1,67 @@
+﻿@model DoNgoaiChinhHang.Areas.Admin.Models.Account
+@{
+    ViewBag.Title = "LoginUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .btn-login {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+        .btn-login input {
+            margin: 5px;
+        }
+</style>
+<div class="breadcrumb">
+    <ul>
+        <li itemscope="">
+            <a href="/" itemprop="url" title="Đồ Ngoại Chính Hãng">
+                <span itemprop="title" class="iH"></span>
+            </a><span>›</span>
+        </li>
+        <li itemscope="">
+            <a href="/Account/LoginUser" itemprop="url" title="Đăng nhập">
+                <span itemprop="title">Đăng nhập</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="boxct bica">
+    <div></div>
+    <div class="form-order clearfix">
+        <h1 class="form-order-hd"><i class="fa fa-play"></i> Đăng nhập thành viên</h1>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            <div class="form-group">
+                <div class="iUs"></div>
+                @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="iUs"></div>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group btn-login">
+                <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
+                <input type="reset" name="reset" class="btn btn-block" value="Hủy" />
+            </div>
+        }
+
+        @if (ViewBag.error != null)
+        {
+
+            <div>
+                <p style="color: red">@ViewBag.error</p>
+            </div>
+        }
+    </div>
+</div>
+<br>
+<br>
+

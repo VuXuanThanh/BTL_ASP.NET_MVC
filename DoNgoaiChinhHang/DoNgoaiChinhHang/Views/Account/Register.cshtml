@@ -1,0 +1,78 @@
+﻿@model DoNgoaiChinhHang.Areas.Admin.Models.Account
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .btn-login {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+        .btn-login input {
+            margin: 5px;
+        }
+</style>
+<div class="breadcrumb">
+    <ul>
+        <li itemscope="">
+            <a href="/" itemprop="url" title="Đồ Ngoại Chính Hãng">
+                <span itemprop="title" class="iH"></span>
+            </a><span>›</span>
+        </li>
+        <li itemscope="">
+            <a href="/Account/Register" itemprop="url" title="Đăng ký">
+                <span itemprop="title">Đăng ký</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="boxct bica">
+    <div></div>
+    <div class="form-order clearfix">
+        <h1 class="form-order-hd"><i class="fa fa-play"></i> Thông tin đăng ký thành viên</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            <div class="form-group">
+
+                @Html.TextBoxFor(m => m.Phone, "", new { @class = "form-control", @placeholder = "Số điện thoại" })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.CustomerName, "", new { @class = "form-control", @placeholder = "Họ và tên" })
+                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Address, "", new { @class = "form-control", @placeholder = "Địa chỉ" })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group btn-login">
+                <input type="submit" name="submit" class="btn btn-primary" value="Đăng kí" />
+                <input type="reset" name="submit" class="btn btn-block" value="Hủy" />
+            </div>
+        }
+
+
+    </div>
+
+    @if (ViewBag.error != null)
+    {
+        <div class="bg-danger">
+            <h2 class="text-danger" style="color: red">@ViewBag.error!!!!!!!!!!!!!!</h2>
+
+        </div>
+    }
+</div>
+
