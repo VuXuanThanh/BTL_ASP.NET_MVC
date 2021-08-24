@@ -4,15 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    .form-group row row {
-        margin-bottom: 20px
-    }
-
-    .addBaseCate {
-        margin-right: 20px
-    }
-</style>
 
 
 <div class="row">
@@ -99,7 +90,8 @@
                         <div class="form-group row">
                             <div class="col-md-2"></div>
                             <div class="col-sm-10">
-                                <input type="submit" value="Thêm mới" class="btn btn-info addCate" />
+                                <button type="submit" class="btn btn-info addCate">Thêm mới</button>
+                                <button type="reset" class="btn btn-inverse-info btnReset">Reset</button>
                                 @Html.ActionLink("Quay lại", "Index")
                             </div>
                         </div>

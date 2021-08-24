@@ -1,20 +1,44 @@
-﻿$(".delBaseCate").click(function (e) {
+﻿$("#checkAll").click(function () {
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
+
+$('input:checkbox').on('click', () => {
+    if ($("#tbody input[type=checkbox]:checked").length == 0) {
+        $(".delBaseCate").attr('disabled', 'disabled');
+        $(".delBaseCate").text("Xóa đã chọn")
+    }
+    else {
+        $(".delBaseCate").removeAttr('disabled');
+        $(".delBaseCate").text("Xóa (" + $("#tbody input:checked").length + ")")
+    }
+})
+
+
+
+$(".delBaseCate").click(function (e) {
     e.preventDefault();
-    var id = $(this).attr("id");
-    var MSG = confirm("Bạn có chắc muốn xóa danh mục này?");
+    var ids = $('#tbody input[type=checkbox]:checked')
+        .map(function () {
+            return $(this).val();
+        }).get();
+    var MSG = confirm("Bạn có chắc muốn xóa " + ids.length+" danh mục này ? ");
     if (MSG) {
         $.ajax({
             type: 'POST',
             url: '/Admin/CategoryBases/Delete',
-            data: { id: id },
+
+            data: { ids: ids },
+
             success: function (result) {
-                if (result == true) {
-                    thongbao("Thành công !", "Xóa danh mục thành công .", "animated fadeInDown", "success");
+
+                if (result.length == 0) {
+                    thongbao("", "Xóa tất cả đã chọn thành công .", "animated fadeInDown", "success");
                     setTimeout(() => {
                         location.reload();
                     },1000)
                 } else {
-                    thongbao("Danh mục này có chứa các danh mục khác. Không thể xóa", "", "animated fadeInDown", "warning");
+                    alert("Chưa thể xóa các danh mục có ID: " + result)
+                    location.reload()
                 }
 
             },
@@ -38,13 +62,13 @@ $(".addBaseCate").click(function (e) {
         data["" + v.name + ""] = v.value;
         if (v.value == "") {
             test = false;
-            $('#' + v.name+"2").text("Không được để trống trống");
+            $('#' + v.name+"2").text("** Không được để trống trống");
         }
     });
     var fakePath = $('#file').val();
     if (fakePath.length == 0) {
         test = false;
-        $("#Images2").text("Bạn chưa chọn ảnh");
+        $("#Images2").text("** Bạn chưa chọn ảnh");
     }
     if (!test) {
         return;
@@ -53,19 +77,16 @@ $(".addBaseCate").click(function (e) {
     
         $.ajax({
             type: 'POST',
-            url: '/CategoryBases/Create2',
+            url: '/Admin/CategoryBases/Create2',
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
                 if (result) {
-                    thongbao("Thành công !", "Thêm  mới danh mục thành công .", "animated fadeInDown", "success");
-                    $.each(formData, function (i, v) {
-                        $('#' + v.name).val("");
-                    });
+                    thongbao("", "Thêm  mới danh mục thành công .", "animated fadeInDown", "success");
                 }
                 else {
-                    thongbao("Thất bại !", "Mã danh mục đã tồn tại .", "animated fadeInDown", "warning");
+                    thongbao("", "Mã danh mục đã tồn tại .", "animated fadeInDown", "warning");
                 }
 
             },
@@ -88,30 +109,35 @@ $(".editBaseCate").click(function (e) {
         data["" + v.name + ""] = v.value;
         if (v.value == "") {
             test = false;
-            $('#' + v.name + "2").text("Không được để trống trống");
+            $('#' + v.name + "2").text("** Không được để trống trống");
         }
     });
     var fakePath = $('#file').val();
+    var path = $('#output').attr('src');
     if (fakePath.length == 0) {
-        test = false;
-        $("#Images2").text("Bạn chưa chọn ảnh");
+        data.Images = path.slice(path.lastIndexOf("\/") + 1, path.length);
     }
-    if (!test) {
+    else {
+        data.Images = fakePath.slice(fakePath.lastIndexOf("\\") + 1, fakePath.length);
+    }
+
+    if (!test || data.Images == '') {
+        $("#Images2").text("** Bạn chưa chọn ảnh");
         return;
     }
-    data.Images = fakePath.slice(fakePath.lastIndexOf("\\") + 1, fakePath.length);
+    
 
     $.ajax({
         type: 'POST',
-        url: '/CategoryBases/Edit2',
+        url: '/Admin/CategoryBases/Edit2',
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (result) {
             if (result) {
-                thongbao("Thành công !", "Sửa danh mục thành công .", "animated fadeInDown", "success");
+                thongbao("", "Sửa danh mục thành công .", "animated fadeInDown", "info");
                 setTimeout(() => {
-                    window.location.href = "https://localhost:44316/Admin/CategoryBases";
+                    window.location.href = "/Admin/CategoryBases";
                 },1000)
             }
 
