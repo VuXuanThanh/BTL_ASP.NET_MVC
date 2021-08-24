@@ -25,7 +25,9 @@ $(".delPro").click(function (e) {
         $.ajax({
             type: 'POST',
             url: '/Admin/Products/Delete',
+
             data: { ids: ids },
+
             success: function (result) {
                 if (result.length == 0) {
                     thongbao("", "Xóa tất cả sản phẩm đã chọn thành công .", "animated fadeInDown", "success");
@@ -88,43 +90,4 @@ $(".addPro").click(function (e) {
 
 });
 
-
-//$(".editPro").click(function (e) {
-//    e.preventDefault();
-//    var data = new Object();
-//    var formData = $('#formSubmit').serializeArray();
-//    var test = true;
-//    $.each(formData, function (i, v) {
-//        $('#' + v.name + "2").text("");
-//        data["" + v.name + ""] = v.value;
-//        if (v.value == "") {
-//            $('#' + v.name + "2").text("Không được để trống");
-//            test = false;
-//        }
-//    });
-//    if (!test) {
-//        return;
-//    }
-
-//    $.ajax({
-//        type: 'POST',
-//        url: '/Admin/Products/Edit2',
-//        data: JSON.stringify(data),
-//        contentType: "application/json; charset=utf-8",
-//        dataType: "json",
-//        success: function (result) {
-//            if (result) {
-//                thongbao("", "Sửa thông tin sản phẩm thành công .", "animated fadeInDown", "info");
-//                setTimeout(() => {
-//                    window.location.href = "/Admin/Products";
-//                }, 1000)
-//            }
-
-//        },
-//        error: function () {
-//            alert("Có lỗi khi sửa!");
-//        }
-//    });
-
-//});
 

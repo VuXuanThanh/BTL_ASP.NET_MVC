@@ -244,44 +244,44 @@
                 <ul class="homeproduct nonslider boxfull">
                     @foreach (var item in Model.Where(x => x.Category.CategoryBase.CategoryBaseID == itemCategory.CategoryBaseID).Take(12))
                     {
-                       @* <li>
-                            <div class="absoluteimg">
-                                <a href="/"
-                                   title="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ">
-                                    <img class="lazy"
-                                         data-src="/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
-                                         alt="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ"
-                                         src="./assets/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
-                                         style="display: block; opacity: 1;">
-                                </a>
-                                <div class="prolink">
-                                    <a href="https://dongoaichinhhang.com/#"
-                                       onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                        @* <li>
+                                <div class="absoluteimg">
+                                    <a href="/"
+                                       title="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ">
+                                        <img class="lazy"
+                                             data-src="/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
+                                             alt="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ"
+                                             src="./assets/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
+                                             style="display: block; opacity: 1;">
+                                    </a>
+                                    <div class="prolink">
+                                        <a href="https://dongoaichinhhang.com/#"
+                                           onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                    </div>
+                                    <label class="fship">
+                                        <img class="lazy" data-src="/images/ifship.png"
+                                             alt="Miễn phí giao hàng" src="./assets/img/ifship.png"
+                                             style="display: block; opacity: 1;">
+                                    </label>
                                 </div>
-                                <label class="fship">
-                                    <img class="lazy" data-src="/images/ifship.png"
-                                         alt="Miễn phí giao hàng" src="./assets/img/ifship.png"
-                                         style="display: block; opacity: 1;">
-                                </label>
-                            </div>
-                            <div class="promo-alert">Giảm 50k/sp khi mua từ 2sp</div>
-                            <h3>
-                                <a href="https://dongoaichinhhang.com/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.html"
-                                   title="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ">
-                                    Thuốc
-                                    mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ
-                                </a>
-                            </h3>
-                            <ins>650.000₫</ins>
-                            <div class="vote">
-                                <div style="width:0%"></div>
-                            </div>
-                        </li>*@
+                                <div class="promo-alert">Giảm 50k/sp khi mua từ 2sp</div>
+                                <h3>
+                                    <a href="https://dongoaichinhhang.com/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.html"
+                                       title="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ">
+                                        Thuốc
+                                        mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ
+                                    </a>
+                                </h3>
+                                <ins>650.000₫</ins>
+                                <div class="vote">
+                                    <div style="width:0%"></div>
+                                </div>
+                            </li>*@
                         <li>
                             <div class="absoluteimg">
                                 <a href="/"
                                    title="@item.ProductName">
-                                    @{ 
+                                    @{
                                         string ImgPath = "~/assets/img/" + item.Image;
                                     }
                                     <img class="lazy"
@@ -290,8 +290,8 @@
                                          src="@Url.Content(ImgPath)"
                                          style="display: block; opacity: 1;">
                                 </a>
-                                <div class="prolink">
-                                    <a href="/"
+                                <div class="prolink" data-productID="@item.ProductID">
+                                    <a href="@Url.Action("AddItem","Cart",new {productID= item.ProductID,quanlity= 1})"
                                        onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
                                 </div>
                                 <label class="fship">
@@ -304,7 +304,7 @@
                             <h3>
                                 <a href="https://dongoaichinhhang.com/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.html"
                                    title="@item.ProductName">
-                                   @item.ProductName
+                                    @item.ProductName
                                 </a>
                             </h3>
                             <ins>@item.Price</ins>
@@ -313,7 +313,7 @@
                             </div>
                         </li>
 
-                                        }
+                    }
                 </ul>
             </div>
         </div>

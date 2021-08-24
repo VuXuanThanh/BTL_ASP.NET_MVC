@@ -23,7 +23,9 @@ $(".delCate").click(function (e) {
         $.ajax({
             type: 'POST',
             url: '/Admin/Categories/Delete',
+
             data: { ids: ids },
+
             success: function (result) {
                 if (result.length == 0) {
                     thongbao("", "Xóa tất cả danh mục đã chọn thành công .", "animated fadeInDown", "success");
