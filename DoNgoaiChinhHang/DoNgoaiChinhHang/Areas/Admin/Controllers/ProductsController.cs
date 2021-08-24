@@ -132,18 +132,21 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                 {
                     Directory.CreateDirectory(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID));
                 }
-                for (int i = 0; i < files.Count; i++)
+                if (files.Count > 0)
                 {
-                    if (files[i] != null)
+                    for (int i = 0; i < files.Count; i++)
                     {
-                        var InputFilename = Path.GetFileName(files[i].FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID.Trim() + "/") + InputFilename);
-                        files[i].SaveAs(ServerSavePath);
+                        if (files[i] != null)
+                        {
+                            var InputFilename = Path.GetFileName(files[i].FileName);
+                            var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID.Trim() + "/") + InputFilename);
+                            files[i].SaveAs(ServerSavePath);
 
-                    }
-                    else
-                    {
-                        ViewBag.Err = "k vào để lưu ảnh";
+                        }
+                        else
+                        {
+                            ViewBag.Err = "k vào để lưu ảnh";
+                        }
                     }
                 }
 

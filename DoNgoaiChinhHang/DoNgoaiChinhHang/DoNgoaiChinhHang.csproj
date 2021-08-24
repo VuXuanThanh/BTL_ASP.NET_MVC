@@ -147,13 +147,17 @@
     <Compile Include="Areas\Admin\Models\Order.cs" />
     <Compile Include="Areas\Admin\Models\OrderDetail.cs" />
     <Compile Include="Areas\Admin\Models\Product.cs" />
-    <Compile Include="Areas\Admin\Models\sysdiagram.cs" />
+
+    <Compile Include="Controllers\CartController.cs" />
+
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoryBasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1295,6 +1299,7 @@
     <Content Include="assets\js\common.js" />
     <Content Include="assets\js\common1.js" />
     <Content Include="assets\js\controls.js" />
+    <Content Include="assets\js\detailProduct.js" />
     <Content Include="assets\js\details4.js" />
     <Content Include="assets\js\f%281%29.txt" />
     <Content Include="assets\js\f%282%29.txt" />
@@ -1466,11 +1471,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Categories\GetProductByCategory.cshtml" />
     <Content Include="Views\CategoryBases\GetProductsByCategoryBase.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Products\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="wwwroot\ProductsImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

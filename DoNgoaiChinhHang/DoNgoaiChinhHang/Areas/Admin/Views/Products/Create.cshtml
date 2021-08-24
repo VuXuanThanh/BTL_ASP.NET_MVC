@@ -84,7 +84,7 @@
                         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <div class="field" align="left">
-                                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file", @multiple = "multiple", @name = "files", @id = "files", } })
+                                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file", @multiple = "multiple", @name = "files", @id = "files",@accept="image/jpeg" } })
                                 <label for="files" id="label_">
 
                                     <i class="fas fa-cloud-upload-alt"></i>

@@ -26,7 +26,9 @@ $(".delBaseCate").click(function (e) {
         $.ajax({
             type: 'POST',
             url: '/Admin/CategoryBases/Delete',
+
             data: { ids: ids },
+
             success: function (result) {
 
                 if (result.length == 0) {
