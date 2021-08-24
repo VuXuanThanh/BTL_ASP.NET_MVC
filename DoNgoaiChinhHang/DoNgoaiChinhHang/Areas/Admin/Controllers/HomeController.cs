@@ -1,5 +1,7 @@
-﻿using DoNgoaiChinhHang.Areas.Admin.Helper;
+﻿using DoNgoaiChinhHang.Areas.Admin.Chart;
+using DoNgoaiChinhHang.Areas.Admin.Helper;
 using DoNgoaiChinhHang.Areas.Admin.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +14,46 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
     {
         DBContext db = new DBContext();
         [MyFilter]
-        public ActionResult Index()
+        public ActionResult Index(int? nam)
         {
             var pros = db.Products.Select(s => s).ToList();
             ViewBag.CountPro = pros.Count;
-
             var orders = db.Orders.Select(s => s).ToList();
             ViewBag.CountOd = orders.Count;
+            var users = db.Accounts.Select(s => s.IsAdmin != true).ToList();
+            ViewBag.CountUs = users.Count;
             long doanhThu = 0;
-
             orders.ForEach((i) =>
             {
                 doanhThu += long.Parse(i.Sum + "");
             });
-
-
             ViewBag.doanhThu = doanhThu;
 
+            //Thong ke
 
+            string selectY = Request["nam"]?.ToString();
+            int yy = selectY == null ? 2021 : int.Parse(selectY);
+            ViewBag.nam = yy;
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            for (int i=1; i<=12; i++)
+            {
+                long dt = 0;
+                var list_order = (from a in db.Orders
+                                  where (a.DateOrder.Value.Month == i && a.DateOrder.Value.Year == yy
+                                  && a.Status == true)
+                                  select a).ToList();
+                foreach (var item in list_order)
+                {
+                    dt += (long)item.Sum;
+                }
 
+                dataPoints.Add(new DataPoint("Tháng " + i, dt));
+
+                /*DateTime datet = DateTime.Parse("2020-10-" + i);
+                dataPoints.Add(new DataPoint(datet.Millisecond, dt));*/
+            }
+            
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
             return View();
         }
 

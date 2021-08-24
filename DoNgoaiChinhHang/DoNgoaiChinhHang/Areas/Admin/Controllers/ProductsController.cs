@@ -5,11 +5,9 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
-using System.IO;
 using DoNgoaiChinhHang.Areas.Admin.Helper;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
