@@ -14,6 +14,23 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         [MyFilter]
         public ActionResult Index()
         {
+            var pros = db.Products.Select(s => s).ToList();
+            ViewBag.CountPro = pros.Count;
+
+            var orders = db.Orders.Select(s => s).ToList();
+            ViewBag.CountOd = orders.Count;
+            long doanhThu = 0;
+
+            orders.ForEach((i) =>
+            {
+                doanhThu += long.Parse(i.Sum + "");
+            });
+
+
+            ViewBag.doanhThu = doanhThu;
+
+
+
             return View();
         }
 
