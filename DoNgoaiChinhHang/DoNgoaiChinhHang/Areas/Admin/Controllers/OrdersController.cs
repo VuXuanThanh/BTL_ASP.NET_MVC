@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -9,6 +11,7 @@ using System.Web.Mvc;
 using DoNgoaiChinhHang.Areas.Admin.Helper;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
+using QRCoder;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 {
@@ -48,7 +51,25 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             int pageNumber = (page ?? 1);
             return View(list.ToPagedList(pageNumber, pageSize));
         }
+        private static Byte[] BitmapToBytes(Bitmap img)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                return stream.ToArray();
+            }
+        }
+        public Byte[] QRCodeGenerate(String qrText)
+        {
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
 
+
+
+            return BitmapToBytes(qrCodeImage);
+        }
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -60,6 +81,8 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            String context = "Mã số hóa đơn:" + order.OrderID + "\n Ngày Order:" + order.DateOrder.ToString() + "\nKhách hàng:" + order.Account.CustomerName + "\nTổng số tiền thanh toán là:" + order.Sum + "₫";
+            ViewBag.QRcode = QRCodeGenerate(context);
             return View(order);
         }
 

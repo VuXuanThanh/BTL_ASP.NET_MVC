@@ -8,7 +8,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
     public partial class DBContext : DbContext
     {
         public DBContext()
-            : base("name=DBContext1")
+            : base("name=DBContext")
         {
         }
 

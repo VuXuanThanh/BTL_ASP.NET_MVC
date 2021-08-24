@@ -59,20 +59,18 @@
                         <td>Trạng thái: <span>@Html.DisplayFor(model => model.Status)</span></td>
                         <td>Mã giảm giá: <span>@Html.DisplayFor(model => model.Discount)</span></td>
                     </tr>
-                    <tr>
-                        <td colspan="2">
-                            <h6 style="font-weight:600; color:gray">Tổng tiền: @Html.DisplayFor(model => model.Sum) $</h6>
-
-                        </td>
-                    </tr>
+                   
                 </table>
                 
 
                 <div class="col-sm-12">
+                    <div class="qr" style="width:200px;height:200px">
+                        <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(ViewBag.QRcode))" style="width:100%;height:100%" />
+                    </div>
                     <div align="center">
                         <h4 class="dssp">Danh sách sản phẩm</h4>
                     </div>
-                    
+
                     <table class="table" style="box-shadow: -8px 8px 49px -10px burlywood;">
                         <tr>
                             <th>
@@ -117,6 +115,10 @@
 
                                 </tr>
                             }
+                            <tr>
+                                <td colspan="3">Tổng tiền</td>
+                                <td>@Html.DisplayFor(model => model.Sum) $</td>
+                            </tr>
                         </tbody>
 
                     </table>
