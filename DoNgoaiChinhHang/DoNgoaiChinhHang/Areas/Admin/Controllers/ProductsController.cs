@@ -80,30 +80,50 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                     {
                         Directory.CreateDirectory(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID));
                     }
-                    for (int i = 0; i < files.Count; i++)
+                    if(files.Count>=1 && files[0].FileName != "")
                     {
-                        if (files[i] != null)
-                        {
-                            var InputFilename = Path.GetFileName(files[i].FileName);
-                            var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
-                            files[i].SaveAs(ServerSavePath);
+                       
+                            for (int i = 0; i < files.Count; i++)
+                            {
+                                if (files[i] != null)
+                                {
+                                    var InputFilename = Path.GetFileName(files[i].FileName);
 
-                        }
-                        else
-                        {
-                            ViewBag.Err = "k vào để lưu ảnh";
-                        }
+                                    var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
+                                    files[i].SaveAs(ServerSavePath);
+
+                                }
+                                else
+                                {
+                                    ViewBag.Err = "k vào để lưu ảnh";
+                                }
+                            }
+                            product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
+                            db.Products.Add(product);
+                            db.SaveChanges();
+
+                      
+
                     }
-                    product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
-                    db.Products.Add(product);
-                    db.SaveChanges();
+                    else
+                    {
+                        ViewBag.ImageError = "Bạn chưa chọn ảnh mô tả sản phẩm!!!!";
+                        return Create();
+                    }
+                }
+                else
+                {
+                    ViewBag.ImageError = "Bạn chưa chọn ảnh mô tả sản phẩm!!!!";
+                    return Create();
                 }
             }
             catch
             {
                 ViewBag.Err = "Thêm mới thất bại";
-            }
                 
+                return RedirectToAction("Create");
+            }
+            
             return RedirectToAction("Create");
         }
 
@@ -154,6 +174,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description")] Product product)
         {
+          
             if (ModelState.IsValid)
             {
                 var files = Request.Files;
@@ -168,8 +189,12 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                         if (files[i] != null)
                         {
                             var InputFilename = Path.GetFileName(files[i].FileName);
-                            var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID.Trim() + "/") + InputFilename);
-                            files[i].SaveAs(ServerSavePath);
+                            if (InputFilename != "")
+                            {
+                                var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID.Trim() + "/") + InputFilename);
+                                files[i].SaveAs(ServerSavePath);
+                            }
+                            
 
                         }
                         else
