@@ -12,15 +12,15 @@
 .cus-tb td {
     padding: 6px 6px 6px 20px;
     font-weight: 700;
-    
 }
 
-.cus-tb td:nth-child(1) {
-    width:50%;
-}
 
 .cus-tb span {
     font-weight: 400;
+}
+
+.dssp{
+    margin:10px
 }
 
 

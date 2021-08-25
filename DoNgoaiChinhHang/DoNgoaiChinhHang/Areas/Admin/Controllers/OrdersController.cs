@@ -24,6 +24,9 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.SapTheoNgay = String.IsNullOrEmpty(sortOrder) ? "ngaydat_desc" : "ngaydat";
+            ViewBag.SapTheoGia = String.IsNullOrEmpty(sortOrder) ? "tongtien_desc" : "tongtien";
+            ViewBag.SapTheoTrangThai = String.IsNullOrEmpty(sortOrder) ? "trangthai_desc" : "trangthai";
             if (searchString != null)
             {
                 page = 1;
@@ -36,12 +39,30 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             var list = db.Orders.Include(c => c.Account);
             if (!String.IsNullOrEmpty(searchString))
             {
-                /*list = list.Where(s => s.OrderDetails.ToList().Where(f => f.Product.ProductName.ToString).Contains(searchString));*/
+                list = list.Where(s => s.Account.CustomerName.Contains(searchString) || s.Account.Phone.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "ten_desc":
+                    list = list.OrderByDescending(s => s.Account.CustomerName);
+                    break;
+                case "ngaydat_desc":
+                    list = list.OrderByDescending(s => s.DateOrder);
+                    break;
+                case "tongtien_desc":
                     list = list.OrderByDescending(s => s.Sum);
+                    break;
+                case "trangthai_desc":
+                    list = list.OrderByDescending(s => s.Status);
+                    break;
+                case "ngaydat":
+                    list = list.OrderBy(s => s.DateOrder);
+                    break;
+                case "tongtien":
+                    list = list.OrderBy(s => s.Sum);
+                    break;
+                case "trangthai":
+                    list = list.OrderBy(s => s.Status);
                     break;
                 default:
                     list = list.OrderBy(s => s.Sum);
@@ -65,9 +86,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
-
-
-
             return BitmapToBytes(qrCodeImage);
         }
         public ActionResult Details(string id)

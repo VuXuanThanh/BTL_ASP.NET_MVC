@@ -17,13 +17,44 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
     {
         private DBContext db = new DBContext();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string searchString, string currentFilter)
         {
-            var products = db.Products.Include(p => p.Category);
-            products = products.OrderBy(s => s.ProductID);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.SapTheoGia = String.IsNullOrEmpty(sortOrder) ? "gia_desc" : "gia";
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            var list = db.Products.Include(p => p.Category);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                list = list.Where(s => s.ProductName.Contains(searchString) || s.Price.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "ten_desc":
+                    list = list.OrderByDescending(s => s.ProductName);
+                    break;
+                case "gia_desc":
+                    list = list.OrderByDescending(s => s.Price);
+                    break;
+                case "gia":
+                    list = list.OrderBy(s => s.Price);
+                    break;
+                default:
+                    list = list.OrderBy(s => s.ProductName);
+                    break;
+            }
             int pageSize = 2;
             int pageNumber = (page ?? 1);
-            return View(products.ToPagedList(pageNumber, pageSize));
+            return View(list.ToPagedList(pageNumber, pageSize));
+            
         }
 
 
