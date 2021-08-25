@@ -73,10 +73,13 @@
                             <div class="absoluteimg">
                                 <a href="https://dongoaichinhhang.com/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien.html" title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên">
                                     @{
-                                        string ImgPath = "~/assets/img/" + item.Image;
+                                        //string ImgPath = "~/assets/img/" + item.Image;
+                                        var files = Directory.EnumerateFiles(Server.MapPath(item.Image))
+                              .Select(fn => item.ProductID.Trim() + "/" + Path.GetFileName(fn));
+                                        string ImgPath = files.First();
 
                                     }
-                                    <img src="@Url.Content(ImgPath)" alt="@item.ProductName" />
+                                    <img src="@Url.Content("~/wwwroot/ProductsImages/"+ImgPath)" alt="@item.ProductName" />
                                 </a>
 
                                 <div class="prolink">

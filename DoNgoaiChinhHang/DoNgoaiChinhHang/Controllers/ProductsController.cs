@@ -15,10 +15,10 @@ namespace DoNgoaiChinhHang.Controllers
         [HttpGet]
         public ActionResult Detail(string productID)
         {
-            if (productID == null)
-            {
-                productID = "SP1";
-            }
+            //if (productID == null)
+            //{
+            //    productID = "1111";
+            //}
             var product = db.Products.Where(p => p.ProductID == productID).FirstOrDefault();
             var category = db.Categories.Where(c => c.CategoryID == product.CategoryID).FirstOrDefault();
             var categoryBase = db.CategoryBases.Where(c => c.CategoryBaseID == category.CategoryBaseID).FirstOrDefault();
