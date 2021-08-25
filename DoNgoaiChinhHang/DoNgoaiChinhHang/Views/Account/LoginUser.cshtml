@@ -2,7 +2,15 @@
 @{
     ViewBag.Title = "LoginUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["IDUrSS"] != null)
+    {
+        Session["AddrSS"] = null;
+        Session["UrNameSS"] = null;
+        Session["PhoneSS"] = null;
+        Session["IDUrSS"] = null;
+    }
 }
+
 <style>
     .btn-login {
         display: flex;

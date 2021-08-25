@@ -155,22 +155,17 @@
     <Compile Include="Areas\Admin\Controllers\CategoryBasesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Helper\FilterAdmin.cs" />
+    <Compile Include="Areas\Admin\Helper\MyFilter.cs" />
     <Compile Include="Areas\Admin\Models\Account.cs" />
     <Compile Include="Areas\Admin\Models\Category.cs" />
     <Compile Include="Areas\Admin\Models\CategoryBase.cs" />
     <Compile Include="Areas\Admin\Models\DBContext.cs" />
-    <Compile Include="Areas\Admin\Models\FileUp.cs" />
     <Compile Include="Areas\Admin\Models\Order.cs" />
     <Compile Include="Areas\Admin\Models\OrderDetail.cs" />
     <Compile Include="Areas\Admin\Models\Product.cs" />
-
     <Compile Include="Controllers\AccountController.cs" />
-
-
-
-    
     <Compile Include="Controllers\CartController.cs" />
-
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoryBasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1493,15 +1488,9 @@
     <Content Include="Views\Categories\GetProductByCategory.cshtml" />
     <Content Include="Views\CategoryBases\GetProductsByCategoryBase.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\LoginUser.cshtml" />
-
-    
-    
-    
     <Content Include="Views\Products\Detail.cshtml" />
-
+    <Content Include="Views\Account\LoginUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
