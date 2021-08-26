@@ -17,7 +17,11 @@ namespace DoNgoaiChinhHang.Controllers
         {
             /*ViewBag.listCategoryBase = db.CategoryBases.ToList();*/
             ViewBag.listCategoryBase = db.CategoryBases.ToList();
-            ViewBag.listOrgin = db.Products.Select(x => x.Orgin).Distinct().ToList();
+
+            ViewBag.listBrand = db.Products.Select(p => p.Brand).Distinct().ToList();
+            ViewBag.listOrgin = db.Products.Select(p => p.Orgin).Distinct().ToList();
+            ViewBag.listProduct = db.Products.Select(p => p).ToList();
+
             var category = db.Categories.Where(s => s.CategoryID == categoryId).FirstOrDefault();
             ViewBag.category = category;
             ViewBag.categoryBase = category.CategoryBase;

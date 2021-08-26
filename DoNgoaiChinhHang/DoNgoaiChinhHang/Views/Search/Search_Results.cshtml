@@ -2,80 +2,68 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "GetProductByCategory";
+    ViewBag.Title = "Search_Results";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <link href="~/assets/css/cart.min.css" rel="stylesheet" />
 <link href="~/assets/css/home.css" rel="stylesheet" />
+<link href="~/assets/css/category.css" rel="stylesheet" />
+<link href="~/assets/css/detail4.css" rel="stylesheet" />
+<link href="~/assets/css/jquery.fancybox.css" rel="stylesheet" />
+<link href="~/assets/css/menu.css" rel="stylesheet" />
 <link href="~/assets/css/owl-carousel.css" rel="stylesheet" />
 <link href="~/assets/css/styles4.css" rel="stylesheet" />
 <link href="~/assets/css/menu.css" rel="stylesheet" />
-<link href="~/assets/css/category.css" rel="stylesheet" />
+
+
 <div class="breadcrumb">
     <ul>
         <li>
-            <a href="/Home" title="Đồ Ngoại Chính Hãng"><span class="iH"></span></a><span>›</span>
+            <a href="~/Home/Index" title="Đồ Ngoại Chính Hãng">
+                <span class="iH"></span>
+            </a><span>›</span>
         </li>
         <li>
-            <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { ViewBag.categoryBase.CategoryBaseID})" title="@ViewBag.categoryBase.CategoryBaseName">
-                <span>
-                    @ViewBag.categoryBase.CategoryBaseName
-                </span>
-                <span>›</span>
-            </a>
-        </li>
-        <li>
-            <a href="@Url.Action("GetProductByCategory","Categories", new { @ViewBag.category.CategoryID })">
-                <span>
-                    @ViewBag.category.CategoryName
-                </span>
+            <a href="@Url.Action("Search_Results","Search", new { content = @ViewBag.SearchContent })" title="Tìm kiếm">
+                @if (ViewBag.test == true)
+                {
+                    <span> @ViewBag.SearchContent </span>
+                }
+                else
+                {
+                    <span> Tìm kiếm </span>
+                }
             </a>
         </li>
     </ul>
 </div>
-@*<script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "item": { "@id": "https://dongoaichinhhang.com/", "name": "Đồ Ngoại Chính Hãng", "image": "https://dongoaichinhhang.com/images/logo-dongoaichinhhang1000x500.png" } },
-                { "@type": "ListItem", "position": 2, "item": { "@id": "https://dongoaichinhhang.com/danh-muc/my-pham-dac-tri.html", "name": "Mỹ phẩm Đặc Trị" } }
-            ]
-        }
-    </script>*@
+
 <div class="col-left">
-    @if (ViewBag.category.Images != null)
-    {
-        <h2>
-            @{
-                string ImgPath = "~/assets/img/" + ViewBag.category.Images;
-
-            }
-            <img src="@Url.Content(ImgPath)" alt="@ViewBag.category.CategoryName" title="@ViewBag.category.CategoryName" style="margin-bottom: 6px; max-width: 100%;" />
-        </h2>
-    }
-
     <div class="barbox">
         <h1 class="titlecate">
-            <a href="@Url.Action("GetProductByCategory", "Categories", new { @ViewBag.category.CategoryID})" title="@ViewBag.category.CategoryName">
-                @ViewBag.category.CategoryName
+            <a href="@Url.Action("Search_Results","Search","")">
+                @if (ViewBag.test == true)
+                {
+                    <span> @ViewBag.SearchContent </span>
+                }
+                else
+                {
+                    <span>Có <span style="color: red">@ViewBag.soLuong</span> SP với từ khóa: <span style="color: red">@ViewBag.SearchContent</span></span>
+                }
+
+
             </a>
         </h1>
     </div>
+
     <div class="box-shock">
-        <div class="bica">
-            <p>
-                @ViewBag.category.Description
-            </p>
-        </div>
-        @if (Model != null)
-        {
-            <div class="rowsp">
-
-                <ul class="category-ul homeproduct nonslider">
-
-                    @foreach (var item in Model)
+        <div class="rowsp">
+            <ul class="category-ul homeproduct nonslider">
+                @if (ViewBag.soLuong > 0)
+                {
+                    foreach (var item in Model)
                     {
                         <li>
                             <div class="absoluteimg">
@@ -118,21 +106,22 @@
                                 <div style="width:0%"></div>
                             </div>
                         </li>
+
                     }
-
-                </ul>
-                <div style="clear: both;"></div>
-                <br />
-                <p>
-                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-                </p>
-
-                @Html.PagedListPager(Model, page => Url.Action("GetProductByCategory",
-                    new { categoryId = @ViewBag.category.CategoryID, page }))
+                }
+            </ul>
+            <div style="align-content: center;">
+                @Html.PagedListPager(Model, page => Url.Action("Search_Results",
+                    new
+                    {
+                        page,
+                        content = @ViewBag.SearchContent
+              }))
             </div>
-        }
+        </div>
     </div>
 </div>
+
 <div class="col-right">
     <div class="sidebar sidebar-right">
         <div class="widget widget-seller">
@@ -140,28 +129,18 @@
             <div class="widget widget-seller">
                 <div class="widget-content">
                     <ul class="category-ul-rght">
-                        @foreach (var item in ViewBag.listCategoryBase)
+                        @foreach (var categoryBase in ViewBag.listCategoryBase)
                         {
                             <li class="has-sub-cat">
-                                <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { item.CategoryBaseID})" title="@item.CategoryBaseName">
-                                    @item.CategoryBaseName
-                                </a>
-                                <ul style="display: none;">
-                                    @foreach (var categoryItem in item.Categories)
-                                    {
-                                        <li>
-                                            <a href="https://dongoaichinhhang.com/danh-muc/dieu-tri-mun-da-mun.html" title="@categoryItem.CategoryName">@categoryItem.CategoryName</a>
-                                        </li>
-                                    }
-                                </ul>
+                                <a href="@Url.Action("GetProductsByCategoryBase", "CategoryBases", new { categoryBase.CategoryBaseID})"
+                                   title="@categoryBase.CategoryBaseName">@categoryBase.CategoryBaseName</a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
             <div class="clr"></div>
-            <div style="height: 15px;"></div>
+            <div style="height:15px"></div>
             <div class="widget widget-seller">
                 <h4 class="seller_title radius">Thương hiệu hàng đầu</h4>
                 <div class="widget-content">
@@ -213,32 +192,11 @@
                                 </a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
             <div class="clr"></div>
-            <div style="height: 15px;"></div>
+            <div style="height:15px"></div>
         </div>
     </div>
 </div>
-<div class="col-left"></div>
-
-@*@{
-        Html.RenderAction("Index", "CartItem");
-    }*@
-<script>
-
-       @* document.querySelector("body").classList.add('cart-opened');*@
-       @* function showCart(a,b) {
-
-        }*@
-        //<!--$(document).ready(function () {
-        //    $(".prolink").click(function (e) {
-        //        event.preventDefault();-->
-        //        $("body").addClass("cart-opened");
-        //        <!--$("cart-sidebar").addClass("none");
-        //    })
-        //})-->
-</script>
-

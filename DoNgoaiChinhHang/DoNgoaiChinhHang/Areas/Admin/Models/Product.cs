@@ -1,4 +1,4 @@
-﻿namespace DoNgoaiChinhHang.Areas.Admin.Models
+namespace DoNgoaiChinhHang.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
@@ -25,8 +25,6 @@
         [StringLength(200)]
         public string ProductName { get; set; }
 
-        
-        //[Required(ErrorMessage = "Bạn chưa chọn ảnh mô tả sản phẩm!!!!")]
         [StringLength(200)]
         public string Image { get; set; }
 
@@ -57,6 +55,10 @@
 
         [StringLength(1000)]
         public string Description { get; set; }
+
+        public int? AvailableQuantity { get; set; }
+
+        public int? QuantitySold { get; set; }
 
         public virtual Category Category { get; set; }
 

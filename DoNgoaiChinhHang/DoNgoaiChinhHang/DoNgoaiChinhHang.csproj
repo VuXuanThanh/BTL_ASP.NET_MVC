@@ -180,12 +180,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    
-    
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\ImgProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1480,15 +1480,20 @@
     <Content Include="Areas\Admin\Views\Products\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
-    <Content Include="wwwroot\ProductsImages\3\IMG_2825.JPG" />
-    <Content Include="wwwroot\ProductsImages\3\IMG_2826 %282%29.JPG" />
-    <Content Include="wwwroot\ProductsImages\3\IMG_2826 %283%29.JPG" />
-    <Content Include="wwwroot\ProductsImages\3\IMG_2826.JPG" />
-    <Content Include="wwwroot\ProductsImages\3\IMG_2827.JPG" />
-    <Content Include="wwwroot\ProductsImages\banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg" />
-    <Content Include="wwwroot\ProductsImages\bo-khop-kirkland-glucosamine-chondroitin-hang-nhap-my-220-vien.jpg" />
-    <Content Include="wwwroot\ProductsImages\bo-xuong-khop-glucosamine-hcl-1500mg-chondroitin-msm-puritans-pride-240-vien.jpg" />
-    <Content Include="wwwroot\ProductsImages\chai-xit-stud100-chong-xuat-tinh-som-tang-do-cuong-cung-anh-quoc.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP1\kem-chong-nang-transino-whitening-day-protector-40ml-duong-trang-da-nhat-ban.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP1\kem-duong-trang-da-3w-clinic-collagen-whitening-cream.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP1\kem-duong-trang-da-cao-cap-7-day-whitening-program-glutathione-700-v-cream.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP1\kem-tri-nam-tan-nhang-transino-whitening-essence-ex-30g-nhat-ban.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP1\kem-tri-nam-trang-da-ban-dem-sakura-whitening-night-cream-30g-nhat-ban.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP1\kem-tri-nam-transino-whitening-essence-ex-50g-nhat-ban.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP2\bo-khop-kirkland-glucosamine-chondroitin-hang-nhap-my-220-vien.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP2\bo-xuong-khop-glucosamine-hcl-1500mg-chondroitin-msm-puritans-pride-240-vien.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP2\chai-xit-stud100-chong-xuat-tinh-som-tang-do-cuong-cung-anh-quoc.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP3\fish-collagen-hanamai-nhat-bo-sung-collagen-ca-30-goi.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP3\gel-boi-tron-cao-cap-durex-play-classic-50ml-anh.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP3\gel-titan-gold-nga-tang-kich-thuoc-duong-vat-keo-dai-thoi-gian-quan-he.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP3\giam-can-giam-mo-bung-3.jpg" />
+    <Content Include="wwwroot\ProductsImages\SP3\glucosamine-1500mg-msm-puritans-pride-cua-my-180-vien-bo-xuong-khop.jpg" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -1519,12 +1524,10 @@
     <Content Include="Views\CategoryBases\GetProductsByCategoryBase.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-
     <Content Include="Views\Orders\OrderUsers.cshtml" />
-
     <Content Include="Views\Account\LoginUser.cshtml" />
     <Content Include="Views\Products\Detail.cshtml" />
-
+    <Content Include="Views\Search\Search_Results.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1543,7 +1546,6 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
-  
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
