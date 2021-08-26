@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
 
 <link rel="stylesheet" href="~/assets/css/cart.min.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="./assets/css/menu.css" type="text/css" media="screen" />
@@ -147,56 +147,97 @@
             <img data-src="/Images/giohang.png" class="lazy" alt="Giỏ hàng dongoaichinhhang" src="./assets/img/giohang.png" style="display: inline; opacity: 1;" />
         </div>
 
-        <div class="oqfr">
-            <div id="pFormOrder" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;btOrder&#39;)">
-                <div style="max-width: 600px;">
-                    <div class="titleodr">THÔNG TIN ĐƠN HÀNG</div>
-                    <div class="box--form">
-                        <div class="iUs"></div>
-                        <input name="txtName" type="text" value="" id="txtName" class="form-control" placeholder="Họ và Tên (*)" />
+        @if (Session["IDUrSS"] != null)
+        {
+            <div class="oqfr">
+                <div id="pFormOrder" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;btOrder&#39;)">
+                    <div style="max-width: 600px;">
+                        <div class="titleodr">THÔNG TIN ĐƠN HÀNG</div>
 
-                        <div class="iPo"></div>
-                        <input name="txtPhone" type="tel" value="" id="txtPhone" class="form-control" placeholder="Điện thoại (*)" />
 
-                        <div class="iAd"></div>
-                        <input name="txtAddress" type="text" id="txtAddress" class="form-control" placeholder="Địa chỉ" />
-                        <div class="iNo"></div>
-                        <textarea name="txtContent" rows="2" cols="20" id="txtContent" class="form-control" placeholder="Ghi chú đơn hàng" style="height: 93px;"></textarea>
-                        <div id="UpdatePanel2">
-                            <div>
-                                <span style="color: Brown; font-weight: bold;">
-                                    <input id="cbHidePro" type="checkbox" name="cbHidePro" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;cbHidePro\&#39;,\&#39;\&#39;)&#39;, 0)" />
-                                    <label for="cbHidePro"> Yêu cầu Che Giấu Tên Sản Phẩm !</label>
-                                </span>
-                                <br />
+                        <form action="@Url.Action("OrderUsers", "Orders")" method="post" name="formOrder">
 
-                                <div class="clr"></div>
 
-                                <div style="margin: 15px 0 0 0; color: red;">Phương thức thanh toán:<br /></div>
-                                <div style="margin: 10px 0 20px 30px; line-height: 23px;">
-                                    <input id="rdbCOD" type="radio" name="thanhtoan" value="rdbCOD" checked="checked" /><label for="rdbCOD"> COD nhận hàng và thanh toán tại nhà</label><br />
-                                    <input id="rdbCK" type="radio" name="thanhtoan" value="rdbCK" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;rdbCK\&#39;,\&#39;\&#39;)&#39;, 0)" />
-                                    <label for="rdbCK"> Chuyển khoản ngân hàng</label><br />
+                            <div class="iUs"></div>
+
+                            <input name="CustomerName" type="text" value="@Session["UrNameSS"]" id="txtName" class="form-control" placeholder="Họ và Tên (*)" />
+
+                            <div class="iPo"></div>
+                            <input name="" type="tel" value="@Session["PhoneSS"]" id="txtPhone" class="form-control" placeholder="Điện thoại (*)" />
+
+                            <div class="iAd"></div>
+                            <input name="Address" type="text" value="@Session["AddrSS"]" id="txtAddress" class="form-control" placeholder="Địa chỉ" />
+                            <div class="iNo"></div>
+                            <textarea name="txtContent" rows="2" cols="20" id="txtContent" class="form-control" placeholder="Ghi chú đơn hàng" style="height: 93px;"></textarea>
+                            <div id="UpdatePanel2">
+                                <div>
+                                    <span style="color: Brown; font-weight: bold;">
+                                        <input id="cbHidePro" type="checkbox" name="Note" value ="true" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;cbHidePro\&#39;,\&#39;\&#39;)&#39;, 0)" />
+                                        <label for="cbHidePro" value="True"> Yêu cầu Che Giấu Tên Sản Phẩm !</label>
+                                    </span>
+                                    <br />
+
+                                    <div class="clr"></div>
+
+                                    <div style="margin: 15px 0 0 0; color: red;">Phương thức thanh toán:<br /></div>
+                                    <div style="margin: 10px 0 20px 30px; line-height: 23px;">
+                                        <input id="rdbCOD" type="radio" name="PaymentType" value="true" checked="checked" />
+                                        <label for="rdbCOD"> COD nhận hàng và thanh toán tại nhà</label><br />
+                                        <input id="rdbCK" type="radio" name="PaymentType" value="false" onclick="" />
+                                        <label for="rdbCK"> Chuyển khoản ngân hàng</label><br />
+                                    </div>
+                                    <div id="divAlertTT" style="margin: 5px 0 10px 30px; border-left: 1px solid #999; padding-left: 10px; display: none">
+                                        Ngân hàng TMCP Ngoại thương VN (<b>Vietcombank</b>)<br />
+                                        Số tk: <b>033 100 3735 117</b><br />
+                                        Chủ tk: <b>TRAN QUOC TUAN</b><br />
+                                        Chi nhánh: <b>Tp Hồ Chí Minh</b>
+                                    </div>
+
                                 </div>
                             </div>
-                        </div>
 
-                        <input id="ctl04" type="checkbox" name="ctl04" checked="checked" /><label for="ctl04"> Tôi đồng ý với các chính sách và quy định mua hàng tại website</label><br />
-                        <br />
-                        <div>
-                            <div><span id="lblThongBao" style="color: #ff0033; font-weight: bold;"></span></div>
-                            <div><span id="lbErrorMsg" style="color: Red;"></span></div>
-                            <input type="submit" name="btOrder" value=" Đặt hàng " id="btOrder" class="btn" style="font-weight: bold;" />
-                        </div>
-                        <iframe src="./assets/img/dnch.html" scrolling="no" style="height: 60px; width: 100%;"></iframe>
+                            <input id="agree" type="checkbox" name="ctl04" required /><label for="ctl04"> Tôi đồng ý với các chính sách và quy định mua hàng tại website</label><br />
+                            <br />
+                            <div>
+                                <div><span id="lblThongBao" style="color: #ff0033; font-weight: bold;"></span></div>
+                                <div><span id="lbErrorMsg" style="color: Red;"></span></div>
+
+
+                                <input type="submit" name="btOrder" value="Đặt hàng " id="btOrder" class="btn btn-order" style="font-weight: bold;" />
+
+
+                            </div>
+                            <iframe src="./assets/img/dnch.html" scrolling="no" style="height: 60px; width: 100%;"></iframe>
+
+
+                        </form>
+
+
+
                     </div>
                 </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <a class="btn btn-default" href="@Url.Action("LoginUser","Account")">Mua hàng</a>
+
+        }
+
+
     </div>
+
     <div class="clr"></div>
 </div>
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script>
+    document.body.addEventListener('change', function (e) {
+        let target = e.target;
+        if (target.id == 'rdbCOD') {
+            document.getElementById('divAlertTT').style.display = 'none';
+        }
+        if (target.id == 'rdbCK') {
+            document.getElementById('divAlertTT').style.display = 'block';
 
+        }
+    });
 </script>
