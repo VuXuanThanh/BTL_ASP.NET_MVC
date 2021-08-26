@@ -84,13 +84,22 @@
                         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <div class="field" align="left">
-                                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file", @multiple = "multiple", @name = "files", @id = "files",@accept="image/jpeg" } })
+                                <h3 style="text-align:center">Chọn ảnh mô tả sản phẩm của bạn</h3>
+                                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file", @multiple = "multiple", @name = "files", @id = "files", @accept = "image/jpeg" } })
                                 <label for="files" id="label_">
 
                                     <i class="fas fa-cloud-upload-alt"></i>
                                 </label>
-                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger", @id = "Image2" })
+                                @*@Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger", @id = "Image2" })*@
+
+
                             </div>
+                            @if (ViewBag.ImageError != null)
+                            {
+                                <div class="text-danger" id="Image2">
+                                    @ViewBag.ImageError
+                                </div>
+                            }
                         </div>
                     </div>
 

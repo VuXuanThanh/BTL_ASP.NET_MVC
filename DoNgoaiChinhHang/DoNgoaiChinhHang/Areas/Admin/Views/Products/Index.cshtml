@@ -72,7 +72,8 @@
                                     Sắp xếp
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="@Url.Action("Index", "Products", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })">Theo tên</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Products", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })"> Theo tên </a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Products", new { sortOrder = ViewBag.SapTheoGia, currentFilter = ViewBag.CurrentFilter })"> Theo giá </a>
 
                                 </div>
                             </div>
@@ -82,7 +83,7 @@
 
                         @using (Html.BeginForm())
                         {<div class="input-group">
-                                <input id="btnaddon2" name="searchString" type="text" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Nhập tên sản phẩm" aria-describedby="btn-addon2">
+                                <input id="btnaddon2" name="searchString" type="text" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Nhập tên hoặc giá sản phẩm" aria-describedby="btn-addon2">
                                 <span class="input-group-btn" id="btn-addon2">
                                     <button type="submit" class="btn btn-info waves-effect waves-light">
                                         Tìm kiếm
@@ -108,37 +109,37 @@
                             </div>
                         </th>
                         <th>
-                            CategoryName
+                            Danh mục
                         </th>
                         <th>
-                            ProductName
+                            Tên SP
                         </th>
                         <th>
-                            Image
+                            Ảnh
                         </th>
                         <th>
-                            Evaluation
+                            Đánh giá
                         </th>
                         <th>
-                            Brand
+                            Nhãn hiệu
                         </th>
                         <th>
                             Orgin
                         </th>
                         <th>
-                            Price
+                            Giá
                         </th>
                         <th>
-                            Benefit
+                            Công dụng
                         </th>
                         <th>
-                            Introduction
+                            Giới thiệu
                         </th>
                         <th>
-                            Element
+                            Thành phần
                         </th>
                         <th>
-                            Tutorial
+                            Hướng dẫn
                         </th>
 
                         <th>
@@ -148,7 +149,7 @@
                             Freeship
                         </th>
                         <th>
-                            Description
+                            Mô tả
                         </th>
                         <th>Thao tác</th>
                     </tr>
@@ -203,7 +204,12 @@
                                 @Html.DisplayFor(modelItem => item.Discount)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Freeship)
+                                @{  
+                                    var fs = item.Freeship == true ? "Có" : "Không";
+                                    @fs
+                                }
+
+
                             </td>
                             <td>
                                 <div class="value" data-toggle="tooltip" data-placement="left" title="@item.Description">@item.Description</div>

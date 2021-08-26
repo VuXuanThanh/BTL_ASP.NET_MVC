@@ -61,6 +61,11 @@
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -140,6 +145,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -151,9 +157,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Chart\DataPoint.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryBasesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Helper\FilterAdmin.cs" />
     <Compile Include="Areas\Admin\Helper\MyFilter.cs" />
@@ -174,6 +183,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    
+    
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1461,6 +1472,24 @@
     <Content Include="assets\js\vt%285%29" />
     <Content Include="assets\js\vt%286%29" />
     <Content Include="assets\js\vt%287%29" />
+    <Content Include="Areas\Admin\Views\Accounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="wwwroot\ProductsImages\3\IMG_2825.JPG" />
+    <Content Include="wwwroot\ProductsImages\3\IMG_2826 %282%29.JPG" />
+    <Content Include="wwwroot\ProductsImages\3\IMG_2826 %283%29.JPG" />
+    <Content Include="wwwroot\ProductsImages\3\IMG_2826.JPG" />
+    <Content Include="wwwroot\ProductsImages\3\IMG_2827.JPG" />
+    <Content Include="wwwroot\ProductsImages\banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg" />
+    <Content Include="wwwroot\ProductsImages\bo-khop-kirkland-glucosamine-chondroitin-hang-nhap-my-220-vien.jpg" />
+    <Content Include="wwwroot\ProductsImages\bo-xuong-khop-glucosamine-hcl-1500mg-chondroitin-msm-puritans-pride-240-vien.jpg" />
+    <Content Include="wwwroot\ProductsImages\chai-xit-stud100-chong-xuat-tinh-som-tang-do-cuong-cung-anh-quoc.jpg" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1490,14 +1519,16 @@
     <Content Include="Views\CategoryBases\GetProductsByCategoryBase.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Products\Detail.cshtml" />
-    <Content Include="Views\Account\LoginUser.cshtml" />
+
     <Content Include="Views\Orders\OrderUsers.cshtml" />
+
+    <Content Include="Views\Account\LoginUser.cshtml" />
+    <Content Include="Views\Products\Detail.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="wwwroot\ProductsImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1512,6 +1543,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

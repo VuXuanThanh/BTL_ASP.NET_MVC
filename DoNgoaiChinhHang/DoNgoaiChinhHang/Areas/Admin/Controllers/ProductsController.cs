@@ -5,11 +5,9 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using DoNgoaiChinhHang.Areas.Admin.Models;
 using PagedList;
-using System.IO;
 using DoNgoaiChinhHang.Areas.Admin.Helper;
 
 namespace DoNgoaiChinhHang.Areas.Admin.Controllers
@@ -19,13 +17,44 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
     {
         private DBContext db = new DBContext();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string searchString, string currentFilter)
         {
-            var products = db.Products.Include(p => p.Category);
-            products = products.OrderBy(s => s.ProductID);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.SapTheoGia = String.IsNullOrEmpty(sortOrder) ? "gia_desc" : "gia";
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            var list = db.Products.Include(p => p.Category);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                list = list.Where(s => s.ProductName.Contains(searchString) || s.Price.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "ten_desc":
+                    list = list.OrderByDescending(s => s.ProductName);
+                    break;
+                case "gia_desc":
+                    list = list.OrderByDescending(s => s.Price);
+                    break;
+                case "gia":
+                    list = list.OrderBy(s => s.Price);
+                    break;
+                default:
+                    list = list.OrderBy(s => s.ProductName);
+                    break;
+            }
             int pageSize = 2;
             int pageNumber = (page ?? 1);
-            return View(products.ToPagedList(pageNumber, pageSize));
+            return View(list.ToPagedList(pageNumber, pageSize));
+            
         }
 
 
@@ -51,30 +80,50 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                     {
                         Directory.CreateDirectory(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID));
                     }
-                    for (int i = 0; i < files.Count; i++)
+                    if(files.Count>=1 && files[0].FileName != "")
                     {
-                        if (files[i] != null)
-                        {
-                            var InputFilename = Path.GetFileName(files[i].FileName);
-                            var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
-                            files[i].SaveAs(ServerSavePath);
+                       
+                            for (int i = 0; i < files.Count; i++)
+                            {
+                                if (files[i] != null)
+                                {
+                                    var InputFilename = Path.GetFileName(files[i].FileName);
 
-                        }
-                        else
-                        {
-                            ViewBag.Err = "k vào để lưu ảnh";
-                        }
+                                    var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
+                                    files[i].SaveAs(ServerSavePath);
+
+                                }
+                                else
+                                {
+                                    ViewBag.Err = "k vào để lưu ảnh";
+                                }
+                            }
+                            product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
+                            db.Products.Add(product);
+                            db.SaveChanges();
+
+                      
+
                     }
-                    product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
-                    db.Products.Add(product);
-                    db.SaveChanges();
+                    else
+                    {
+                        ViewBag.ImageError = "Bạn chưa chọn ảnh mô tả sản phẩm!!!!";
+                        return Create();
+                    }
+                }
+                else
+                {
+                    ViewBag.ImageError = "Bạn chưa chọn ảnh mô tả sản phẩm!!!!";
+                    return Create();
                 }
             }
             catch
             {
                 ViewBag.Err = "Thêm mới thất bại";
-            }
                 
+                return RedirectToAction("Create");
+            }
+            
             return RedirectToAction("Create");
         }
 
@@ -125,6 +174,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description")] Product product)
         {
+          
             if (ModelState.IsValid)
             {
                 var files = Request.Files;
@@ -139,8 +189,12 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                         if (files[i] != null)
                         {
                             var InputFilename = Path.GetFileName(files[i].FileName);
-                            var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID.Trim() + "/") + InputFilename);
-                            files[i].SaveAs(ServerSavePath);
+                            if (InputFilename != "")
+                            {
+                                var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID.Trim() + "/") + InputFilename);
+                                files[i].SaveAs(ServerSavePath);
+                            }
+                            
 
                         }
                         else

@@ -5,6 +5,20 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .card-header-text{
+        text-align: center;
+        margin-top: 20px;
+        font-weight: 700;
+        text-transform:capitalize;
+        font-size:20pt;
+        margin-bottom:0px
+    }
+    .qr{
+        margin-left: 30px;
+    }
+
+</style>
 
 <div class="row">
     <div class="col-sm-12 p-0">
@@ -29,130 +43,138 @@
 <div class="row">
     <div class="col-sm-12 p0">
         <div class="card">
-            <div class="card-header">
-                <h5 class="card-header-text">Chi tiết đơn hàng</h5>
-            </div>
-            <div class="card-block">
+            <div id="printf">
+                <div align="center">
+                    <h2 class="card-header-text">Đơn hàng</h2>
 
-                <div class="col-sm-12 p-20 z-depth-top-0 waves-effect">
-                    <div class="col-sm-6 ">
-                        <div>
-                            @Html.DisplayNameFor(model => model.OrderID)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.OrderID)
-                        </div>
-                        <div>
-                            @Html.DisplayNameFor(model => model.Account.Phone)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Account.Phone)
-                        </div>
-
-
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.Note)
-                        </div>
-                        <div>
-                            @Html.DisplayFor(model => model.Note)
-                        </div>
-                        <div>
-                            @Html.DisplayNameFor(model => model.DateOrder)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.DateOrder)
-                        </div>
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.PaymentType)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.PaymentType)
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div>
-                            @Html.DisplayNameFor(model => model.Sum)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Sum)
-                        </div>
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.Status)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Status)
-                        </div>
-
-                        <div>
-                            @Html.DisplayNameFor(model => model.Discount)
-                        </div>
-
-                        <div>
-                            @Html.DisplayFor(model => model.Discount)
-                        </div>
-
-                    </div>
                 </div>
-
-                <div class="col-sm-12">
-                    <hr />
-                    <h5 class="card-header-text">Danh sách sản phẩm</h5>
-                    <table class="table">
+                <div class="card-block">
+                    <table class="cus-tb">
                         <tr>
-                            <th>
-                                ProductID
-                            </th>
-                            <th>
-                                ProductName
-                            </th>
-                            <th>
-                                Quantity
-                            </th>
-                            <th>
-                                Price
-                            </th>
-
+                            <td>Số hóa đơn:</td>
+                            <td width="30%"><span>@Html.DisplayFor(model => model.OrderID)</span></td>
+                            <td>Họ tên: </td>
+                            <td width="30%"><span>@Html.DisplayFor(model => model.Account.CustomerName)</span></td>
                         </tr>
-                        <tbody id="tbody">
-                            @foreach (var item in Model.OrderDetails.Where(s => s.OrderID == Model.OrderID))
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProductID)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Product.ProductName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Quantity)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-
-                                </tr>
-                            }
-                        </tbody>
+                        <tr>
+                            <td>Điện thoại:</td>
+                            <td width="30%"><span>@Html.DisplayFor(model => model.Account.Phone)</span></td>
+                            <td>Ghi chú: </td>
+                            <td width="30%">
+                                <span>
+                                    @{
+                                        var ct = Model.Note == true ? "Che tên sản phẩm" : "Không có";
+                                        @ct
+                                    }
+                                </span>
+                        </tr>
+                        <tr>
+                            <td>Ngày đặt:</td>
+                            <td width="30%"><span>@Html.DisplayFor(model => model.DateOrder)</span></td>
+                            <td>Phương thức thanh toán: </td>
+                            <td width="30%">
+                                <span>
+                                    @{
+                                        var pt = Model.PaymentType == true ? "Thanh toán khi nhận hàng" : "Chuyển khoản ngân hàng";
+                                        @pt
+                                    }
+                                </span>
+                        </tr>
+                        <tr>
+                            <td>Trạng thái:</td>
+                            <td width="30%">
+                                <span>
+                                    @{
+                                        var tt = Model.Status == true ? "Đã nhận hàng" : "Chờ nhận hàng";
+                                        @tt
+                                    }
+                                </span>
+                            <td>Mã giảm giá: </td>
+                            <td width="30%"><span>@Html.DisplayFor(model => model.Discount)</span></td>
+                        </tr>
 
                     </table>
-                </div>
-                <div>
-                    @Html.ActionLink("Back to List", "Index")
-                </div>
 
 
+                    <div class="col-sm-12">
+                        <div class="qr" style="width:150px;height:150px">
+                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(ViewBag.QRcode))" style="width:100%;height:100%" />
+                        </div>
+                        <div align="center">
+                            <h4 class="dssp">Danh sách sản phẩm</h4>
+                        </div>
+
+                        <table class="table" style="box-shadow: -8px 8px 49px -10px burlywood;">
+                            <tr>
+                                <th>
+                                    Mã sản phẩm
+                                </th>
+                                <th>
+                                    Tên sản phẩm
+                                </th>
+                                <th>
+                                    Số lượng
+                                </th>
+                                <th>
+                                    Đơn giá
+                                </th>
+
+                            </tr>
+                            <tbody id="tbody">
+                                @foreach (var item in Model.OrderDetails.Where(s => s.OrderID == Model.OrderID))
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductID)
+                                        </td>
+                                        <td>
+                                            @if (Model.Note == true)
+                                            {
+                                                @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                            }
+                                            else
+                                            {
+                                                var a = "Tên sản phẩm được giữ bí mật";
+                                                @a
+                                            }
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Quantity)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+
+                                    </tr>
+                                }
+                                <tr>
+                                    <td align="right" colspan="3"><b>Tổng tiền</b></td>
+                                    <td><b>@Html.DisplayFor(model => model.Sum) $</b></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
             </div>
+
+            <div class="card-footer">
+                <button class="btn btn-info" type="button" onclick="printJS({
+            printable: 'printf', type: 'html',
+            css: ['https://localhost:44378/assets/Admin/plugins/bootstrap/css/bootstrap.min.css',
+                'https://localhost:44378/assets/Admin/custom/cus.css']
+        })">
+                    Xuất hóa đơn
+                </button>
+                @Html.ActionLink("Quay lại", "Index")
+            </div>
+            
+
         </div>
+                      
+
 
     </div>
 </div>

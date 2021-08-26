@@ -3,57 +3,152 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<script>
+    window.onload = function () {
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="main-header">
-            <h4>Dashboard</h4>
-        </div>
-    </div>
-    <!-- 4-blocks row start -->
-    <div class="row dashboard-header">
-        <div class="col-lg-3 col-md-6">
-            <div class="card dashboard-product">
-                <span>Products</span>
-                <h2 class="dashboard-total-products">4500</h2>
-                <span class="label label-warning">Sales</span>Arriving Today
-                <div class="side-box">
-                    <i class="ti-signal text-warning-color"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card dashboard-product">
-                <span>Products</span>
-                <h2 class="dashboard-total-products">37,500</h2>
-                <span class="label label-primary">Views</span>View Today
-                <div class="side-box ">
-                    <i class="ti-gift text-primary-color"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card dashboard-product">
-                <span>Products</span>
-                <h2 class="dashboard-total-products">$<span>30,780</span></h2>
-                <span class="label label-success">Sales</span>Reviews
-                <div class="side-box">
-                    <i class="ti-direction-alt text-success-color"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card dashboard-product">
-                <span>Products</span>
-                <h2 class="dashboard-total-products">$<span>30,780</span></h2>
-                <span class="label label-danger">Sales</span>Reviews
-                <div class="side-box">
-                    <i class="ti-rocket text-danger-color"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 4-blocks row end -->
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Doanh thu năm "+@ViewBag.nam
+            },
+            axisX: {
+                valueFormatString: "DD MMM"
+            },
+            axisY: {
+                title: "Doanh số (USD)",
+                prefix: "$"
+            },
+            data: [{
+                type: "spline",
+                xValueType: "dateTime",
+                xValueFormatString: "DD MMM",
+                yValueFormatString: "$#,###",
+                dataPoints: @Html.Raw(ViewBag.DataPoints)
+	    }]
+        });
 
+        @*var chart = new CanvasJS.Chart("chartContainer", {
+	        animationEnabled: true,
+	        theme: "light2", // "light1", "light2", "dark1", "dark2"
+	        title: {
+		        text: "Doanh thu năm "+@ViewBag.nam
+	        },
+	        axisY: {
+		        title: "No. of Employees"
+	        },
+	        data: [{
+		        type: "column",
+		        dataPoints: @Html.Raw(ViewBag.DataPoints)
+	        }]
+        });*@
+
+
+        chart.render();
+
+    }
+</script>
+
+<div class="row">
+    <div class="col-sm-12 p0">
+        <div class="card" style="margin-top: 15px">
+
+            <div class="card-block">
+                <ul class="nav nav-tabs md-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#home3" role="tab">Tổng quan</a>
+                        <div class="slide" style="width:100px"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#profile3" role="tab">Thống kê</a>
+                        <div class="slide" style="width:100px"></div>
+
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+
+                    <div class="tab-pane" id="home3" role="tabpanel">
+                        <div class="row dashboard-header">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card dashboard-product">
+                                    <span>Tổng số sản phẩm</span>
+                                    <h2 class="dashboard-total-products">@ViewBag.CountPro</h2>
+                                    <span class="label label-primary">Views</span>View Today
+                                    <div class="side-box">
+                                        <i class="ti-signal text-warning-color"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card dashboard-product">
+                                    <span>Tổng số đơn hàng</span>
+                                    <h2 class="dashboard-total-products">@ViewBag.CountOd</h2>
+                                    <span class="label label-primary">Views</span>View Today
+                                    <div class="side-box ">
+                                        <i class="ti-gift text-primary-color"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card dashboard-product">
+                                    <span>Tổng doanh thu</span>
+                                    <h2 class="dashboard-total-products">$<span>@ViewBag.doanhthu</span></h2>
+                                    <span class="label label-success">Sales</span>Reviews
+                                    <div class="side-box">
+                                        <i class="ti-direction-alt text-success-color"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card dashboard-product">
+                                    <span>Tổng số người dùng</span>
+                                    <h2 class="dashboard-total-products"><span>@ViewBag.CountUs</span></h2>
+                                    <span class="label label-success">Sales</span>Reviews
+                                    <div class="side-box">
+                                        <i class="ti-direction-alt text-success-color"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="profile3" role="tabpanel">
+                        <div class="col-sm-10"></div>
+                        <div class="col-sm-2">
+                            <label for="exampleSelect1" class="form-control-label">Chọn năm</label>
+                            <select class="form-control" id="exampleSelect1" onchange="theoNam(event)">
+                                @for (int i = 1990; i <= 2030; i++)
+                                {
+                                    if (i == ViewBag.nam)
+                                    {
+                                        <option selected value="@i">@i</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+
+                                }
+                            </select>
+
+                        </div>
+                        <div class="col-sm-12">
+                            <div id="chartContainer" style="height: 444px; width: 100%;"></div>
+                            <script src="~/assets/Admin/custom/canvasjs.min.js"></script>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
 
+<script>
+    function theoNam(event) {
+        location.href = "/Admin/Home?nam=" + event.target.value
+    }
+</script>

@@ -44,11 +44,24 @@
                                     </td>
                                     <td align="center">
                                         @{
-                                            string ImgPath = "~/assets/img/" + Model[i].Product.Image;
+                                            //string ImgPath = "~/assets/img/" + Model[i].Product.Image;
+                                            var ID = Model[i].Product.ProductID;
+                                            var files = Directory.GetFiles(Server.MapPath(Model[i].Product.Image));
+
+
+                                            string ImgPathFirst = files[0];
+                                            String[] imgSplit = ImgPathFirst.Split('\\');
+                                            int num_stringSplited = imgSplit.Length;
+                                            string ImagePath = imgSplit[num_stringSplited - 4] +"/"
+                                                + imgSplit[num_stringSplited - 3] +"/"
+                                                + imgSplit[num_stringSplited - 2] +"/"
+                                                + imgSplit[num_stringSplited - 1];
+
+
 
                                         }
                                         <a href="/">
-                                            <img src="@Url.Content(ImgPath)" class="odrimgcol" />
+                                            <img src="@Url.Content("~/"+ImagePath)" class="odrimgcol" />
                                         </a>
                                     </td>
                                     <td align="left">
@@ -144,7 +157,7 @@
     <div class="clr"></div>
     <div class="clr">
         <div class="oqfl">
-            <img data-src="/Images/giohang.png" class="lazy" alt="Giỏ hàng dongoaichinhhang" src="./assets/img/giohang.png" style="display: inline; opacity: 1;" />
+            <img data-src="/Images/giohang.png" class="lazy" alt="Giỏ hàng dongoaichinhhang" src="~/assets/img/giohang.png" style="display: inline; opacity: 1;" />
         </div>
 
         @if (Session["IDUrSS"] != null)

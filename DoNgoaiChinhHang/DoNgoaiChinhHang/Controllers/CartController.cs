@@ -27,7 +27,7 @@ namespace DoNgoaiChinhHang.Controllers
             }
             foreach (var item in list)
             {
-                sum += item.Product.Price * item.Quanlity;
+                sum += (float) item.Product.Price * item.Quanlity;
             }
             ViewBag.Sum = sum;
             /*            return Json(list, JsonRequestBehavior.AllowGet);
