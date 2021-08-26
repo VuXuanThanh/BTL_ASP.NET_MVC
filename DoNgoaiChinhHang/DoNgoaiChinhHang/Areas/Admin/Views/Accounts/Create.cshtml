@@ -1,7 +1,7 @@
 ﻿@model DoNgoaiChinhHang.Areas.Admin.Models.Account
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Tạo tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -44,7 +44,7 @@
                     
 
                     <div class="form-group row">
-                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "form-control-label col-md-2" })
+                        <label class="form-control-label col-md-2">Số điện thoại</label>
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger", @id = "Phone2" })
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="form-group row">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-control-label col-md-2" })
+                        <label class="form-control-label col-md-2">Email</label>
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @id = "Email2" })
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="form-group row">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-control-label col-md-2" })
+                        <label class="form-control-label col-md-2">Mật khẩu</label>
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", @id = "Password2" })
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="form-group row">
-                        @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "form-control-label col-md-2" })
+                        <label class="form-control-label col-md-2">Họ và tên</label>
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger", @id = "CustomerName2" })
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="form-group row">
-                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-control-label col-md-2" })
+                        <label class="form-control-label col-md-2">Địa chỉ</label>
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @id = "Address2" })
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="form-group row">
-                        @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "form-control-label col-md-2" })
+                        <label class="form-control-label col-md-2">Quản trị viên</label>
                         <div class="col-md-10">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.IsAdmin, new { htmlAttributes = new { @class = "form-control" } })
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="form-group row">
-                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-control-label col-md-2" })
+                        <label class="form-control-label col-md-2">Trạng thái</label>
                         <div class="col-md-10">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })

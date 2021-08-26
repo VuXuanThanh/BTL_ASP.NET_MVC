@@ -36,6 +36,13 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.Account)
+                .HasForeignKey(e => e.AccountID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Account>()
+                .HasMany(e => e.Orders1)
+                .WithRequired(e => e.Account1)
+                .HasForeignKey(e => e.AccountID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Category>()

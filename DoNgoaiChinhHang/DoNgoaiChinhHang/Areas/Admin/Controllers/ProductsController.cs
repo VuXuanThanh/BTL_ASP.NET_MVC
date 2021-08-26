@@ -68,7 +68,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description, AvailableQuantity, QuantitySold")] Product product)
         {
 
             try
@@ -99,6 +99,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                                 }
                             }
                             product.Image = "~/wwwroot/ProductsImages/" + product.ProductID;
+                            product.QuantitySold = 0;
                             db.Products.Add(product);
                             db.SaveChanges();
 
@@ -172,7 +173,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,Image,Evaluation,Brand,Orgin,Price,Benefit,Introduction,Element,Tutorial,Discount,Freeship,Description, AvailableQuantity, QuantitySold")] Product product)
         {
           
             if (ModelState.IsValid)

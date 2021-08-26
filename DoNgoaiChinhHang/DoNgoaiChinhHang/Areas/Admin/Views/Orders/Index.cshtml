@@ -3,7 +3,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hóa đơn";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -117,7 +117,7 @@
                                 @Html.DisplayFor(modelItem => item.Account.Phone)
                             </td>
                             <td>@{ 
-                                var ct = item.Note == true ? "Có" : "Không";
+                                var ct = item.Note != true ? "Có" : "Không";
                                 @ct
                             }
                             </td>

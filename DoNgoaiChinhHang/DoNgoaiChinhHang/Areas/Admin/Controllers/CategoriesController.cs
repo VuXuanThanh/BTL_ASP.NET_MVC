@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -120,6 +121,19 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
             }
             ViewBag.CategoryBaseID = new SelectList(db.CategoryBases, "CategoryBaseID", "CategoryBaseName", category.CategoryBaseID);
             return View(category);
+        }
+
+        public JsonResult UploadFile()
+        {
+            var files = Request.Files;
+            if (files.Count > 0)
+            {
+                var InputFilename = Path.GetFileName(files[0].FileName);
+                var ServerSavePath = Path.Combine(Server.MapPath("~/assets/img/" + InputFilename));
+                files[0].SaveAs(ServerSavePath);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+
         }
 
 

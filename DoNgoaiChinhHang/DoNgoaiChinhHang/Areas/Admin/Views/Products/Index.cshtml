@@ -3,7 +3,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,7 +16,7 @@
     .value {
         overflow: hidden;
         text-overflow: ellipsis;
-        height: 200px;
+        max-height: 200px;
     }
     .tooltip-inner {
         max-width: 800px;
@@ -112,6 +112,9 @@
                             Danh mục
                         </th>
                         <th>
+                            Mã SP
+                        </th>
+                        <th>
                             Tên SP
                         </th>
                         <th>
@@ -124,7 +127,7 @@
                             Nhãn hiệu
                         </th>
                         <th>
-                            Orgin
+                            Xuất xứ
                         </th>
                         <th>
                             Giá
@@ -143,13 +146,19 @@
                         </th>
 
                         <th>
-                            Discount
+                            Giảm giá
                         </th>
                         <th>
                             Freeship
                         </th>
                         <th>
                             Mô tả
+                        </th>
+                        <th>
+                            Còn
+                        </th>
+                        <th>
+                            Đã bán
                         </th>
                         <th>Thao tác</th>
                     </tr>
@@ -169,6 +178,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductID)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.ProductName)
@@ -204,7 +216,7 @@
                                 @Html.DisplayFor(modelItem => item.Discount)
                             </td>
                             <td>
-                                @{  
+                                @{
                                     var fs = item.Freeship == true ? "Có" : "Không";
                                     @fs
                                 }
@@ -215,16 +227,17 @@
                                 <div class="value" data-toggle="tooltip" data-placement="left" title="@item.Description">@item.Description</div>
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.AvailableQuantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.QuantitySold)
+                            </td>
+                            <td>
                                 <a href="/Admin/Products/Edit/@item.ProductID.Trim()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>
+
                         </tr>
-                            <tr>
-                                <td class="col-xl-2 col-lg-3 col-sm-3 col-xs-12">
-                                    <a href="~/assets/Admin/images/light-box/sl1.jpg" data-lightbox="example-set">
-                                        <img src="~/assets/Admin/images/light-box/sl1.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </td>
-                            </tr>    
+                              
                             
                         }
                     </tbody>
