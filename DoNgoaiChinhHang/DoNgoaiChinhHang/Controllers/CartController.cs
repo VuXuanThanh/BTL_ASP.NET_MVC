@@ -2,6 +2,7 @@
 using DoNgoaiChinhHang.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,6 +39,9 @@ namespace DoNgoaiChinhHang.Controllers
         {
             var cart = Session[CartSession];
             var product = db.Products.Where(x => x.ProductID == productID).FirstOrDefault();
+           
+            
+           
             if (cart != null)
             {
                 var list = (List<CartItem>)cart;
@@ -74,6 +78,10 @@ namespace DoNgoaiChinhHang.Controllers
             }
             var list2 = (List<CartItem>)Session[CartSession];
             /*return Json(true,JsonRequestBehavior.AllowGet);*/
+            var files = Directory.EnumerateFiles(Server.MapPath(product.Image))
+                .Select(fn => product.ProductID.Trim() + "/" + Path.GetFileName(fn));
+            string ImgPath = files.First();
+            ViewBag.ImageCart = ImgPath;
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
