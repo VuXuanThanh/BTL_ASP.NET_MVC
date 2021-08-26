@@ -80,25 +80,23 @@
                         <li>
                             <div class="absoluteimg">
                                 <a href="https://dongoaichinhhang.com/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien.html" title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên">
-                                    
 
+                                    @{
+                                        var files = Directory.EnumerateFiles(Server.MapPath(item.Image))
+                                    .Select(fn => item.ProductID.Trim() + "/" + Path.GetFileName(fn));
+                                        string ImgPath = files.First();
+                                    }
 
-                                        @{
-                                            var files = Directory.EnumerateFiles(Server.MapPath(item.Image))
-                                        .Select(fn => item.ProductID.Trim() + "/" + Path.GetFileName(fn));
-                                            string ImgPath = files.First();
-                                        }
-
-                                   
                                     <img src="@Url.Content("~/wwwroot/ProductsImages/"+ImgPath)" alt="@item.ProductName" />
                                 </a>
+                                 
 
                                 <div class="prolink" data-productID="@item.ProductID">
                                     <a href="" onclick="return showCart(50929, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
                                 </div>
                             </div>
                             <h3>
-                                <a href="https://dongoaichinhhang.com/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien.html" title="@item.ProductName">
+                                <a href="@Url.Action("Detail","Products",new { productID=item.ProductID.Trim()})" title="@item.ProductName">
                                     @item.ProductName
                                 </a>
                             </h3>

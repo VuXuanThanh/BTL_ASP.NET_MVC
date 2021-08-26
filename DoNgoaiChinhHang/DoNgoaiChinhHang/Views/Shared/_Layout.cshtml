@@ -440,7 +440,7 @@
     </script>
 
     @*Add items into carts*@
-    <script>
+<script>
         $(document).ready(function () {
             var htmls;
             var urlApi = 'https://localhost:44378/Cart/Show';
@@ -468,7 +468,7 @@
                 $.ajax({
                     type: 'post',
                     data: {
-                        productID: productID,
+                        productID: productID.trim(),
                         quanlity: quanlity
                     },
                     url: "/Cart/AddItem",
@@ -483,7 +483,10 @@
                                         <li>
                                              <figure>
                                                 <a class="cart_list_product_img" href="/thuoc-moc-rau-nakashima-nhat-ban.html">
-                                                    <img src="./assets/img/${item.Product.Image}" alt="anh" class="wo60" />
+                                                      @*@{
+                                                        var imgpath=ViewBag.ImageCart;
+                                                    }*@
+                                                    <img src="~/wwroot/ProductsImages/" alt="anh" class="wo60" />
                                                 </a>
                                               </figure>
                                              <div class="list_content">
@@ -588,7 +591,7 @@
                 }
             });
         })
-    </script>
+</script>
     <style>
         .none {
             display: block;
