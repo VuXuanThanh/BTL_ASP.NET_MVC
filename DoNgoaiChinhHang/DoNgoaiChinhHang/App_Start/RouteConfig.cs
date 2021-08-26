@@ -19,6 +19,13 @@ namespace DoNgoaiChinhHang
                  defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                   new[] { "DoNgoaiChinhHang.Controllers" }
             );
+            routes.MapRoute(
+                name: "Detail",
+                url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Products", action = "Detail", id = UrlParameter.Optional },
+                  new[] { "DoNgoaiChinhHang.Controllers" }
+            );
+
         }
     }
 }
