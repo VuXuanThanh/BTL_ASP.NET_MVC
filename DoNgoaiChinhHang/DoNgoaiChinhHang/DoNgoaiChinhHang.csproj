@@ -178,15 +178,13 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoryBasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108241750594_dbDBContex.cs" />
-    <Compile Include="Migrations\202108241750594_dbDBContex.Designer.cs">
-      <DependentUpon>202108241750594_dbDBContex.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    
+    
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1521,8 +1519,12 @@
     <Content Include="Views\CategoryBases\GetProductsByCategoryBase.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+
+    <Content Include="Views\Orders\OrderUsers.cshtml" />
+
     <Content Include="Views\Account\LoginUser.cshtml" />
     <Content Include="Views\Products\Detail.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1541,11 +1543,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108241750594_dbDBContex.resx">
-      <DependentUpon>202108241750594_dbDBContex.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

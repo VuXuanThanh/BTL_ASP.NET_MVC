@@ -20,6 +20,7 @@ namespace DoNgoaiChinhHang.Controllers
         {
             var cart = Session[CartSession];
             var list = new List<CartItem>();
+            
             float sum = 0;
             if (cart != null)
             {

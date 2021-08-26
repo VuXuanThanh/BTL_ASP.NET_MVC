@@ -72,9 +72,9 @@
     <script src="./assets/js/f(2).txt"></script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-    
 
-    
+
+
 </head>
 
 <body class="">
@@ -133,14 +133,27 @@
                             </aside>
                         </div>
                         <div class="switchboard hmb">
-                            <a href="tel:0983667466">
-                                0983 667 466<span>
-                                    Tư vấn Miễn
-                                    Phí
+                            @if (Session["IDUrSS"] != null)
+                            {
+                            <a href="/">
+                                @Session["UrNameSS"]
+                                <span>
+                                    Hello
                                 </span>
                             </a>
+                            }
+                            else
+                            {
+                                <a href="tel:0363692043">
+                                    0983667466
+                                    <span>
+                                        Tư vấn Miễn
+                                        Phí
+                                    </span>
+                                </a>
+                            }
                         </div>
-                        
+
                     </div>
                 </div>
             </header>
@@ -243,12 +256,25 @@
                             <div class="inner">
                                 <h4>Liên kết</h4>
                                 <ul>
-                                    <li>
-                                        <a href="@Url.Action("LoginUser","Account")" title="Đăng nhập">
-                                            Đăng
-                                            nhập
-                                        </a>
-                                    </li>
+                                    @if (Session["IDUrSS"] == null)
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("LoginUser","Account")" title="Đăng nhập">
+                                                Đăng
+                                                nhập
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("LoginUser","Account")" title="Đăng xuất">
+                                                Đăng
+                                                xuất
+                                            </a>
+                                        </li>
+                                    }
+
                                     <li>
                                         <a href="@Url.Action("Register","Account")" title="Đăng ký">Đăng ký</a>
                                     </li>
@@ -407,7 +433,11 @@
 
 
 
-
+    <script>
+        window.onpopstate = function () {
+            alert("pop!");
+        }
+    </script>
 
     @*Add items into carts*@
 <script>

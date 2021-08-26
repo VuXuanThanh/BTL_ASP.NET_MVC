@@ -1,0 +1,140 @@
+﻿@model IEnumerable<DoNgoaiChinhHang.Areas.Admin.Models.OrderDetail>
+@{
+    ViewBag.Title = "OrderUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["IDUrSS"] == null)
+    {
+        Response.Redirect("/Home/Index");
+    }
+}
+
+<div class="breadcrumb">
+    <ul>
+        <li itemscope="">
+            <a href="" itemprop="url" title="Đồ Ngoại Chính Hãng">
+                <span itemprop="title" class="iH"></span>
+            </a><span>›</span>
+        </li>
+        <li itemscope="">
+            <a href="@Url.Action("OrderUsers","Orders")" itemprop="url"
+               title="Đặt hàng thành công"><span itemprop="title">Đặt hàng thành công</span></a>
+        </li>
+    </ul>
+</div>
+
+<div class="boxct bica" style="margin-bottom:30px">
+    <h1 style="font-size:20px;color:red;text-align:center;margin-top:20px">Đặt hàng thành công !</h1>
+    <div class="atablediv">
+        <img src="~/assets/img/iconShoppingCartFinnish.png" alt="Đặt hàng thành công"
+             align="left" style="width:200px;margin:0 50px" class="hmb">
+        <div style="float:left;max-width:500px">
+            <h3>THÔNG TIN ĐẶT HÀNG:</h3>
+            <div>Họ và Tên: <b>@Session["UrNameSS"]</b></div>
+            <div>Điện Thoại: <b>@Session["PhoneSS"]</b></div>
+            <div>Địa Chỉ: <b>@Session["AddrSS"]</b></div>
+            <div style="display:none">Ghi Chú: <b></b></div>
+            <div style="display:block;color:brown">
+                @if (@ViewBag.order.Note == true)
+                {
+                    <b>Khách hàng yêu cầu Che Giấu Tên Sản Phẩm</b>
+                }
+
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div style="background-color:#fcf7f7;border:solid 1px #f5c4a2;padding:0 5px">
+            <div>Ngày Đặt: <b>@ViewBag.order.DateOrder</b></div>
+            <div>Mã Đơn: <b>@ViewBag.order.OrderID</b></div>
+            <div>
+                PT thanh toán:
+                @if (@ViewBag.order.PaymentType == true)
+                {
+
+                    <b>COD nhận hàng và thanh toán tại nhà</b>
+                }
+                else
+                {
+                    <b>Chuyển khoản ngân hàng</b>
+                }
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div><br>
+    <div class="atablediv">
+        <h3>CHI TIẾT ĐƠN HÀNG:</h3>
+        <table class="atable">
+            <tbody>
+                <tr style="background-color:#f5c4a2; height:36px">
+                    <td>&nbsp;<b>SẢN PHẨM</b></td>
+                    <td style="width:100px" class="hmb"><b>&nbsp;THÀNH&nbsp;TIỀN&nbsp;</b></td>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>
+                            @{
+                                var files = Directory.EnumerateFiles(Server.MapPath(item.Product.Image))
+                            .Select(fn => item.ProductID.Trim() + "/" + Path.GetFileName(fn));
+                                string ImgPath = files.First();
+                            }
+                            <img src="@Url.Content("~/wwwroot/ProductsImages/"+ImgPath)"
+                                 align="left" class="aimg">
+                            <div><b>@item.Product.ProductName</b></div>
+                            <i>Tặng kèm:</i> <span style="color: red">
+                                + Mặt nạ dưỡng ẩm cho da từ thiên nhiên
+                                Innisfree My Real Squeeze Mask 1 miếng<br>
+                            </span>
+                            <div>Số lượng: <b style="color: red">@item.Quantity x <ins>@item.Price</ins></b></div>
+                            <div class="kmfs">
+                                
+                                <img src="@Url.Content("~/assets/img/ifship.png")"> <b>+ Miễn Phí</b> vận
+                                chuyển toàn quốc<br>
+                            </div>
+                        </td>
+                        <td style="text-align:center;color:red" class="hmb"><b>@(item.Price*item.Quantity)</b></td>
+                    </tr>
+
+                }
+
+
+            </tbody>
+        </table>
+        <table border="0" class="todrf">
+            <tbody>
+                <tr style="border-bottom:solid 1px #e0e0e0">
+                    <td style="text-align:right">Tiền hàng : </td>
+                    <td style="text-align:right;width:120px;color:red">@ViewBag.sum ₫</td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Giảm Chiết Khấu : </td>
+                    <td style="text-align:right;color:green">- 0₫</td>
+                </tr>
+                <tr style="display:contents">
+                    <td style="text-align:right">Giao hàng : </td>
+                    <td style="text-align:right;color:orange">Miễn Phí Ship</td>
+                </tr>
+                <tr style="border-top:solid 1px #e0e0e0">
+                    <td style="text-align:right">
+                        Tổng tiền cần thanh toán : <br><i style="color:gray">
+                            (Nhận
+                            hàng mới thanh toán)
+                        </i>
+                    </td>
+                    <td style="text-align:right;color:red;font-weight:700;vertical-align:middle">
+                        @ViewBag.sum đ
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><br>
+    <h2 style="font-size:17px;color:blue;margin-bottom:30px;text-align:center">
+        Cám ơn Bạn đã đặt hàng, chúng
+        tôi sẽ liên hệ lại trong thời gian sớm nhất. Cám ơn !
+    </h2>
+    <h3 style="text-align:center">
+        <a href="/" style="color:red">Về Trang Chủ</a>
+    </h3>
+    <div></div><iframe src="./assets/img/dnch.html" scrolling="no" style="height:70px;width:100%"></iframe>
+</div>
