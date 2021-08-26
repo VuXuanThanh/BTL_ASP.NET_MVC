@@ -2,7 +2,18 @@
 @{
     ViewBag.Title = "LoginUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+@{ 
+    if (Session["IDUrSS"] != null)
+    {
+        Session["AddrSS"] = null;
+        Session["UrNameSS"] = null;
+        Session["PhoneSS"] = null;
+        Session["IDUrSS"] = null;
+    }
+}
+
 <style>
     .btn-login {
         display: flex;
@@ -51,7 +62,11 @@
                 <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
                 <input type="reset" name="reset" class="btn btn-block" value="Hủy" />
             </div>
+          
         }
+        <div>
+            <a href="@Url.Action("Register","Account")">Chưa có tài khoản</a>
+        </div>
 
         @if (ViewBag.error != null)
         {
