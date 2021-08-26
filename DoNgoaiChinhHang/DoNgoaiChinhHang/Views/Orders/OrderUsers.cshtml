@@ -25,7 +25,7 @@
 <div class="boxct bica" style="margin-bottom:30px">
     <h1 style="font-size:20px;color:red;text-align:center;margin-top:20px">Đặt hàng thành công !</h1>
     <div class="atablediv">
-        <img src="./assets/img/iconShoppingCartFinnish.png" alt="Đặt hàng thành công"
+        <img src="~/assets/img/iconShoppingCartFinnish.png" alt="Đặt hàng thành công"
              align="left" style="width:200px;margin:0 50px" class="hmb">
         <div style="float:left;max-width:500px">
             <h3>THÔNG TIN ĐẶT HÀNG:</h3>
@@ -74,7 +74,12 @@
 
                     <tr>
                         <td>
-                            <img src="/"
+                            @{
+                                var files = Directory.EnumerateFiles(Server.MapPath(item.Product.Image))
+                            .Select(fn => item.ProductID.Trim() + "/" + Path.GetFileName(fn));
+                                string ImgPath = files.First();
+                            }
+                            <img src="@Url.Content("~/wwwroot/ProductsImages/"+ImgPath)"
                                  align="left" class="aimg">
                             <div><b>@item.Product.ProductName</b></div>
                             <i>Tặng kèm:</i> <span style="color: red">
@@ -83,7 +88,8 @@
                             </span>
                             <div>Số lượng: <b style="color: red">@item.Quantity x <ins>@item.Price</ins></b></div>
                             <div class="kmfs">
-                                <img src="./assets/img/icon-ship.jpg"> <b>+ Miễn Phí</b> vận
+                                
+                                <img src="@Url.Content("~/assets/img/ifship.png")"> <b>+ Miễn Phí</b> vận
                                 chuyển toàn quốc<br>
                             </div>
                         </td>
