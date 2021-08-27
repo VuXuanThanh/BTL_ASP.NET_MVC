@@ -73,8 +73,8 @@ $(".addBaseCate").click(function (e) {
     if (!test) {
         return;
     }
-    data.Images = fakePath.slice(fakePath.lastIndexOf("\\")+1, fakePath.length);
-    
+    data.Images = fakePath.slice(fakePath.lastIndexOf("\\") + 1, fakePath.length);
+    uploadFile();
         $.ajax({
             type: 'POST',
             url: '/Admin/CategoryBases/Create2',
@@ -125,7 +125,7 @@ $(".editBaseCate").click(function (e) {
         $("#Images2").text("** Bạn chưa chọn ảnh");
         return;
     }
-    
+    uploadFile();
 
     $.ajax({
         type: 'POST',

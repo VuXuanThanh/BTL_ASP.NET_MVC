@@ -1,7 +1,7 @@
 ﻿@model DoNgoaiChinhHang.Areas.Admin.Models.Order
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết hóa đơn";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -63,7 +63,7 @@
                             <td width="30%">
                                 <span>
                                     @{
-                                        var ct = Model.Note == true ? "Che tên sản phẩm" : "Không có";
+                                        var ct = Model.Note != true ? "Che tên sản phẩm" : "Không có";
                                         @ct
                                     }
                                 </span>

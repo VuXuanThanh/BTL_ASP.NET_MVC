@@ -1,6 +1,6 @@
 ﻿@model DoNgoaiChinhHang.Areas.Admin.Models.Category
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Sửa danh mục";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 
     var imgPath = "~/assets/img/"+Model.Images;
@@ -47,58 +47,58 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <div class="form-horizontal">
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.CategoryID)
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.CategoryID)
 
-                        <div class="form-group row">
-                            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "form-control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-control-label col-md-2" })
-                            <div class="col-sm-10">
-
-                                @Html.TextAreaFor(model => model.Description, htmlAttributes: new { @class = "form-control", @rows = "9", @placeholder = "Nhập mô tả" })
-                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @id = "Description2" })
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            @Html.LabelFor(model => model.CategoryBaseID, "CategoryBaseID", htmlAttributes: new { @class = "form-control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("CategoryBaseID", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.CategoryBaseID, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "form-control-label col-md-2" })
-                            <div class="col-sm-10">
-
-                                <img id="output" src="@Url.Content(imgPath)" alt="Ảnh" class="img-rounded" style="width:200px; height: 200px" />
-                                <br />
-                                <label for="file" class="form-control-label" style="cursor:pointer">
-                                    Chọn ảnh
-                                    <input name="Images" style="display:none" type="file" id="file" class="custom-file-input" onchange="loadFile(event)">
-                                </label>
-                                <br />
-                                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger", @id = "Images2" })
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-2"></div>
-                            <div class="col-sm-10">
-                                <input type="submit" value="Lưu lại" class="btn btn-info editCate" />
-                                @Html.ActionLink("Quay lại", "Index")
-                            </div>
-
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-2">Tên danh mục</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên danh mục" } })
+                            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger", @id = "CategoryName2" })
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-2">Mô tả</label>
+                        <div class="col-sm-10">
+
+                            @Html.TextAreaFor(model => model.Description, htmlAttributes: new { @class = "form-control", @rows = "9", @placeholder = "Nhập mô tả" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @id = "Description2" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-2">Danh mục cha</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("CategoryBaseID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryBaseID, "", new { @class = "text-danger", @id = "CategoryBaseID2" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-2">Ảnh danh mục</label>
+                        <div class="col-sm-10">
+
+                            <img id="output" src="@Url.Content(imgPath)" alt="Ảnh" class="img-rounded" style="width:200px; height: 200px" />
+                            <br />
+                            <label for="file" class="form-control-label" style="cursor:pointer">
+                                Chọn ảnh
+                                <input name="Images" style="display:none" type="file" id="file" class="custom-file-input" onchange="loadFile(event)">
+                            </label>
+                            <br />
+                            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger", @id = "Images2" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-sm-10">
+                            <input type="submit" value="Lưu lại" class="btn btn-info editCate" />
+                            @Html.ActionLink("Quay lại", "Index")
+                        </div>
+
+                    </div>
+                </div>
                 }
 
                 <div>

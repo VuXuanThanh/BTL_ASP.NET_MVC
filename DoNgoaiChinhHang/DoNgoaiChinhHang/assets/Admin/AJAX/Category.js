@@ -68,6 +68,7 @@ $(".addCate").click(function (e) {
         return;
     }
     data.Images = fakePath.slice(fakePath.lastIndexOf("\\") + 1, fakePath.length);
+    uploadFile();
     
         $.ajax({
             type: 'POST',
@@ -119,6 +120,7 @@ $(".editCate").click(function (e) {
         $("#Images2").text("** Bạn chưa chọn ảnh");
         return;
     }
+    uploadFile();
 
     $.ajax({
         type: 'POST',

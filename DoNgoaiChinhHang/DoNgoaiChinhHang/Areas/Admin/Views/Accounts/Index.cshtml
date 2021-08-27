@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -131,15 +131,7 @@
                                 @Html.DisplayFor(modelItem => item.Email)
                             </td>
                             <td>
-                                @{ 
-                                    var a = item.Password.Length;
-                                    var mh = "";
-                                    for(var i = 0; i < a; i++)
-                                    {
-                                        mh += "*";
-                                    }
-                                    @mh
-                                }
+                                @Html.DisplayFor(modelItem => item.Password)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CustomerName)

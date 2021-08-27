@@ -13,6 +13,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         public Account()
         {
             Orders = new HashSet<Order>();
+            Orders1 = new HashSet<Order>();
         }
 
         public int AccountID { get; set; }
@@ -25,6 +26,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         [StringLength(50)]
         public string Email { get; set; }
 
+
         [Required]
         [StringLength(255)]
         public string Password { get; set; }
@@ -32,7 +34,6 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         [StringLength(50)]
         public string CustomerName { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Address { get; set; }
 
@@ -42,5 +43,8 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders1 { get; set; }
     }
 }
