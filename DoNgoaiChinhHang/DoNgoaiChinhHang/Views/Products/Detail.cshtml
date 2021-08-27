@@ -40,25 +40,25 @@
 
 <div class="col-right hmb">
     <div class="sidebar sidebar-right">
-        <img class="lazy mbtm"alt="Giỏ hàng dongoaichinhhang"
+        <img class="lazy mbtm" alt="Giỏ hàng dongoaichinhhang"
              src="~/assets/img/chinh-sach-ban-hang-dongoaichinhhang.jpg"
              style="display: inline; opacity: 1; z-index: 0;" />
         <div id="best-seller-left" class="widget widget-seller fixed" style="position: ; top: 58px; width: 241px; ">
             <h4 class="seller_title radius">Sản phẩm mua nhiều</h4>
             <div class="widget-content border">
                 <div class="wrap-item owl-carousel owl-theme" style="opacity: 1; display: block;">
-                    @foreach (var product in ViewBag.listTopProducts)
+                    @foreach (var item in ViewBag.listTopProducts)
                     {
                         <div class="item-pro-seller">
-                            <a href="@Url.Action("Detail","Products",new { productID = @product.ProductID})" title="@product.ProductName">
+                            <a href="@Url.Action("Detail", "Products", new { productID = @item.Product.ProductID })" title="@item.Product.ProductName">
                                 <div class="product-thumb">
-                                    <img class="lazy" alt="@product.ProductName"
-                                         src="~/assets/img/nam-thai-duong-dx-nui-yuuki-360-vien-nhat-ban.jpg"
+                                    <img class="lazy" alt="@item.Product.ProductName"
+                                         src="@Url.Content("~/wwwroot/ProductsImages/" + item.ImgFirst)"
                                          style="display: inline; opacity: 1;">
                                 </div>
                                 <div class="product-info">
-                                    <h4>@product.ProductName</h4>
-                                    <ins>@product.Price</ins>
+                                    <h4>@item.Product.ProductName</h4>
+                                    <ins>@item.Product.Price</ins>
                                 </div>
                             </a>
                         </div>
@@ -75,287 +75,31 @@
             <div class="detail-gallery">
                 <div class="inner">
                     <div class="mid">
-                        @*<a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                           class="quickview-link">
-                            <img src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên">
-                        </a>*@
-                        <img src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[0])" id="mainImage" style="cursor:pointer" />
+                        <img src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[0])" id="mainImage" style="cursor:pointer" />
                     </div>
+
                     <div class="gallery-control">
                         <a href="#"
                            class="prev">‹</a>
 
-                        <div class="carousel"
-                             style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 240px;">
+                        <div class="carousel" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 240px;">
                             <h1>
-                                @*<ul style="margin: 0px; padding: 0px; position: relative; list-style: none; z-index: 1; width: 1680px; left: -240px;">
-                                    <li class="active"
-                                        style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 class="lazy"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg 1"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
+                                <ul>
+                                    <li class="active" style="overflow: hidden; float: left; width: 80px; height: 52px;">
+                                        <img class="lazy"
+                                             src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[0])"
+                                             style="display: inline; opacity: 1; width: 100%; height: 100%;cursor:pointer">
                                     </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg 2"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li class="active"
-                                        style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 class="lazy"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg 1"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg 2"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li class="active"
-                                        style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 class="lazy"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg 1"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg 2"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li class="active"
-                                        style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 class="lazy"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg 1"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg 2"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li class="active"
-                                        style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 class="lazy"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg 1"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg 2"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li class="active"
-                                        style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 class="lazy"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg 1"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg 2"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li class="active"
-                                        style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 class="lazy"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg 1"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 1"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-1.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg 2"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 2"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-2.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                    <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                           title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3">
-                                            <img data-src="/imgs/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                                 class="lazy"
-                                                 title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                                 src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg"
-                                                 style="display: inline; opacity: 1;">
-                                        </a>
-                                    </li>
-                                </ul>*@
-
+                                    @for (int i = 1; i < ViewBag.Images.Count; i++)
+                                    {
+                                        <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
+                                            <img class="lazy"
+                                                 src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[i])"
+                                                 style="display: inline; opacity: 1;width:100%;height:100%;cursor:pointer">
+                                        </li>
+                                    }
+                                </ul>
                             </h1>
-
-                            <ul>
-                                <li class="active"
-                                    style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                    <img alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                         class="lazy"
-                                         title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                         src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[0])"
-                                         style="display: inline; opacity: 1; width: 100%; height: 100%;cursor:pointer">
-                                </li>
-                                @for (int i = 1; i < ViewBag.Images.Count; i++)
-                                {
-                                <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                    <img alt="vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-3.jpg 3"
-                                         class="lazy"
-                                         title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên 3"
-                                         src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[i])"
-                                         style="display: inline; opacity: 1;width:100%;height:100%;cursor:pointer">
-                                </li>
-                                }
-                            </ul>
-
-                            
-
                         </div>
                         <a href="#" class="next">›</a>
                     </div>
@@ -407,12 +151,12 @@
                         </li>
                     </ul>
                     <p class="desc">
-                        @*foreach (var description in Model.Description.Split('.'))
+                        @foreach (var description in Model.Description.Split('.'))
                         {
                             <span>
                                 -@description <br />
                             </span>
-                        }*@
+                        }
                     </p>
 
                 </div>
@@ -420,48 +164,46 @@
                 <p>
                     Tình trạng:
                     <span id="js-product-status" style="font-weight:700">
-                        Viết hàm
+                        @if (Model.AvailableQuantity > 0)
+                        {
+                            <span>Còn hàng</span>
+                        }
+                        else
+                        {
+                            <span>Hết hàng</span>
+                        }
                     </span>
                 </p>
-                <p class="hdm">Đã Mua: <b> Chưa có</b></p>
+                <p class="hdm">Đã Mua: <b> @Model.QuantitySold</b></p>
                 <span class="pprice">
                     <span class="txt_title">
                         Giá bán:
                     </span>
                     <ins id="insPrice">@String.Format("{0:0,0,0}", Model.Price)₫</ins>
-                    @if (Model.Freeship == true)
-                    {
-                        <div class="kmfs">
-                            <img src="~/assets/img/icon-ship.jpg">
-                            <b>+ Miễn phí Ship<b> khi mua từ <b>2</b> sản phẩm<br />
-                        </div>
-                    }
+                    <div class="kmfs">
+                        @if (Model.Freeship == true)
+                        {
+                            <div>
+                                <img src="~/assets/img/icon-ship.jpg">
+                                <b>+ Miễn phí Ship<b> khi mua từ <b>2</b> sản phẩm<br />
+                            </div>
+                        }
+
+                        @if (Model.Discount > 0)
+                        {
+                            <div>
+                                <img src="~/assets/img/icon-km.gif" />
+                                <b>+</b> Giảm Ngay <b>@String.Format("{0:0,0,0}", Model.Discount)</b>₫/sp khi mua từ <b>2</b> sản phẩm
+                            </div>
+                        }
+                    </div>
 
                 </span>
-                @if (Model.Freeship == true)
-                {
-                    <aside class="promo-online">
-                        <b>
-                            <img src="~/assets/img/icon-gift.png" alt="gift"> Quà tặng kèm theo:
-                        </b>
-                        <ul class="listprogift">
-                            <li class="w100">
-                                <img src="~/assets/img/mat-na-duong-am-cho-da-tu-thien-nhien-innisfree-my-real-squeeze-mask-1-mieng.jpg"
-                                     alt="mat-na-duong-am-cho-da-tu-thien-nhien-innisfree-my-real-squeeze-mask-1-mieng.jpg"
-                                     align="left">
-                                <p>
-                                    Mặt nạ dưỡng ẩm cho da từ thiên nhiên Innisfree My Real Squeeze Mask 1 miếng
-                                </p><br><ins>23.000₫</ins>
-                            </li>
-                        </ul>
-                        <div style="clear:both"></div>
-                    </aside>
-                }
 
                 <input id="txtIdPro" type="hidden" value="50929">
                 <div class="detail-extralink">
                     <input class="qty-val" id="txtQty" value="1" type="number" max="99">
-                    <a class="abodr" id="aOdr" href="https://dongoaichinhhang.com/gio-hang.html?i=50929">
+                    <a class="abodr" id="aOdr" href="@Url.Action("Index","Cart","")">
                         Đặt Hàng Ngay<br>
                         <div class="xhc">Xem hàng trước, nhận hàng trả tiền</div>
                     </a>
@@ -491,15 +233,12 @@
                         Giới thiệu @Model.ProductName
                     </h2>
                     <div class="bica">
-                        <p>&emsp;&emsp;&emsp; @Model.Introduction</p>
+                        <p style="font-weight: 100">&emsp;&emsp;&emsp; @Model.Introduction</p>
                         <p style="text-align: center;">
-                            <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-1.jpg" target="_blank"
-                               title="@Model.ProductName">
-                                <img alt="@Model.ProductName anh 1"
-                                     class="lazy quickview-link"
-                                     style="width: 700px; height: 700px; display: inline; opacity: 1;"
-                                     title="@Model.ProductName ảnh 1"
-                                     src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-1.jpg">
+                            <a target="_blank">
+                                <img class="lazy quickview-link"
+                                     style="width: 700px; height: 500px; display: inline; opacity: 1;"
+                                     src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[0])">
                             </a>
                         </p>
                     </div>
@@ -507,7 +246,7 @@
             </div>
             <p class="hmb" style="text-align:center">
                 <a class="abodr"
-                   href="#">Đặt Hàng Ngay<br></a>
+                   href="@Url.Action("Index","Cart","")">Đặt Hàng Ngay<br></a>
             </p>
             <div class="box_item01">
                 <div class="box_item_in">
@@ -520,22 +259,17 @@
                             {
                                 if (@benefit.Length > 1)
                                 {
-                                    <span>
+                                    <span style="font-weight: 100">
                                         <span style="color:#ffd700;">✔</span> @benefit. <br />
                                     </span>
                                 }
                             }
                         </p>
                         <p style="text-align: center;">
-                            <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-01.jpg"
-                               target="_blank"
-                               title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên ảnh 01">
-                                <img alt="vien nhai bo sung vitamin c healthy care 500mg uc 500 vien anh 01"
-                                     class="lazy quickview-link"
-                                     data-src="/fUp/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-01.jpg"
+                            <a target="_blank">
+                                <img class="lazy quickview-link"
                                      style="width: 700px; height: 500px; display: inline; opacity: 1;"
-                                     title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên ảnh 01"
-                                     src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-01.jpg">
+                                     src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[1])">
                             </a>
                         </p>
                     </div>
@@ -543,7 +277,7 @@
             </div>
             <p class="hmb" style="text-align:center">
                 <a class="abodr"
-                   href="#">Đặt Hàng Ngay<br></a>
+                   href="@Url.Action("Index","Cart","")">Đặt Hàng Ngay<br></a>
             </p>
             <div class="box_item01">
                 <div class="box_item_in">
@@ -556,7 +290,7 @@
                             {
                                 if (@element.Length > 1)
                                 {
-                                    <span>
+                                    <span style="font-weight: 100">
                                         <span style="color:#0000ff;">✜ </span>@element. <br />
                                     </span>
                                 }
@@ -566,8 +300,7 @@
                 </div>
             </div>
             <p class="hmb" style="text-align:center">
-                <a class="abodr"
-                   href="https://dongoaichinhhang.com/gio-hang.html?i=50929">Đặt Hàng Ngay<br></a>
+                <a class="abodr" href="@Url.Action("Index","Cart","")">Đặt Hàng Ngay<br></a>
             </p>
             <div class="box_item01">
                 <div class="box_item_in">
@@ -580,29 +313,24 @@
                             {
                                 if (@tutorial.Length > 1)
                                 {
-                                    <span>
+                                    <span style="font-weight: 100">
                                         <span style="color:#ffd700;">➤ </span>@tutorial. <br />
                                     </span>
                                 }
                             }
                         </p>
                         <p style="text-align: center;">
-                            <a href="~/assets/css/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-0001.jpg"
-                               target="_blank"
-                               title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên ảnh 0001">
-                                <img alt="vien nhai bo sung vitamin c healthy care 500mg uc 500 vien anh 0001"
-                                     class="lazy quickview-link"
-                                     data-src="/fUp/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-0001.jpg"
-                                     style="width: 700px; height: 467px; display: inline; opacity: 1;"
-                                     title="Viên nhai bổ sung Vitamin C Healthy Care 500mg Úc 500 viên ảnh 0001"
-                                     src="~/assets/img/vien-nhai-bo-sung-vitamin-c-healthy-care-500mg-uc-500-vien-anh-0001.jpg">
+                            <a target="_blank">
+                                <img class="lazy quickview-link"
+                                     style="width: 700px; height: 500px; display: inline; opacity: 1;"
+                                     src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[2])">
                             </a>
                         </p>
                         <p>================</p>
                         <p><strong>Thông tin sản phẩm</strong></p>
-                        <p>- Tên sản phẩm:&nbsp;@Model.ProductName</p>
-                        <p>- Thương hiệu: @Model.Brand</p>
-                        <p>- Xuất xứ: @Model.Orgin</p>
+                        <p>- Tên sản phẩm:&nbsp;<span style="font-weight: 100">@Model.ProductName</span></p>
+                        <p>- Thương hiệu: <span style="font-weight: 100">@Model.Brand</span></p>
+                        <p>- Xuất xứ:  <span style="font-weight: 100">@Model.Orgin</span></p>
                     </div>
                 </div>
             </div>
@@ -717,14 +445,18 @@
             </div>
             <div class="box-body clearfix">
                 <ul class="homeproduct pro-slider fixheight owl-carousel owl-theme" style="opacity: 1; display: block;">
-                    @foreach (var product in @ViewBag.listRelatedProducts)
+                    @foreach (var item in @ViewBag.listRelatedProducts)
                     {
                         <li>
                             <div class="owl-item" style="width: 236px;">
                                 <div class="absoluteimg">
-                                    <a href="@Url.Action("Detail","Products",new { productID = @product.ProductID})" title="@product.ProductName">
-                                        <img class="lazy" alt="@product.ProductName"
-                                             src="~/assets/img/vien-uong-bo-sung-vitamin-c-dhc-60-ngay-cua-nhat-ban-120-vien.jpg"
+                                    <a href="@Url.Action("Detail","Products",new { productID = @item.Product.ProductID})" title="@item.Product.ProductName">
+                                        @{
+
+                                        }
+
+                                        <img class="lazy" alt="@item.Product.ProductName"
+                                             src="@Url.Content("~/wwwroot/ProductsImages/"+item.ImgFirst)"
                                              style="display: block; opacity: 1;">
                                     </a>
                                     <div class="prolink">
@@ -735,12 +467,12 @@
                                     </div>
                                 </div>
                                 <h4>
-                                    <a href="@Url.Action("Detail","Products",new { productID = @product.ProductID})"
-                                       title="@product.ProductName">
-                                        @product.ProductName
+                                    <a href="@Url.Action("Detail","Products",new { productID = @item.Product.ProductID})"
+                                       title="@item.Product.ProductName">
+                                        @item.Product.ProductName
                                     </a>
                                 </h4>
-                                <ins>@product.Price</ins>
+                                <ins>@item.Product.Price</ins>
                             </div>
                         </li>
                     }

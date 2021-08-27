@@ -64,59 +64,39 @@
             <div class="owl-wrapper"
                  style="width: 8544px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(-2136px, 0px, 0px);">
                 <div class="owl-item" style="width: 712px;">
-                    <a href="https://dongoaichinhhang.com/vien-uong-transino-whitening-240-vien-dac-tri-nam-tan-nhang-nhat-ban.html"
+                    <a href="#"
                        title="Viên trị Nám Transino.Whitening Nhật Bản">
-                        <img src="./assets/img/vien-tri-nam-transinowhitening-nhat-ban.jpg"
+                        <img src="~/assets/img/vien-tri-nam-transinowhitening-nhat-ban.jpg"
                              alt="Viên trị Nám Transino.Whitening Nhật Bản">
                     </a>
                 </div>
                 <div class="owl-item" style="width: 712px;">
-                    <a href="https://dongoaichinhhang.com/kem-tri-seo-nhat-gentacin-10gr-chuyen-tri-seo-loi-seo-lom-seo-tham-lau-nam.html"
+                    <a href="#"
                        title="Kem Trị Sẹo Gentacin .Nhật Bản 10gr">
                         <img class="lazy"
                              data-src="/imgs/kem-tri-seo-gentacin-nhat-ban-10gr.jpg"
                              alt="Kem Trị Sẹo Gentacin .Nhật Bản 10gr"
-                             src="./assets/img/kem-tri-seo-gentacin-nhat-ban-10gr.jpg"
+                             src="~/assets/img/kem-tri-seo-gentacin-nhat-ban-10gr.jpg"
                              style="display: inline; opacity: 1;">
                     </a>
                 </div>
                 <div class="owl-item" style="width: 712px;">
-                    <a href="https://dongoaichinhhang.com/kem-upsize-no-nguc-cach-tang-vong-1-an-toan-chinh-hang-tu-nga.html"
+                    <a href="#"
                        title="Kem nở ngực Upsize .chính hãng từ Nga">
                         <img class="lazy"
                              data-src="/imgs/kem-no-nguc-upsize-chinh-hang-tu-nga.jpg"
                              alt="Kem nở ngực Upsize .chính hãng từ Nga"
-                             src="./assets/img/kem-no-nguc-upsize-chinh-hang-tu-nga.jpg"
+                             src="~/assets/img/kem-no-nguc-upsize-chinh-hang-tu-nga.jpg"
                              style="display: inline; opacity: 1;">
                     </a>
                 </div>
                 <div class="owl-item" style="width: 712px;">
-                    <a href="https://dongoaichinhhang.com/dau-ca-healthy-care-fish-oil-omega-3-1000mg-400-vien-cua-uc.html"
+                    <a href="#"
                        title="Dầu cá Healthy Care .Omega 3 1000mg Úc ">
                         <img class="lazy"
                              data-src="/imgs/dau-ca-healthy-care-fish-oil-omega-3-1000mg-uc-400-vien.jpg"
                              alt="Dầu cá Healthy Care .Omega 3 1000mg Úc "
-                             src="./assets/img/dau-ca-healthy-care-fish-oil-omega-3-1000mg-uc-400-vien.jpg"
-                             style="display: inline; opacity: 1;">
-                    </a>
-                </div>
-                <div class="owl-item" style="width: 712px;">
-                    <a href="http://dongoaichinhhang.com/"
-                       title="Serum trị mụn tái .tạo da Bà Lão">
-                        <img class="lazy"
-                             data-src="/imgs/serum-tri-mun-tai-tao-da-ba-lao.jpg"
-                             alt="Serum trị mụn tái .tạo da Bà Lão"
-                             src="./assets/img/serum-tri-mun-tai-tao-da-ba-lao.jpg"
-                             style="display: inline; opacity: 1;">
-                    </a>
-                </div>
-                <div class="owl-item" style="width: 712px;">
-                    <a href="https://dongoaichinhhang.com/thuoc-moc-rau-nakashima-nhat-ban.html"
-                       title="Thuốc mọc râu Nakashima Nhật Bản">
-                        <img class="lazy"
-                             data-src="/imgs/thuoc-moc-rau-nakashima-nhat-ban.jpg"
-                             alt="Thuốc mọc râu Nakashima Nhật Bản"
-                             src="./assets/img/thuoc-moc-rau-nakashima-nhat-ban.jpg"
+                             src="~/assets/img/dau-ca-healthy-care-fish-oil-omega-3-1000mg-uc-400-vien.jpg"
                              style="display: inline; opacity: 1;">
                     </a>
                 </div>
@@ -133,13 +113,14 @@
         <div class="owl-wrapper-outer">
             <div class="owl-wrapper"
                  style="width: 1704px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 200ms ease 0s;">
-
-                // banner item
-                <div class="owl-item" style="width: 142px;">
-                    <div class="item">
-                        <h3>Viên trị Nám Transino<br>Whitening Nhật Bản</h3>
+                @foreach( var item in ViewBag.listEvaluation)
+                {
+                    <div class="owl-item" style="width: 142px;">
+                        <div class="item">
+                            <h3>@item.ProductName</h3>
+                        </div>
                     </div>
-                </div>
+                }
 
             </div>
         </div>
@@ -147,23 +128,21 @@
 </aside>
 <aside class="homenews hmb">
     <figure>
-        <h2><a href="https://dongoaichinhhang.com/"></a> Giải pháp đề xuất</h2>
+        <h2><a href="~/Home"></a> Giải pháp đề xuất</h2>
     </figure>
     <ul>
-        // related item
         <li>
             <h3>
-                <a href="https://dongoaichinhhang.com/thuoc-moc-long-may-kaminomoto-nhat-ban.html">
-                    Thuốc mộc
-                    long mày Chính Hãng Kaminomoto Nhật Bản
+                <a href="@Url.Action("Detail","Products",new { productID=@ViewBag.listEvaluation[0].ProductID.Trim()})">
+                    @ViewBag.listEvaluation[0].ProductName
                 </a>
             </h3>
         </li>
 
     </ul>
     <div class="twobanner">
-        <a href="http://dongoaichinhhang.com/lk/chinh-sach-hang-chinh-hang.html">
-            <img src="./assets/img/banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg"
+        <a href="#">
+            <img src="~/assets/img/banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg"
                  alt="Banner dongoaichinhhang.com cam kết chính hãng 100%">
         </a>
     </div>
@@ -171,62 +150,60 @@
 <div class="clr"></div>
 <div class="mhtemp">
     <div class="barbox">
-        <h3 class="titlecate"><a href="https://dongoaichinhhang.com/">Sản phẩm mua nhiều</a></h3>
+        <h3 class="titlecate"><a href="~/Home">Sản phẩm mua nhiều</a></h3>
     </div>
-    <div class="box-shock">
-        <div class="rowsp">
-            <ul class="shockbox homeproduct owl-carousel owl-theme" style="opacity: 1; display: block;">
-                <div class="owl-wrapper-outer">
-                    <div class="owl-wrapper" style="width: 3960px; left: 0px; display: block;">
-
-                        <div class="owl-item" style="width: 198px;">
-                <li>
-                    <div class="absoluteimg">
-                        <a href="https://dongoaichinhhang.com/vien-uong-cap-nuoc-aqua-rich-innerb-cheiljedang-han-quoc-70-vien.html"
-                           title="Viên uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên">
-                            <img src="./assets/img/vien-uong-cap-nuoc-aqua-rich-innerb-cheiljedang-han-quoc-70-vien.jpg"
-                                 alt="Viên uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên">
-                        </a>
-                        <div class="prolink">
-                            <a href="https://dongoaichinhhang.com/#"
-                               onclick="return showCart(50957, 1);">
-                                <i></i>&nbsp;Thêm giỏ
-                                hàng
+    <div class="box-shock col-big">
+        <div class="rowbn">
+            <ul class="homeproduct nonslider boxfull">
+                @foreach (var item in Model.OrderByDescending(p => p.Price).Take(5))
+                {
+                    <li>
+                        <div class="absoluteimg">
+                            <a href="@Url.Action("Detail","Products",new { productID=@item.ProductID.Trim()})"
+                               title="@item.ProductName">
+                                @{
+                                    var files = Directory.EnumerateFiles(Server.MapPath(item.Image))
+                                .Select(fn => item.ProductID.Trim() + "/" + Path.GetFileName(fn));
+                                    string ImgPath = files.First();
+                                }
+                                <img class="lazy" alt="@item.ProductName"
+                                     src="@Url.Content("~/wwwroot/ProductsImages/"+ImgPath)"
+                                     style="display: block; opacity: 1;">
                             </a>
-                        </div><label class="fship">
-                            <img src="./assets/img/ifship.png" alt="Miễn phí giao hàng">
-                        </label>
-                    </div>
-                    <h3>
-                        <a href="https://dongoaichinhhang.com/vien-uong-cap-nuoc-aqua-rich-innerb-cheiljedang-han-quoc-70-vien.html"
-                           title="Viên uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên">
-                            Viên
-                            uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên
-                        </a>
-                    </h3>
-                    <ins>695.000₫</ins>
-                    <div class="vote">
-                        <div style="width:0%"></div>
-                    </div>
-                </li>
-        </div>
+                            <div class="prolink" data-productID="@item.ProductID">
+                                <a href="@Url.Action("AddItem","Cart",new {productID= item.ProductID,quanlity= 1})"
+                                   onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                            </div>
+                            @if (item.Freeship == true)
+                            {
+                                <label class="fship">
+                                    <img class="lazy"
+                                         alt="Miễn phí giao hàng" src="@Url.Content("~/assets/img/ifship.png")"
+                                         style="display: block; opacity: 1;">
+                                </label>
+                            }
 
-    </div>
-</div>
-<div class="owl-controls clickable">
-    <div class="owl-pagination">
-        <div class="owl-page active"><span class=""></span></div>
-        <div class="owl-page"><span class=""></span></div>
-    </div>
-    <div class="owl-buttons">
-        <div class="owl-prev">‹</div>
-        <div class="owl-next">›</div>
-    </div>
-</div>
+                        </div>
+                        @if (item.Discount > 0)
+                        {<div class="promo-alert">Giảm @item.Discount/sp khi mua từ 2sp</div>}
+
+                        <h3>
+                            <a href="@Url.Action("Detail","Products",new { productID=@item.ProductID.Trim()})"
+                               title="@item.ProductName">
+                                @item.ProductName
+                            </a>
+                        </h3>
+                        <ins>@item.Price</ins>
+                        <div class="vote">
+                            <div style="width:0%"></div>
+                        </div>
+                    </li>
+
+                }
             </ul>
+        </div>
     </div>
-    </div>
-    </div>
+</div>
 
 
 @*Categorybase product*@
@@ -251,7 +228,7 @@
                                         <img class="lazy"
                                              data-src="/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
                                              alt="Thuốc mọc tóc QIK Hair St.Paul Brands của Mỹ 30 viên - dành cho Nữ"
-                                             src="./assets/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
+                                             src="~/assets/img/thuoc-moc-toc-qik-hair-stpaul-brands-cua-my-30-vien-danh-cho-nu.jpg"
                                              style="display: block; opacity: 1;">
                                     </a>
                                     <div class="prolink">
@@ -260,7 +237,7 @@
                                     </div>
                                     <label class="fship">
                                         <img class="lazy" data-src="/images/ifship.png"
-                                             alt="Miễn phí giao hàng" src="./assets/img/ifship.png"
+                                             alt="Miễn phí giao hàng" src="~/assets/img/ifship.png"
                                              style="display: block; opacity: 1;">
                                     </label>
                                 </div>
@@ -279,16 +256,14 @@
                             </li>*@
                         <li>
                             <div class="absoluteimg">
-                                <a href="/"
+                                <a href="@Url.Action("Detail","Products",new { productID=@item.ProductID.Trim()})"
                                    title="@item.ProductName">
                                     @{
                                         var files = Directory.EnumerateFiles(Server.MapPath(item.Image))
                                     .Select(fn => item.ProductID.Trim() + "/" + Path.GetFileName(fn));
                                         string ImgPath = files.First();
                                     }
-                                    <img class="lazy"
-                                         
-                                         alt="@item.ProductName"
+                                    <img class="lazy" alt="@item.ProductName"
                                          src="@Url.Content("~/wwwroot/ProductsImages/"+ImgPath)"
                                          style="display: block; opacity: 1;">
                                 </a>
@@ -296,15 +271,20 @@
                                     <a href="@Url.Action("AddItem","Cart",new {productID= item.ProductID,quanlity= 1})"
                                        onclick="return showCart(40566, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
                                 </div>
-                                <label class="fship">
-                                    <img class="lazy" 
-                                         alt="Miễn phí giao hàng" src="@Url.Content("~/assets/img/ifship.png")"
-                                         style="display: block; opacity: 1;">
-                                </label>
+                                @if (item.Freeship == true)
+                                {
+                                    <label class="fship">
+                                        <img class="lazy"
+                                             alt="Miễn phí giao hàng" src="@Url.Content("~/assets/img/ifship.png")"
+                                             style="display: block; opacity: 1;">
+                                    </label>
+                                }
+
                             </div>
-                            <div class="promo-alert">Giảm 50k/sp khi mua từ 2sp</div>
+                            @if(item.Discount > 0) { <div class="promo-alert">Giảm @item.Discount/sp khi mua từ 2sp</div>}
+                            
                             <h3>
-                                <a href="@Url.Action("Detail","Products",new { productID=item.ProductID.Trim()})"
+                                <a href="@Url.Action("Detail","Products",new { productID=@item.ProductID.Trim()})"
                                    title="@item.ProductName">
                                     @item.ProductName
                                 </a>
@@ -332,153 +312,153 @@
                      style="width: 6336px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 1000ms ease 0s;">
                     <div class="owl-item" style="width: 198px;">
             <li>
-                <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-orihiro.html">
+                <a href="#">
                     <img data-src="/imgs/thuong-hieu-orihiro-3.jpg" class="lazy"
-                         alt="Thương hiệu Orihiro" src="./assets/img/thuong-hieu-orihiro-3.jpg"
+                         alt="Thương hiệu Orihiro" src="~/assets/img/thuong-hieu-orihiro-3.jpg"
                          style="display: inline; opacity: 1;">
                 </a>
             </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-dhc.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-dhc-3.jpg" class="lazy"
-                     alt="Thương hiệu DHC" src="./assets/img/thuong-hieu-dhc-3.jpg"
+                     alt="Thương hiệu DHC" src="~/assets/img/thuong-hieu-dhc-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-transino.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-transino-3.jpg" class="lazy"
-                     alt="Thương hiệu Transino" src="./assets/img/thuong-hieu-transino-3.jpg"
+                     alt="Thương hiệu Transino" src="~/assets/img/thuong-hieu-transino-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-shiseido.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-shiseido-3.jpg" class="lazy"
-                     alt="Thương hiệu Shiseido" src="./assets/img/thuong-hieu-shiseido-3.jpg"
+                     alt="Thương hiệu Shiseido" src="~/assets/img/thuong-hieu-shiseido-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-kirkland.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-kirkland-3.jpg" class="lazy"
-                     alt="Thương hiệu KirkLand" src="./assets/img/thuong-hieu-kirkland-3.jpg"
+                     alt="Thương hiệu KirkLand" src="~/assets/img/thuong-hieu-kirkland-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-kaminomoto.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-kaminomoto-3.jpg" class="lazy"
                      alt="Thương hiệu Kaminomoto"
-                     src="./assets/img/thuong-hieu-kaminomoto-3.jpg"
+                     src="~/assets/img/thuong-hieu-kaminomoto-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-bifina.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-bifina-3.jpg" class="lazy"
-                     alt="Thương hiệu Bifina" src="./assets/img/thuong-hieu-bifina-3.jpg"
+                     alt="Thương hiệu Bifina" src="~/assets/img/thuong-hieu-bifina-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-goodhealth.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-goodhealth-3.jpg" class="lazy"
                      alt="Thương hiệu Goodhealth"
-                     src="./assets/img/thuong-hieu-goodhealth-3.jpg"
+                     src="~/assets/img/thuong-hieu-goodhealth-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-scar-heal.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-scar-heal-3.jpg" class="lazy"
                      alt="Thương hiệu Scar Heal"
-                     src="./assets/img/thuong-hieu-scar-heal-3.jpg"
+                     src="~/assets/img/thuong-hieu-scar-heal-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-nature-made.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-nature-made-3.jpg" class="lazy"
                      alt="Thương hiệu Nature Made"
-                     src="./assets/img/thuong-hieu-nature-made-3.jpg"
+                     src="~/assets/img/thuong-hieu-nature-made-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-healthy-care.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-healthy-care-3.jpg" class="lazy"
                      alt="Thương hiệu Healthy Care"
-                     src="./assets/img/thuong-hieu-healthy-care-3.jpg"
+                     src="~/assets/img/thuong-hieu-healthy-care-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-neocell.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-neocell-3.jpg" class="lazy"
-                     alt="Thương hiệu Neocell" src="./assets/img/thuong-hieu-neocell-3.jpg"
+                     alt="Thương hiệu Neocell" src="~/assets/img/thuong-hieu-neocell-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-youtheory.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-youtheory-3.jpg" class="lazy"
                      alt="Thương hiệu Youtheory"
-                     src="./assets/img/thuong-hieu-youtheory-3.jpg"
+                     src="~/assets/img/thuong-hieu-youtheory-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-innisfree.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-innisfree-3.jpg" class="lazy"
                      alt="Thương hiệu Innisfree"
-                     src="./assets/img/thuong-hieu-innisfree-3.jpg"
+                     src="~/assets/img/thuong-hieu-innisfree-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-blackmores-uc.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-blackmores-uc-3.jpg" class="lazy"
                      alt="Thương hiệu Blackmores Úc"
-                     src="./assets/img/thuong-hieu-blackmores-uc-3.jpg"
+                     src="~/assets/img/thuong-hieu-blackmores-uc-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>
     </div>
     <div class="owl-item" style="width: 198px;">
         <li>
-            <a href="https://dongoaichinhhang.com/thuong-hieu/thuong-hieu-natrol-biotin.html">
+            <a href="#">
                 <img data-src="/imgs/thuong-hieu-natrol-biotin-3.jpg" class="lazy"
                      alt="Thương hiệu Natrol Biotin"
-                     src="./assets/img/thuong-hieu-natrol-biotin-3.jpg"
+                     src="~/assets/img/thuong-hieu-natrol-biotin-3.jpg"
                      style="display: inline; opacity: 1;">
             </a>
         </li>

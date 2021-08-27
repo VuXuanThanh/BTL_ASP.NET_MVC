@@ -26,6 +26,8 @@ namespace DoNgoaiChinhHang.Areas.Admin.Models
         [StringLength(50)]
         public string Email { get; set; }
 
+
+        [Required]
         [StringLength(255)]
         public string Password { get; set; }
 

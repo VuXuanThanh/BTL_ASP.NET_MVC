@@ -12,8 +12,12 @@ namespace DoNgoaiChinhHang.Controllers
         private DBContext db = new DBContext();
         public ActionResult Index()
         {
+
             ViewBag.categoryBases = db.CategoryBases.ToList();
             var products = db.Products.ToList();
+
+            ViewBag.listEvaluation = products.OrderBy(p => p.Evaluation).Take(5).ToList();
+
             return View(products);
         }
 

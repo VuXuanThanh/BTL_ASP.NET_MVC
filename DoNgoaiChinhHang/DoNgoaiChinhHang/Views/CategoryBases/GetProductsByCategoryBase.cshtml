@@ -144,11 +144,51 @@
                 <h4 class="seller_title radius">Thương hiệu hàng đầu</h4>
                 <div class="widget-content">
                     <ul class="category-ul-rght">
+                        @foreach (var item in ViewBag.listBrand)
+                        {
+                            <li>
+                                @{
+                                    var content = "Thương hiệu" + " " + @item;
+                                }
+                                <a href="@Url.Action("Search_Results","Search",new { content = content })" title="Thương hiệu @item">
+                                    Thương hiệu @item
+                                    @{
+                                        var sl = 0;
+                                        foreach (var t in @ViewBag.listProduct)
+                                        {
+                                            if (item == t.Brand)
+                                            {
+                                                sl++;
+                                            }
+                                        }
+                                    }
+
+                                    <span>(@sl)</span>
+                                </a>
+                            </li>
+                        }
+
                         @foreach (var item in ViewBag.listOrgin)
                         {
-
                             <li>
-                                <a href="https://dongoaichinhhang.com/thuong-hieu/chinh-hang-nhat.html" title="@item">@item<span>(298)</span></a>
+                                @{
+                                    var content = "Chính hãng" + " " + @item;
+                                }
+                                <a href="@Url.Action("Search_Results","Search",new { content = content })" title="Chính hãng @item">
+                                    Chính hãng @item
+                                    @{
+                                        var sl = 0;
+                                        foreach (var t in @ViewBag.listProduct)
+                                        {
+                                            if (item == t.Orgin)
+                                            {
+                                                sl++;
+                                            }
+                                        }
+                                    }
+
+                                    <span> (@sl)</span>
+                                </a>
                             </li>
                         }
 
