@@ -36,7 +36,7 @@ namespace DoNgoaiChinhHang.Controllers
             float sum = 0;
             foreach (var item in list)
             {
-                sum += item.Product.Price * item.Quanlity;
+                sum += (long) item.Product.Price * item.Quanlity;
             }
             var OrderID = CreateKey("H");
             var AccountID = Int32.Parse(Session["IDUrSS"].ToString());

@@ -71,344 +71,364 @@
 
 <div class="col-left" itemscope="" itemtype="http://schema.org/Product">
     <div class="product-detail accordion-detail border radius">
-        <div class="row">
-            <div class="detail-gallery">
-                <div class="inner">
-                    <div class="mid">
-                        <img src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[0])" id="mainImage" style="cursor:pointer" />
-                    </div>
+        @using (Html.BeginForm("AddItem", "Cart", FormMethod.Post))
+        {
+            <div class="row">
 
-                    <div class="gallery-control">
-                        <a href="#"
-                           class="prev">‹</a>
-
-                        <div class="carousel" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 240px;">
-                            <h1>
-                                <ul>
-                                    <li class="active" style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                        <img class="lazy"
-                                             src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[0])"
-                                             style="display: inline; opacity: 1; width: 100%; height: 100%;cursor:pointer">
-                                    </li>
-                                    @for (int i = 1; i < ViewBag.Images.Count; i++)
-                                    {
-                                        <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
-                                            <img class="lazy"
-                                                 src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[i])"
-                                                 style="display: inline; opacity: 1;width:100%;height:100%;cursor:pointer">
-                                        </li>
-                                    }
-                                </ul>
-                            </h1>
+                <div class="detail-gallery">
+                    <div class="inner">
+                        <div class="mid" style="margin-right: 20px">
+                            <img src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[0])" id="mainImage" style="cursor:pointer" />
                         </div>
-                        <a href="#" class="next">›</a>
-                    </div>
+
+                        <div class="gallery-control">
+                            <a href="#"
+                               class="prev">‹</a>
+
+                            <div class="carousel" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 240px;">
+                                <h1>
+                                    <ul>
+                                        <li class="active" style="overflow: hidden; float: left; width: 80px; height: 52px;">
+                                            <img class="lazy"
+                                                 src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[0])"
+                                                 style="display: inline; opacity: 1; width: 100%; height: 100%;cursor:pointer">
+                                        </li>
+                                        @for (int i = 1; i < ViewBag.Images.Count; i++)
+                                        {
+                                            <li style="overflow: hidden; float: left; width: 80px; height: 52px;">
+                                                <img class="lazy"
+                                                     src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[i])"
+                                                     style="display: inline; opacity: 1;width:100%;height:100%;cursor:pointer">
+                                            </li>
+                                        }
+                                    </ul>
+                                </h1>
+                            </div>
+                            <a href="#" class="next">›</a>
+                        </div>
 
 
-                    <div class="dnopro">
-                        <p>
-                            <img data-src="/imgs/hoan-tra-tien.png" alt="đổi hàng" class="lazy" src="~/assets/img/hoan-tra-tien.png" style="display: inline; opacity: 1;" />
-                            Đổi trả hàng miễn phí trong 7 ngày
-                        </p>
-                        <p>
-                            <img data-src="/imgs/thanh-toan.png" alt="thanh toán" class="lazy" src="~/assets/img/thanh-toan.png" style="display: inline; opacity: 1;" />
-                            Giao hàng &amp; Thanh toán tận nơi toàn quốc
-                        </p>
-                        <p>
-                            <img data-src="/imgs/giao-hang.png" alt="giao hàng" class="lazy" src="~/assets/img/giao-hang.png" style="display: inline; opacity: 1;" />
-                            SÁNG nhận CHIỀU giao <i style="font-size:80%">(Áp dụng Tp HCM)</i>
-                        </p>
-                        <p>
-                            <img data-src="/imgs/thong-tin.png" alt="chính hãng" class="lazy" src="~/assets/img/thong-tin.png" style="display: inline; opacity: 1;"> Cam kết Hàng Chính Hãng 100% -
-                            Hoàn tiền 300% nếu hàng giả, kém chất lượng, ...
-                        </p>
+                        <div class="dnopro">
+                            <p>
+                                <img data-src="/imgs/hoan-tra-tien.png" alt="đổi hàng" class="lazy" src="~/assets/img/hoan-tra-tien.png" style="display: inline; opacity: 1;" />
+                                Đổi trả hàng miễn phí trong 7 ngày
+                            </p>
+                            <p>
+                                <img data-src="/imgs/thanh-toan.png" alt="thanh toán" class="lazy" src="~/assets/img/thanh-toan.png" style="display: inline; opacity: 1;" />
+                                Giao hàng &amp; Thanh toán tận nơi toàn quốc
+                            </p>
+                            <p>
+                                <img data-src="/imgs/giao-hang.png" alt="giao hàng" class="lazy" src="~/assets/img/giao-hang.png" style="display: inline; opacity: 1;" />
+                                SÁNG nhận CHIỀU giao <i style="font-size:80%">(Áp dụng Tp HCM)</i>
+                            </p>
+                            <p>
+                                <img data-src="/imgs/thong-tin.png" alt="chính hãng" class="lazy" src="~/assets/img/thong-tin.png" style="display: inline; opacity: 1;"> Cam kết Hàng Chính Hãng 100% -
+                                Hoàn tiền 300% nếu hàng giả, kém chất lượng, ...
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="detail-info">
-                <div class="inner">
-                    <h1 class="title-detail" itemprop="name">
-                        @Model.ProductName
-                    </h1>
-                    <div class="vote">
-                        <div style="width:100%"></div>
-                    </div>
-                    <div class="point">
-                        (@Model.Evaluation / 5 sao - <a id="aCmt"> đánh giá</a>)
-                    </div>
-                    <ul class="hsxmsp">
-                        <li>
-                            <i>Hãng SX:</i>
-                            <a href="#" class="ahsx">@Model.Brand</a>
-                        </li>
-                        <li>
-                            <i>Xuất xứ:</i>
+                <div class="detail-info">
+                    <div class="inner">
+                        <h1 class="title-detail" itemprop="name">
+                            @Model.ProductName
+                        </h1>
+                        <div class="vote">
+                            <div style="width:100%"></div>
+                        </div>
+                        <div class="point">
+                            (@Model.Evaluation / 5 sao - <a id="aCmt"> đánh giá</a>)
+                        </div>
+                        <ul class="hsxmsp">
+                            <li>
+                                <i>Hãng SX:</i>
+                                <a href="#" class="ahsx">@Model.Brand</a>
+                            </li>
+                            <li>
+                                <i>Xuất xứ:</i>
 
-                            <a href="#" class="ahsx">@Model.Orgin</a>
-                        </li>
+                                <a href="#" class="ahsx">@Model.Orgin</a>
+                            </li>
+                            <li>
+                                <i>Mã SP:</i> <span itemprop="sku">@Model.ProductID</span>
+                            </li>
+                        </ul>
+                        <p class="desc">
+                            @foreach (var description in Model.Description.Split('.'))
+                            {
+                                <span>
+                                    -@description <br />
+                                </span>
+                            }
+                        </p>
+
+                    </div>
+
+                    <p>
+                        Tình trạng:
+                        <span id="js-product-status" style="font-weight:700">
+                            @if (Model.AvailableQuantity > 0)
+                            {
+                                <span>Còn hàng</span>
+                            }
+                            else
+                            {
+                                <span>Hết hàng</span>
+                            }
+                        </span>
+                    </p>
+                    <p class="hdm">Đã Mua: <b> @Model.QuantitySold</b></p>
+                    <span class="pprice">
+                        <span class="txt_title">
+                            Giá bán:
+                        </span>
+                        <ins id="insPrice">@String.Format("{0:0,0,0}", Model.Price)₫</ins>
+                        <div class="kmfs">
+                            @if (Model.Freeship == true)
+                            {
+                                <div>
+                                    <img src="~/assets/img/icon-ship.jpg">
+                                    <b>+ Miễn phí Ship<b> khi mua từ <b>2</b> sản phẩm<br />
+                                </div>
+                            }
+
+                            @if (Model.Discount > 0)
+                            {
+                                <div>
+                                    <img src="~/assets/img/icon-km.gif" />
+                                    <b>+</b> Giảm Ngay <b>@String.Format("{0:0,0,0}", Model.Discount)</b>₫/sp khi mua từ <b>2</b> sản phẩm
+                                </div>
+                            }
+                        </div>
+
+                    </span>
+
+                    <input id="txtIdPro" type="hidden" value="50929">
+                    <div class="detail-extralink">
+                        @using (Html.BeginForm("AddItem", "Cart", FormMethod.Post))
+                        {
+                            <input class="qty-val" id="txtQty" value="1" name="quanlity" type="number" max="99">
+                            <input type="hidden" name="ProductID" value="@Model.ProductID" />
+                            <input type="hidden" name="datHangNgay" value="1" />
+                            <button type="submit" class="abodr" id="aOdr">
+                                Đặt Hàng Ngay<br>
+                                <div class="xhc">Xem hàng trước, nhận hàng trả tiền</div>
+                            </button>
+                        }
+
+
+
+                    </div>
+                    <script>$("#txtQty").change(function () { var iQty = parseInt($('#txtQty').val()); var pMin = 510000; var pMin2 = 510000; if (iQty < 1) iQty = 1; if (iQty > 1) { findCt('insPrice').innerHTML = pMin2.toLocaleString() + 'đ'; } else findCt('insPrice').innerHTML = pMin.toLocaleString() + 'đ'; @*$('#aOdr').attr('href', '/gio-hang.html?i=50929.' + iQty);*@ });</script>
+                    <div class="boxcust">
+                        <span id="alertcallforme"></span>
+                        <h4>GỌI LẠI CHO TÔI</h4>
+                        <span id="formcallme"></span>
+                        <input type="text" id="txt-cus-name" class="cus-name" placeholder="Họ và tên">
+                        <input type="tel" id="txt-cus-phone" class="cus-phone" placeholder="Để lại số điện thoại, chúng tôi gọi lại ngay">
+                        <input type="button" id="btn-send-cust" class="btn-send-cust" value="GỬI">
+                        <div class="clr"></div>
+                    </div>
+                    <div class="gdm">
+                        Gọi đặt mua:
+                        <img class="lazy" alt="call" src="~/assets/img/ho-tro-247.png" style="display: inline; opacity: 1;">
+                        <a href="tel:0983667466">0983 667 466</a> (tư vấn miễn phí)
+                    </div>
+                </div>
+
+                <div class="clr"></div>
+                <div class="clr"></div>
+                <div class="box_item01">
+                    <div class="box_item_in">
+                        <h2 class="tabgdt">
+                            Giới thiệu @Model.ProductName
+                        </h2>
+                        <div class="bica">
+                            <p style="font-weight: 100">&emsp;&emsp;&emsp; @Model.Introduction</p>
+                            <p style="text-align: center;">
+                                <a target="_blank">
+                                    <img class="lazy quickview-link"
+                                         style="width: 700px; height: 500px; display: inline; opacity: 1;"
+                                         src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[0])">
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="hmb" style="text-align:center">
+                    <button type="submit" class="abodr" id="aOdr">
+                        Đặt Hàng Ngay<br>
+                    </button>
+                </p>
+                <div class="box_item01">
+                    <div class="box_item_in">
+                        <h2 class="tabgdt">
+                            Công dụng của @Model.ProductName
+                        </h2>
+                        <div class="bica">
+                            <p>
+                                @foreach (var benefit in Model.Benefit.Split('.'))
+                                {
+                                    if (@benefit.Length > 1)
+                                    {
+                                        <span style="font-weight: 100">
+                                            <span style="color:#ffd700;">✔</span> @benefit. <br />
+                                        </span>
+                                    }
+                                }
+                            </p>
+                            <p style="text-align: center;">
+                                <a target="_blank">
+                                    <img class="lazy quickview-link"
+                                         style="width: 700px; height: 500px; display: inline; opacity: 1;"
+                                         src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[1])">
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="hmb" style="text-align:center">
+                    <button type="submit" class="abodr" id="aOdr">
+                        Đặt Hàng Ngay<br>
+                    </button>
+                </p>
+                <div class="box_item01">
+                    <div class="box_item_in">
+                        <h2 class="tabgdt">
+                            Thành phần của @Model.ProductName
+                        </h2>
+                        <div class="bica">
+                            <p style="text-align:justify">
+                                @foreach (var element in Model.Element.Split('.'))
+                                {
+                                    if (@element.Length > 1)
+                                    {
+                                        <span style="font-weight: 100">
+                                            <span style="color:#0000ff;">✜ </span>@element. <br />
+                                        </span>
+                                    }
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="hmb" style="text-align:center">
+                    <button type="submit" class="abodr" id="aOdr">
+                        Đặt Hàng Ngay<br>
+                    </button>
+                </p>
+
+                <div class="box_item01">
+                    <div class="box_item_in">
+                        <h2 class="tabgdt">
+                            Hướng dẫn sử dụng @Model.ProductName
+                        </h2>
+                        <div class="bica">
+                            <p>
+                                @foreach (var tutorial in Model.Tutorial.Split('.'))
+                                {
+                                    if (@tutorial.Length > 1)
+                                    {
+                                        <span style="font-weight: 100">
+                                            <span style="color:#ffd700;">➤ </span>@tutorial. <br />
+                                        </span>
+                                    }
+                                }
+                            </p>
+                            <p style="text-align: center;">
+                                <a target="_blank">
+                                    <img class="lazy quickview-link"
+                                         style="width: 700px; height: 500px; display: inline; opacity: 1;"
+                                         src="@Url.Content("~/wwwroot/ProductsImages/" + ViewBag.Images[2])">
+                                </a>
+                            </p>
+                            <p>================</p>
+                            <p><strong>Thông tin sản phẩm</strong></p>
+                            <p>- Tên sản phẩm:&nbsp;<span style="font-weight: 100">@Model.ProductName</span></p>
+                            <p>- Thương hiệu: <span style="font-weight: 100">@Model.Brand</span></p>
+                            <p>- Xuất xứ:  <span style="font-weight: 100">@Model.Orgin</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <iframe src="~/assets/img/dnch.html" scrolling="no" style="min-height:357px;width:100%"></iframe>
+                
+                <div class="clr"></div><div class="box-similar">
+                    <p class="headdetail">Đặt hàng nhanh</p>
+                    <div style="text-align:center">
+                        <img data-src="/Images/dongoaichinhhang-chinh-sach-ban-hang.jpg"
+                             class="lazy" alt="Giỏ hàng dongoaichinhhang"
+                             src="~/assets/img/dongoaichinhhang-chinh-sach-ban-hang.jpg"
+                             style="display: inline; opacity: 1;">
+                        <p class="hodr">
+                            Bạn muốn <span>ĐẶT MUA NGAY</span> sản phẩm này hoặc muốn được <span>
+                                TƯ
+                                VẤN
+                            </span> rõ hơn về sản phẩm trước khi mua hàng, hãy <span>GỌI</span> vào số
+                            <span>
+                                hotline <a href="tel:0983667466"
+                                           style="font-weight:700;color:red;font-size:150%">0983 667 466</a>
+                            </span> của
+                            chúng tôi hoặc để lại thông tin bên dưới. Chúng tôi sẽ gọi lại bạn hoàn toàn <span>
+                                MIỄN
+                                PHÍ
+                            </span> chỉ sau ít phút.
+                        </p><img src="https://dongoaichinhhang.com/Images/xem.gif"
+                                 alt="Giỏ hàng dongoaichinhhang">
+                    </div>
+                    <div class="oqfl">
+                        <img data-src="/imgs/giohang.png" class="lazy"
+                             alt="Giỏ hàng dongoaichinhhang"
+                             src="~/assets/img/giohang.png"
+                             style="display: inline; opacity: 1;">
+                    </div>
+                    <div class="form-order clearfix oqfr">
+                        <form class="form-inline" id="formQuickOrder">
+                            <div class="form-div col-xs-12">
+                                <div class="iUs"></div><input type="text" class="form-control" id="txtFullName"
+                                                              value="" placeholder="Họ tên (*)">
+                                <div class="iPo"></div><input type="tel" class="form-control" id="txtPhone" value=""
+                                                              placeholder="Số điện thoại (*)">
+                                <div class="iAd"></div><input type="text" class="form-control" id="txtAddress"
+                                                              value="" placeholder="Địa chỉ (*)">
+                                <div class="iNo"></div><textarea rows="4" id="txtNote" class="form-control"
+                                                                 placeholder="Ghi chú hoặc Mã quà tặng" style="height: auto"></textarea>
+                                <div>
+                                    <label style="color:brown">
+                                        <input id="cbHidePro" type="checkbox"> Yêu cầu Che
+                                        Giấu Tên Sản Phẩm !
+                                    </label> <br /<input type="hidden" value=""
+                                                                id="iphidenpro">
+                                    <div id="divHidePro" style="display:none">
+                                        <div class="iMa"></div>
+                                        <input type="text" style="color:brown"
+                                               class="form-control" id="txtEmailOrder" value=""
+                                               placeholder="Nhập Tên Sản Phẩm Mới (nếu muốn đổi tên) ...">
+                                    </div>
+                                    <div class="clr"></div><br>
+                                </div>
+                            </div>
+                            <div class="form-div col-xs-12" style="text-align: center">
+                                <a class="btn btn-primary"
+                                   href="javascript:void();" id="btnSendOrder">ĐẶT HÀNG NHANH</a>
+                                <div id="redataorder"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="clr"></div>
+                <div class="tagsbox">
+                    Tags: <ul class="tags">
                         <li>
-                            <i>Mã SP:</i> <span itemprop="sku">@Model.ProductID</span>
+
                         </li>
                     </ul>
-                    <p class="desc">
-                        @foreach (var description in Model.Description.Split('.'))
-                        {
-                            <span>
-                                -@description <br />
-                            </span>
-                        }
-                    </p>
+                </div><br>
+                <div class="clr"></div>
 
-                </div>
-
-                <p>
-                    Tình trạng:
-                    <span id="js-product-status" style="font-weight:700">
-                        @if (Model.AvailableQuantity > 0)
-                        {
-                            <span>Còn hàng</span>
-                        }
-                        else
-                        {
-                            <span>Hết hàng</span>
-                        }
-                    </span>
-                </p>
-                <p class="hdm">Đã Mua: <b> @Model.QuantitySold</b></p>
-                <span class="pprice">
-                    <span class="txt_title">
-                        Giá bán:
-                    </span>
-                    <ins id="insPrice">@String.Format("{0:0,0,0}", Model.Price)₫</ins>
-                    <div class="kmfs">
-                        @if (Model.Freeship == true)
-                        {
-                            <div>
-                                <img src="~/assets/img/icon-ship.jpg">
-                                <b>+ Miễn phí Ship<b> khi mua từ <b>2</b> sản phẩm<br />
-                            </div>
-                        }
-
-                        @if (Model.Discount > 0)
-                        {
-                            <div>
-                                <img src="~/assets/img/icon-km.gif" />
-                                <b>+</b> Giảm Ngay <b>@String.Format("{0:0,0,0}", Model.Discount)</b>₫/sp khi mua từ <b>2</b> sản phẩm
-                            </div>
-                        }
-                    </div>
-
-                </span>
-
-                <input id="txtIdPro" type="hidden" value="50929">
-                <div class="detail-extralink">
-                    <input class="qty-val" id="txtQty" value="1" type="number" max="99">
-                    <a class="abodr" id="aOdr" href="@Url.Action("Index","Cart","")">
-                        Đặt Hàng Ngay<br>
-                        <div class="xhc">Xem hàng trước, nhận hàng trả tiền</div>
-                    </a>
-                </div>
-                <script>$("#txtQty").change(function () { var iQty = parseInt($('#txtQty').val()); var pMin = 510000; var pMin2 = 510000; if (iQty < 1) iQty = 1; if (iQty > 1) { findCt('insPrice').innerHTML = pMin2.toLocaleString() + 'đ'; } else findCt('insPrice').innerHTML = pMin.toLocaleString() + 'đ'; $('#aOdr').attr('href', '/gio-hang.html?i=50929.' + iQty); });</script>
-                <div class="boxcust">
-                    <span id="alertcallforme"></span>
-                    <h4>GỌI LẠI CHO TÔI</h4>
-                    <span id="formcallme"></span>
-                    <input type="text" id="txt-cus-name" class="cus-name" placeholder="Họ và tên">
-                    <input type="tel" id="txt-cus-phone" class="cus-phone" placeholder="Để lại số điện thoại, chúng tôi gọi lại ngay">
-                    <input type="button" id="btn-send-cust" class="btn-send-cust" value="GỬI">
-                    <div class="clr"></div>
-                </div>
-                <div class="gdm">
-                    Gọi đặt mua:
-                    <img class="lazy" alt="call" src="~/assets/img/ho-tro-247.png" style="display: inline; opacity: 1;">
-                    <a href="tel:0983667466">0983 667 466</a> (tư vấn miễn phí)
-                </div>
             </div>
+        }
 
-            <div class="clr"></div>
-            <div class="clr"></div>
-            <div class="box_item01">
-                <div class="box_item_in">
-                    <h2 class="tabgdt">
-                        Giới thiệu @Model.ProductName
-                    </h2>
-                    <div class="bica">
-                        <p style="font-weight: 100">&emsp;&emsp;&emsp; @Model.Introduction</p>
-                        <p style="text-align: center;">
-                            <a target="_blank">
-                                <img class="lazy quickview-link"
-                                     style="width: 700px; height: 500px; display: inline; opacity: 1;"
-                                     src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[0])">
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <p class="hmb" style="text-align:center">
-                <a class="abodr"
-                   href="@Url.Action("Index","Cart","")">Đặt Hàng Ngay<br></a>
-            </p>
-            <div class="box_item01">
-                <div class="box_item_in">
-                    <h2 class="tabgdt">
-                        Công dụng của @Model.ProductName
-                    </h2>
-                    <div class="bica">
-                        <p>
-                            @foreach (var benefit in Model.Benefit.Split('.'))
-                            {
-                                if (@benefit.Length > 1)
-                                {
-                                    <span style="font-weight: 100">
-                                        <span style="color:#ffd700;">✔</span> @benefit. <br />
-                                    </span>
-                                }
-                            }
-                        </p>
-                        <p style="text-align: center;">
-                            <a target="_blank">
-                                <img class="lazy quickview-link"
-                                     style="width: 700px; height: 500px; display: inline; opacity: 1;"
-                                     src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[1])">
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <p class="hmb" style="text-align:center">
-                <a class="abodr"
-                   href="@Url.Action("Index","Cart","")">Đặt Hàng Ngay<br></a>
-            </p>
-            <div class="box_item01">
-                <div class="box_item_in">
-                    <h2 class="tabgdt">
-                        Thành phần của @Model.ProductName
-                    </h2>
-                    <div class="bica">
-                        <p style="text-align:justify">
-                            @foreach (var element in Model.Element.Split('.'))
-                            {
-                                if (@element.Length > 1)
-                                {
-                                    <span style="font-weight: 100">
-                                        <span style="color:#0000ff;">✜ </span>@element. <br />
-                                    </span>
-                                }
-                            }
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <p class="hmb" style="text-align:center">
-                <a class="abodr" href="@Url.Action("Index","Cart","")">Đặt Hàng Ngay<br></a>
-            </p>
-            <div class="box_item01">
-                <div class="box_item_in">
-                    <h2 class="tabgdt">
-                        Hướng dẫn sử dụng @Model.ProductName
-                    </h2>
-                    <div class="bica">
-                        <p>
-                            @foreach (var tutorial in Model.Tutorial.Split('.'))
-                            {
-                                if (@tutorial.Length > 1)
-                                {
-                                    <span style="font-weight: 100">
-                                        <span style="color:#ffd700;">➤ </span>@tutorial. <br />
-                                    </span>
-                                }
-                            }
-                        </p>
-                        <p style="text-align: center;">
-                            <a target="_blank">
-                                <img class="lazy quickview-link"
-                                     style="width: 700px; height: 500px; display: inline; opacity: 1;"
-                                     src="@Url.Content("~/wwwroot/ProductsImages/"+ViewBag.Images[2])">
-                            </a>
-                        </p>
-                        <p>================</p>
-                        <p><strong>Thông tin sản phẩm</strong></p>
-                        <p>- Tên sản phẩm:&nbsp;<span style="font-weight: 100">@Model.ProductName</span></p>
-                        <p>- Thương hiệu: <span style="font-weight: 100">@Model.Brand</span></p>
-                        <p>- Xuất xứ:  <span style="font-weight: 100">@Model.Orgin</span></p>
-                    </div>
-                </div>
-            </div>
-
-            <iframe src="~/assets/img/dnch.html" scrolling="no" style="min-height:357px;width:100%"></iframe>
-            <div class="box-similar">
-                <p class="headdetail">Đặt hàng nhanh</p>
-                <div style="text-align:center">
-                    <img data-src="/Images/dongoaichinhhang-chinh-sach-ban-hang.jpg"
-                         class="lazy" alt="Giỏ hàng dongoaichinhhang"
-                         src="~/assets/img/dongoaichinhhang-chinh-sach-ban-hang.jpg"
-                         style="display: inline; opacity: 1;">
-                    <p class="hodr">
-                        Bạn muốn <span>ĐẶT MUA NGAY</span> sản phẩm này hoặc muốn được <span>
-                            TƯ
-                            VẤN
-                        </span> rõ hơn về sản phẩm trước khi mua hàng, hãy <span>GỌI</span> vào số
-                        <span>
-                            hotline <a href="tel:0983667466"
-                                       style="font-weight:700;color:red;font-size:150%">0983 667 466</a>
-                        </span> của
-                        chúng tôi hoặc để lại thông tin bên dưới. Chúng tôi sẽ gọi lại bạn hoàn toàn <span>
-                            MIỄN
-                            PHÍ
-                        </span> chỉ sau ít phút.
-                    </p><img src="https://dongoaichinhhang.com/Images/xem.gif"
-                             alt="Giỏ hàng dongoaichinhhang">
-                </div>
-                <div class="oqfl">
-                    <img data-src="/imgs/giohang.png" class="lazy"
-                         alt="Giỏ hàng dongoaichinhhang"
-                         src="~/assets/img/giohang.png"
-                         style="display: inline; opacity: 1;">
-                </div>
-                <div class="form-order clearfix oqfr">
-                    <form class="form-inline" id="formQuickOrder">
-                        <div class="form-div col-xs-12">
-                            <div class="iUs"></div><input type="text" class="form-control" id="txtFullName"
-                                                          value="" placeholder="Họ tên (*)">
-                            <div class="iPo"></div><input type="tel" class="form-control" id="txtPhone" value=""
-                                                          placeholder="Số điện thoại (*)">
-                            <div class="iAd"></div><input type="text" class="form-control" id="txtAddress"
-                                                          value="" placeholder="Địa chỉ (*)">
-                            <div class="iNo"></div><textarea rows="4" id="txtNote" class="form-control"
-                                                             placeholder="Ghi chú hoặc Mã quà tặng" style="height: auto"></textarea>
-                            <div>
-                                <label style="color:brown">
-                                    <input id="cbHidePro" type="checkbox"> Yêu cầu Che
-                                    Giấu Tên Sản Phẩm !
-                                </label><!-- <br /--><input type="hidden" value=""
-                                                            id="iphidenpro">
-                                <div id="divHidePro" style="display:none">
-                                    <div class="iMa"></div>
-                                    <input type="text" style="color:brown"
-                                           class="form-control" id="txtEmailOrder" value=""
-                                           placeholder="Nhập Tên Sản Phẩm Mới (nếu muốn đổi tên) ...">
-                                </div>
-                                <div class="clr"></div><br>
-                            </div>
-                        </div>
-                        <div class="form-div col-xs-12" style="text-align: center">
-                            <a class="btn btn-primary"
-                               href="javascript:void();" id="btnSendOrder">ĐẶT HÀNG NHANH</a>
-                            <div id="redataorder"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="clr"></div>
-            <div class="tagsbox">
-                Tags: <ul class="tags">
-                    <li>
-
-                    </li>
-                </ul>
-            </div><br>
-            <div class="clr"></div>
-        </div>
         <div class="clr"></div><a name="cmt"></a><br>
         <div class="boxct" id="comment">
             <h5 id="id-comment-title">Có <span style="color:red">0</span> bình luận</h5>

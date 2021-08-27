@@ -36,7 +36,7 @@ namespace DoNgoaiChinhHang.Controllers
             return View(list);
         }
 
-        public ActionResult AddItem(string productID, int quanlity)
+        public ActionResult AddItem(string productID, int quanlity, int datHangNgay)
         {
             var cart = Session[CartSession];
             var product = db.Products.Where(x => x.ProductID == productID).FirstOrDefault();
@@ -83,6 +83,10 @@ namespace DoNgoaiChinhHang.Controllers
                 .Select(fn => product.ProductID.Trim() + "/" + Path.GetFileName(fn));
             string ImgPath = files.First();
             ViewBag.ImageCart = ImgPath;
+            if(datHangNgay == 1)
+            {
+                return RedirectToAction("Index");
+            }
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
