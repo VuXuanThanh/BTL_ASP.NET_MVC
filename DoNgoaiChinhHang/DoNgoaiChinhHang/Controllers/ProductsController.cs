@@ -22,7 +22,7 @@ namespace DoNgoaiChinhHang.Controllers
             var categoryBase = db.CategoryBases.Where(c => c.CategoryBaseID == category.CategoryBaseID).FirstOrDefault();
 
             var listRelatedProducts = db.Products.Where(p => p.Brand == product.Brand && p.ProductID != productID).Take(4);
-            var listTopProducts = db.Products.OrderByDescending(p => p.Price).Take(5);
+            var listTopProducts = db.Products.OrderByDescending(p => p.QuantitySold).Take(5);
 
             ViewBag.Images = ImagePath(product);
 

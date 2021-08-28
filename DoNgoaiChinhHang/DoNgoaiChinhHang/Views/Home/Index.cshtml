@@ -155,7 +155,7 @@
     <div class="box-shock col-big">
         <div class="rowbn">
             <ul class="homeproduct nonslider boxfull">
-                @foreach (var item in Model.OrderByDescending(p => p.Price).Take(5))
+                @foreach (var item in Model.OrderByDescending(p => p.QuantitySold).Take(5))
                 {
                     <li>
                         <div class="absoluteimg">
