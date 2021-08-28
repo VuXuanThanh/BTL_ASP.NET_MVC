@@ -24,9 +24,9 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
-            ViewBag.SapTheoNgay = String.IsNullOrEmpty(sortOrder) ? "ngaydat_desc" : "ngaydat";
-            ViewBag.SapTheoGia = String.IsNullOrEmpty(sortOrder) ? "tongtien_desc" : "tongtien";
-            ViewBag.SapTheoTrangThai = String.IsNullOrEmpty(sortOrder) ? "trangthai_desc" : "trangthai";
+            ViewBag.SapTheoNgay = sortOrder == "ngaydat" ? "ngaydat_desc" : "ngaydat";
+            ViewBag.SapTheoGia = sortOrder == "tongtien" ? "tongtien_desc" : "tongtien";
+            ViewBag.SapTheoTrangThai = sortOrder == "trangthai" ? "trangthai_desc" : "trangthai";
             if (searchString != null)
             {
                 page = 1;

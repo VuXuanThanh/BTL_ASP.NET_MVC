@@ -21,7 +21,7 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
-            ViewBag.SapTheoGia = String.IsNullOrEmpty(sortOrder) ? "gia_desc" : "gia";
+            ViewBag.SapTheoGia = sortOrder == "gia" ? "gia_desc" : "gia";
             if (searchString != null)
             {
                 page = 1;
@@ -88,7 +88,11 @@ namespace DoNgoaiChinhHang.Areas.Admin.Controllers
                                 if (files[i] != null)
                                 {
                                     var InputFilename = Path.GetFileName(files[i].FileName);
-
+                                if (i == 0)
+                                {
+                                    var bb = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/cart.png"));
+                                    files[i].SaveAs(bb);
+                                }
                                     var ServerSavePath = Path.Combine(Server.MapPath("~/wwwroot/ProductsImages/" + product.ProductID + "/") + InputFilename);
                                     files[i].SaveAs(ServerSavePath);
 

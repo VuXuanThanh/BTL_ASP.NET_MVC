@@ -48,7 +48,7 @@ namespace DoNgoaiChinhHang.Controllers
             if (cart != null)
             {
                 var list = (List<CartItem>)cart;
-                if (list.Exists(x => x.Product.ProductID != productID.Trim()))
+                if (list.Exists(x => x.Product.ProductID == productID.Trim()))
                 {
                     foreach (var item in list)
                     {

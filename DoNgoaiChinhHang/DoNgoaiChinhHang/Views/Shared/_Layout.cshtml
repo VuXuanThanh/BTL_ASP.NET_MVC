@@ -483,10 +483,8 @@
                                         <li>
                                              <figure>
                                                 <a class="cart_list_product_img" href="/thuoc-moc-rau-nakashima-nhat-ban.html">
-                                                      @*@{
-                                                        var imgpath=ViewBag.ImageCart;
-                                                    }*@
-                                                    <img src="~/wwroot/ProductsImages/" alt="anh" class="wo60" />
+                                                      
+                                                    <img src="/wwwroot/ProductsImages/${item.Product.ProductID}/cart.png" alt="anh" class="wo60" />
                                                 </a>
                                               </figure>
                                              <div class="list_content">

@@ -1528,6 +1528,8 @@
     <Content Include="Views\Account\LoginUser.cshtml" />
     <Content Include="Views\Products\Detail.cshtml" />
     <Content Include="Views\Search\Search_Results.cshtml" />
+    <Content Include="Views\Orders\OrderUsers2.cshtml" />
+    <Content Include="Views\Orders\OrderUsersDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
