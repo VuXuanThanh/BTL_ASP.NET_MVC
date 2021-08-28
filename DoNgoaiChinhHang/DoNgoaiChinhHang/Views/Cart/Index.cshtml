@@ -16,11 +16,13 @@
         <a href="/" itemprop="url" title="Đồ Ngoại Chính Hãng"><span itemprop="title" class="iH"></span></a><span>›</span>
     </li>
     <li><a href="/Cart/Index">Giỏ hàng</a></li>
+
 </ul>
 <div class="boxct">
     <div class="clr">
         <div id="UpdatePanel1">
             <div id="divOrder">
+                
                 <p style="margin: 15px 0 10px 0;">Giỏ hàng có: <b>@Model.Count sản phẩm</b></p>
                 <p style="margin: 5px 0 10px 0;">Tổng tiền: <b style="color: Red;">@ViewBag.Sum </b></p>
 
@@ -52,9 +54,9 @@
                                             string ImgPathFirst = files[0];
                                             String[] imgSplit = ImgPathFirst.Split('\\');
                                             int num_stringSplited = imgSplit.Length;
-                                            string ImagePath = imgSplit[num_stringSplited - 4] +"/"
-                                                + imgSplit[num_stringSplited - 3] +"/"
-                                                + imgSplit[num_stringSplited - 2] +"/"
+                                            string ImagePath = imgSplit[num_stringSplited - 4] + "/"
+                                                + imgSplit[num_stringSplited - 3] + "/"
+                                                + imgSplit[num_stringSplited - 2] + "/"
                                                 + imgSplit[num_stringSplited - 1];
 
 
@@ -185,7 +187,7 @@
                             <div id="UpdatePanel2">
                                 <div>
                                     <span style="color: Brown; font-weight: bold;">
-                                        <input id="cbHidePro" type="checkbox" name="Note" value ="true" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;cbHidePro\&#39;,\&#39;\&#39;)&#39;, 0)" />
+                                        <input id="cbHidePro" type="checkbox" name="Note" value="true" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;cbHidePro\&#39;,\&#39;\&#39;)&#39;, 0)" />
                                         <label for="cbHidePro" value="True"> Yêu cầu Che Giấu Tên Sản Phẩm !</label>
                                     </span>
                                     <br />
@@ -216,7 +218,7 @@
                                 <div><span id="lbErrorMsg" style="color: Red;"></span></div>
 
 
-                                <input type="submit" name="btOrder" value="Đặt hàng " id="btOrder" class="btn btn-order" style="font-weight: bold;" />
+                                <input type="submit" name="btOrder" value="Đặt hàng " id="btOrder" class="btn btn-order muaHang" style="font-weight: bold;" />
 
 
                             </div>
@@ -233,16 +235,49 @@
         }
         else
         {
-            <a class="btn btn-default" href="@Url.Action("LoginUser","Account")">Mua hàng</a>
-
+            <a class="btn btn-default" href="@Url.Action("LoginUser", "Account")">Mua hàng</a>
         }
-
-
     </div>
-
     <div class="clr"></div>
 </div>
+
+
 <script>
+    $(".muaHang").click(function (e) {
+        e.preventDefault();
+        if (!$('#agree').is(":checked")) {
+            alert("Bạn phải đồng ý điều khoản ");
+            return;
+        }
+        var paytype = $('#rdbCOD').is(":checked") ? true : false;
+        var note = $('#cbHidePro').is(":checked") ? true : false;
+        $.ajax({
+            type: 'POST',
+            url: '/Orders/OrderUsers',
+            data: {
+                PaymentType: paytype,
+                Note: note
+            },
+            success: function (result) {
+                if (result == "ok") {
+                    location.href = "/Orders/OrderUsersDetail";
+                }
+                else if (result == "khong co sp") {
+                    alert("Không có sản phẩm nào trong giỏ");
+                    location.href = "/";
+                }
+                else {
+                    alert(result);
+                }
+            },
+            error: function () {
+                alert("Có lỗi");
+            }
+        });
+        
+
+    });
+
     document.body.addEventListener('change', function (e) {
         let target = e.target;
         if (target.id == 'rdbCOD') {

@@ -14,6 +14,7 @@ namespace DoNgoaiChinhHang.Controllers
     public class OrdersController : Controller
     {
         private DBContext db = new DBContext();
+        private static string oid = null;
         public ActionResult OrderUsers()
         {
           
@@ -31,33 +32,44 @@ namespace DoNgoaiChinhHang.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            var pay = Request["PaymentType"];
             var cart = Session["cart"];
             var list = (List<CartItem>)cart;
+            if(list.Count == 0)
+            {
+                return Json("khong co sp", JsonRequestBehavior.AllowGet);
+            }
+            string loiSoLuong = null;
             float sum = 0;
             foreach (var item in list)
             {
-                sum += (long) item.Product.Price * item.Quanlity;
+                sum += (long)item.Product.Price * item.Quanlity;
+                var slcon = db.Products.Where(x => x.ProductID == item.Product.ProductID).First().AvailableQuantity;
+                if (int.Parse(slcon.ToString()) < item.Quanlity)
+                {
+                    loiSoLuong += item.Product.ProductName + " không đáp ứng đủ số lượng\n";
+                }
             }
-            var OrderID = CreateKey("H");
+            if (loiSoLuong != null)
+            {
+                return Json(loiSoLuong, JsonRequestBehavior.AllowGet);
+            }
+            oid = CreateKey("H");
             var AccountID = Int32.Parse(Session["IDUrSS"].ToString());
             bool PaymentTypeCredits = bool.Parse(PaymentType);
-            if (Note == null)
-            {
-                Note = "false";
-            }
             bool NoteOrder = bool.Parse(Note);
             DateTime DateOrder = DateTime.Now;
 
             Order order = new Order()
             {
-                OrderID = OrderID,
+                OrderID = oid,
                 AccountID = AccountID,
                 Note = NoteOrder,
-                DateOrder=DateOrder,
+                DateOrder = DateOrder,
                 PaymentType = PaymentTypeCredits,
-                Sum=sum,
-                Status=false,
-                Discount=0
+                Sum = sum,
+                Status = false,
+                Discount = 0
             };
 
             db.Orders.Add(order);
@@ -68,7 +80,7 @@ namespace DoNgoaiChinhHang.Controllers
             {
                 OrderDetail itemOD = new OrderDetail()
                 {
-                    OrderID = OrderID,
+                    OrderID = oid,
                     ProductID = item.Product.ProductID,
                     Quantity = item.Quanlity,
                     Price = item.Product.Price,
@@ -79,14 +91,31 @@ namespace DoNgoaiChinhHang.Controllers
             db.SaveChanges();
 
 
-            ViewBag.order = order;
+            /*ViewBag.order = order;
             ViewBag.sum = sum;
-            var listDetailProducts = db.OrderDetails.Include(p => p.Product).Where(x => x.OrderID == OrderID);
+            var listDetailProducts = db.OrderDetails.Include(p => p.Product).Where(x => x.OrderID == OrderID);*/
             HttpContext.Session["cart"] = null;
-            return View(listDetailProducts);
+            /*return View(listDetailProducts);*/
+            return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
-        public static string CreateKey(string tiento)
+        public ActionResult OrderUsersDetail()
+        {
+            if(oid== null)
+            {
+                return RedirectToAction("Index", "Cart");
+            }
+            else
+            {
+                Order or = db.Orders.Where(x => x.OrderID == oid).First();
+                ViewBag.order = or;
+                ViewBag.sum = or.Sum;
+                var listDetailProducts = db.OrderDetails.Include(p => p.Product).Where(x => x.OrderID == oid);
+                HttpContext.Session["cart"] = null;
+                return View(listDetailProducts);
+            }
+        }
+            public static string CreateKey(string tiento)
         {
             string key = tiento;
             string[] partsDay;

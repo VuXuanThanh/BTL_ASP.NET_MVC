@@ -63,7 +63,7 @@
                             <td width="30%">
                                 <span>
                                     @{
-                                        var ct = Model.Note != true ? "Che tên sản phẩm" : "Không có";
+                                        var ct = Model.Note == true ? "Che tên sản phẩm" : "Không có";
                                         @ct
                                     }
                                 </span>
@@ -89,7 +89,7 @@
                                         @tt
                                     }
                                 </span>
-                            <td>Mã giảm giá: </td>
+                            <td>Giảm giá: </td>
                             <td width="30%"><span>@Html.DisplayFor(model => model.Discount)</span></td>
                         </tr>
 
@@ -128,7 +128,7 @@
                                             @Html.DisplayFor(modelItem => item.ProductID)
                                         </td>
                                         <td>
-                                            @if (Model.Note == true)
+                                            @if (Model.Note != true)
                                             {
                                                 @Html.DisplayFor(modelItem => item.Product.ProductName)
                                             }
@@ -150,7 +150,7 @@
                                 }
                                 <tr>
                                     <td align="right" colspan="3"><b>Tổng tiền</b></td>
-                                    <td><b>@Html.DisplayFor(model => model.Sum) $</b></td>
+                                    <td><b>@Html.DisplayFor(model => model.Sum) VNĐ</b></td>
                                 </tr>
                             </tbody>
 

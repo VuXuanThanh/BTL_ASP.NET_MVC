@@ -36,22 +36,23 @@ namespace DoNgoaiChinhHang.Controllers
             return View(list);
         }
 
-        public ActionResult AddItem(string productID, int quanlity, int datHangNgay)
+        public ActionResult AddItem(string productID, int quanlity, int? datHangNgay)
         {
             var cart = Session[CartSession];
             var product = db.Products.Where(x => x.ProductID == productID).FirstOrDefault();
-           
-            
-           
+            /*if (quanlity > product.AvailableQuantity)
+            {
+                ViewBag.LoiSoLuong = "Số lượng hiện tại không đủ đáp ứng. Vui lòng tham khảo thêm các sản phẩm khác !!";
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }*/
             if (cart != null)
             {
                 var list = (List<CartItem>)cart;
-                if (list.Exists(x => x.Product.ProductID == productID))
+                if (list.Exists(x => x.Product.ProductID != productID.Trim()))
                 {
-
                     foreach (var item in list)
                     {
-                        if (item.Product.ProductID == productID)
+                        if (item.Product.ProductID.Trim().Equals(productID.Trim()))
                         {
                             item.Quanlity += quanlity;
                         }
@@ -60,6 +61,7 @@ namespace DoNgoaiChinhHang.Controllers
                 else
                 {
                     var item = new CartItem();
+                    product.ProductID = productID.Trim();
                     item.Product = product;
                     item.Quanlity = quanlity;
                     list.Add(item);
