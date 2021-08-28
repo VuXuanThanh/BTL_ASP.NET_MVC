@@ -156,9 +156,12 @@
                         <p class="desc">
                             @foreach (var description in Model.Description.Split('.'))
                             {
-                                <span>
-                                    -@description <br />
-                                </span>
+                                if(description.Length > 0)
+                                {
+                                        <span>
+                                            -@description. <br />
+                                        </span>
+                                }
                             }
                         </p>
 
@@ -269,7 +272,7 @@
                             <p>
                                 @foreach (var benefit in Model.Benefit.Split('.'))
                                 {
-                                    if (@benefit.Length > 1)
+                                    if (@benefit.Length > 0)
                                     {
                                         <span style="font-weight: 100">
                                             <span style="color:#ffd700;">✔</span> @benefit. <br />
@@ -301,7 +304,7 @@
                             <p style="text-align:justify">
                                 @foreach (var element in Model.Element.Split('.'))
                                 {
-                                    if (@element.Length > 1)
+                                    if (@element.Length > 0)
                                     {
                                         <span style="font-weight: 100">
                                             <span style="color:#0000ff;">✜ </span>@element. <br />
@@ -327,7 +330,7 @@
                             <p>
                                 @foreach (var tutorial in Model.Tutorial.Split('.'))
                                 {
-                                    if (@tutorial.Length > 1)
+                                    if (@tutorial.Length > 0)
                                     {
                                         <span style="font-weight: 100">
                                             <span style="color:#ffd700;">➤ </span>@tutorial. <br />
